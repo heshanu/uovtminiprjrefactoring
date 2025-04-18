@@ -1,0 +1,5 @@
+@if(isLoading$|async){
+<app-spinner [isLoading]="isLoading$| async"/>
+}@else{
+    <app-beveragetemplate [list]="recipeTypeList"/>
+}
