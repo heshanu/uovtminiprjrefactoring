@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 //import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
 import { FoodTypeIterface } from '../../service/foodservice.service';
 import { CustomerState } from '../../store/customers/customer.status';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @Component({
     selector: 'app-foodtemplate',
@@ -17,6 +18,7 @@ export class FoodtemplateComponent implements OnInit{
 
   customerId$!: Observable<CustomerState|undefined>;
   customerId:any;
+
   customerIdSubscription!:Subscription;
 
   // constructor(private router:Router,private activatedRoute: ActivatedRoute, 

@@ -5,11 +5,12 @@ import { MaterialModule } from '../../shared/materialModule';
 import { FoodtemplateComponent } from '../../shared/foodtemplate/foodtemplate.component';
 import { FoodCategoryComponent } from './food-category/food-category.component';
 import { SouthernComponent } from './foodStyle/southern/southern.component';
-import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/card-template-foods.component';
 import { NorthernComponent } from './foodStyle/northern/northern.component';
 import { ChineeseComponent } from './foodStyle/chineese/chineese.component';
 import { JapaneeseComponent } from './foodStyle/japaneese/japaneese.component';
 import { TraditionalComponent } from './foodStyle/traditional/traditional.component';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/card-template-foods.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,15 @@ import { TraditionalComponent } from './foodStyle/traditional/traditional.compon
     NorthernComponent,
     ChineeseComponent,
     JapaneeseComponent,
-    TraditionalComponent
+    TraditionalComponent,
+    FoodtemplateComponent,
+    CardTemplateFoodsComponent
   ],
   imports: [
     FoodRoutingModule,
     MaterialModule,
+    CdkAccordionModule,
+    MaterialModule
   ],
   exports:[
     SouthernComponent,

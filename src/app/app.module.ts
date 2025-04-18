@@ -79,6 +79,7 @@ import { FoodModule } from './module/food/food.module';
 import { MaterialModule } from './shared/materialModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
@@ -144,7 +145,7 @@ import { RouterModule } from '@angular/router';
     DialogTrainComponent,
     DialogTrainconfirmComponent,
     BeveragelistComponent,
-   // BeveragetemplateComponent,
+    BeveragetemplateComponent,
     SpinnerComponent,
     BeverageconfirmComponent,
     ConfirmationModalComponent,
@@ -162,7 +163,8 @@ import { RouterModule } from '@angular/router';
         LoginModule,
         BeverageModule,
         FoodModule,
-        MaterialModule
+        MaterialModule,
+        CdkAccordionModule,
         
   ],
   providers: [],

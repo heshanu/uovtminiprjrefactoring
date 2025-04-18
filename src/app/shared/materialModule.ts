@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -19,7 +18,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     MatCardModule,
     MatExpansionModule,
-    CdkAccordionModule,
     MatDialogModule,
     MatProgressSpinnerModule 
    ],
@@ -31,7 +29,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     MatCardModule,
     MatExpansionModule,
-    CdkAccordionModule,
     MatDialogModule,
     MatProgressSpinnerModule,
   ]

@@ -19,7 +19,7 @@ export class TraditionalComponent implements OnInit ,OnDestroy{
 
  traditionalFoodListSubscription!:Subscription;
 
- traditionalFoodList:FoodsInterface[]=[];
+ traditionalFoodList:any[]=[];
   
   constructor(private foodService:FoodserviceService,public spinner:SpinnerService){}
 

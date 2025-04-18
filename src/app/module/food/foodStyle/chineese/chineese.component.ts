@@ -12,19 +12,20 @@ import { FoodserviceService } from '../../../../service/foodservice.service';
 export class ChineeseComponent implements OnInit ,OnDestroy{
 
     ngOnInit(): void {
-      this.getSouthernFoods();
+      this.getChineeseFood();
     }
   
    chineeseFoodListSubscription!:Subscription;  
   
-   chineeseFoodList:FoodsInterface[]=[];
+   chineeseFoodList:any[]=[];
   
     constructor(private foodService:FoodserviceService){}
   
-    getSouthernFoods(){
+    getChineeseFood(){
   
-      this. chineeseFoodListSubscription=this.foodService.getChineeseFoods().subscribe((food:any)=>{
-        this.  chineeseFoodList=food.recipes;
+      this. chineeseFoodListSubscription=this.foodService
+      .getChineeseFoods().subscribe((food:any)=>{
+        this.chineeseFoodList=food.recipes;
         //console.log(this.southernFoodList);   
       })
     }
