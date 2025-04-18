@@ -15,12 +15,17 @@ export class TraditionalComponent implements OnInit ,OnDestroy{
   ngOnInit(): void {
     this.getSouthernFoods();
   }
+
+
+ traditionalFoodListSubscription!:Subscription;
+
+ traditionalFoodList:FoodsInterface[]=[];
   
   constructor(private foodService:FoodserviceService,public spinner:SpinnerService){}
 
   getSouthernFoods(){
     this. traditionalFoodListSubscription=this.foodService.getTraditionalFoods().subscribe((food:any)=>{
-      this. traditionalFoodList=food.recipes;
+      this.traditionalFoodList=food.recipes;
       this.spinner.hideLoading();
       //console.log(this.southernFoodList);   
     })
@@ -28,9 +33,6 @@ export class TraditionalComponent implements OnInit ,OnDestroy{
    
   }
 
- traditionalFoodListSubscription!:Subscription;
-
- traditionalFoodList:FoodsInterface[]=[];
 
   ngOnDestroy(): void {
     if(this. traditionalFoodListSubscription){

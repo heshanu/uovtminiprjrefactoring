@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelserviceService } from '../../../service/hotelservice.service';
 import { HotelsListInterface } from '../../../model/hotel_interface';
-import { log } from 'node:console';
 
 @Component({
     selector: 'app-north-westernprovince',
