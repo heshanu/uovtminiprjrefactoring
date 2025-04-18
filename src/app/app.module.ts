@@ -51,7 +51,6 @@ import { NuwaravanComponent } from './compoent/travelMode/van/nuwaravan/nuwarava
 import { VanComponent } from './compoent/travelMode/van/van.component';
 import { BeveragelistComponent } from './module/beverage/beveragelist/beveragelist.component';
 import { HotelistComponent } from './module/hotelsbooking/hotelist/hotelist.component';
-import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AccordintemplateComponent } from './shared/accordintemplate/accordintemplate.component';
 import { BeverageconfirmComponent } from './shared/beverageconfirm/beverageconfirm.component';
 import { BeveragetemplateComponent } from './shared/beveragetemplate/beveragetemplate.component';
@@ -100,7 +99,7 @@ import { RouterModule } from '@angular/router';
     CustomersDashBoardComponent,
     NotfoundComponent,
     RecommendationComponent,
-   // MotorbikeComponent,
+    MotorbikeComponent,
     GallerentbikesComponent,
     HikkarentbikesComponent,
     MatararentbikesComponent,
@@ -108,7 +107,7 @@ import { RouterModule } from '@angular/router';
     VehicletemplateComponent,
     HotelistComponent,
     HoteltemplateComponent,
-    //AccordintemplateComponent,
+    AccordintemplateComponent,
     SouthenrnprovinceComponent,
     DialogCompoentComponent,
     CardtemplateComponent,
@@ -121,23 +120,22 @@ import { RouterModule } from '@angular/router';
     EasternprovinceComponent,
     UvaprovinceComponent,
     NorthCentralprovinceComponent,
-   // OrderdetailsComponent,
-   // BicycleComponent,
+    BicycleComponent,
     GallebicycleComponent,
     HikabicycleComponent,
     MatarabicycleComponent,
     NuwarabicycleComponent,
-    //CarComponent,
+    CarComponent,
     GallecarComponent,
     HikkacarComponent,
     MataracarComponent,
     NuwaracarComponent,
-   // VanComponent,
+    VanComponent,
     GallevanComponent,
     HikkavanComponent,
     MataravanComponent,
     NuwaravanComponent,
-   // TuktukComponent,
+    TuktukComponent,
     GalletuktukComponent,
     HikkatuktukComponent,
     MataratuktukComponent,
