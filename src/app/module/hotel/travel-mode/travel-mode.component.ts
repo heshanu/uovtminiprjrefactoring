@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import { Observable, Subscription, take } from 'rxjs';
-import { AppState } from '../../../app.reducer';
-import { getCustomerDetail} from '../../../store/customers/customer.selectors';
+// import { select, Store } from '@ngrx/store';
+// import { Observable, Subscription, take } from 'rxjs';
+// import { AppState } from '../../../app.reducer';
+// import { getCustomerDetail} from '../../../store/customers/customer.selectors';
 import { CustomerdetailsInterface } from '../../../model/customerDetailsInterface';
 
 @Component({
@@ -15,24 +15,25 @@ import { CustomerdetailsInterface } from '../../../model/customerDetailsInterfac
 })
 export class TravelModeComponent implements OnInit,OnDestroy{
 
-    customerObj$!: Observable<CustomerdetailsInterface|any>;
-      private subscription!: Subscription;
+    // customerObj$!: Observable<CustomerdetailsInterface|any>;
+    //   private subscription!: Subscription;
       customerId!:string;
 
-  constructor(private router:Router,
-    private store: Store<AppState>){
-     this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
-  }
+  // constructor(private router:Router,
+  //   private store: Store<AppState>){
+  //    this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
+  // }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   // this.subscription.unsubscribe();
   }
   
 
 ngOnInit(): void {
+  /*
   this.subscription=this.customerObj$.subscribe((data:any) => {
     this.customerId = data._id; 
-  });
+  });*/
 }
 
   items= [
@@ -48,7 +49,7 @@ ngOnInit(): void {
     navigateTo(link: string) {
       
         console.log(link);
-        
+        /*
         this.router.navigate(['customerDashboard', this.customerId, 'travelMode', link])
           .then((nav: boolean) => {
             console.log('Navigation successful:', nav);
@@ -57,8 +58,8 @@ ngOnInit(): void {
             console.error('Navigation error:', err);
           });
           console.log("ggg123");
-        }
-      }
+        }*/
+      }}
     
 
      // Check if a mode is currently active

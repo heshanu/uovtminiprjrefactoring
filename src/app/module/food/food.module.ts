@@ -28,7 +28,7 @@ import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/car
     FoodRoutingModule,
     MaterialModule,
     CdkAccordionModule,
-    MaterialModule
+
   ],
   exports:[
     SouthernComponent,
