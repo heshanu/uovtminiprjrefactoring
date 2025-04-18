@@ -3,9 +3,9 @@ import { HotelserviceService } from '../../service/hotelservice.service';
 import { HotelsListInterface } from '../../model/hotel_interface';
 import { Observable, Subscription, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
-import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
+//import { Store } from '@ngrx/store';
+//import { AppState } from '../../app.reducer';
+//import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
 import { CustomerState } from '../../store/customers/customer.status';
 
 @Component({
@@ -25,12 +25,13 @@ customerIdSubscription!:Subscription;
 
 @Input() items:any[] = [];
 
+/*
   constructor(private router:Router,private activatedRoute: ActivatedRoute,
     private store: Store<AppState>
   ){
     this.customerId$ = this.store.select(getCustomerDetail);
   }
-
+*/
   ngOnDestroy(): void {
     this.customerIdSubscription.unsubscribe();
   }
@@ -49,6 +50,7 @@ customerIdSubscription!:Subscription;
       
 
 
+      /*
   navigateTo(link: string) {
     console.log("accordintemplate",this.customerId);
       this.router.navigate(["customerDashboard/",this.customerId,"hotelslist",link])
@@ -59,7 +61,7 @@ customerIdSubscription!:Subscription;
           console.error('Navigation error:', err);
         });
   }
-    
+    */
    
 
 }

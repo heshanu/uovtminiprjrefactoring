@@ -20,7 +20,8 @@ export class SouthernComponent implements OnInit ,OnDestroy{
 
   getSouthernFoods(){
     this.spinner.showLoading();
-    this.southernFoodListSubscription=this.foodService.getSouthernFoods().subscribe((food:any)=>{
+    this.southernFoodListSubscription=this.foodService.getSouthernFoods()
+    .subscribe((food:any)=>{
       this.southernFoodList=food.recipes;
       this.spinner.hideLoading();
       //console.log(this.southernFoodList);   

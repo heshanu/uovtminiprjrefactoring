@@ -51,7 +51,6 @@ import { NuwaravanComponent } from './compoent/travelMode/van/nuwaravan/nuwarava
 import { VanComponent } from './compoent/travelMode/van/van.component';
 import { BeveragelistComponent } from './module/beverage/beveragelist/beveragelist.component';
 import { HotelistComponent } from './module/hotelsbooking/hotelist/hotelist.component';
-import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { AccordintemplateComponent } from './shared/accordintemplate/accordintemplate.component';
 import { BeverageconfirmComponent } from './shared/beverageconfirm/beverageconfirm.component';
 import { BeveragetemplateComponent } from './shared/beveragetemplate/beveragetemplate.component';
@@ -80,6 +79,7 @@ import { FoodModule } from './module/food/food.module';
 import { MaterialModule } from './shared/materialModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
@@ -96,11 +96,11 @@ import { RouterModule } from '@angular/router';
     CustomerdetailComponent,
     CalenderComponent,
     SearchImagePosterComponent,
-   // CustomerDashBoardComponent,
-   // CustomersDashBoardComponent,
+    CustomerDashBoardComponent,
+    CustomersDashBoardComponent,
     NotfoundComponent,
     RecommendationComponent,
-   // MotorbikeComponent,
+    MotorbikeComponent,
     GallerentbikesComponent,
     HikkarentbikesComponent,
     MatararentbikesComponent,
@@ -108,7 +108,7 @@ import { RouterModule } from '@angular/router';
     VehicletemplateComponent,
     HotelistComponent,
     HoteltemplateComponent,
-    //AccordintemplateComponent,
+    AccordintemplateComponent,
     SouthenrnprovinceComponent,
     DialogCompoentComponent,
     CardtemplateComponent,
@@ -121,23 +121,22 @@ import { RouterModule } from '@angular/router';
     EasternprovinceComponent,
     UvaprovinceComponent,
     NorthCentralprovinceComponent,
-   // OrderdetailsComponent,
-   // BicycleComponent,
+    BicycleComponent,
     GallebicycleComponent,
     HikabicycleComponent,
     MatarabicycleComponent,
     NuwarabicycleComponent,
-    //CarComponent,
+    CarComponent,
     GallecarComponent,
     HikkacarComponent,
     MataracarComponent,
     NuwaracarComponent,
-   // VanComponent,
+    VanComponent,
     GallevanComponent,
     HikkavanComponent,
     MataravanComponent,
     NuwaravanComponent,
-   // TuktukComponent,
+    TuktukComponent,
     GalletuktukComponent,
     HikkatuktukComponent,
     MataratuktukComponent,
@@ -146,7 +145,7 @@ import { RouterModule } from '@angular/router';
     DialogTrainComponent,
     DialogTrainconfirmComponent,
     BeveragelistComponent,
-   // BeveragetemplateComponent,
+    BeveragetemplateComponent,
     SpinnerComponent,
     BeverageconfirmComponent,
     ConfirmationModalComponent,
@@ -155,17 +154,17 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         HomeModule,
         LoginModule,
         BeverageModule,
         FoodModule,
-        MaterialModule
+        MaterialModule,
+        CdkAccordionModule,
         
   ],
   providers: [],
