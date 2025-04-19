@@ -11,6 +11,7 @@ import { JapaneeseComponent } from './foodStyle/japaneese/japaneese.component';
 import { TraditionalComponent } from './foodStyle/traditional/traditional.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/card-template-foods.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,13 @@ import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/car
     CardTemplateFoodsComponent
   ],
   imports: [
+    CommonModule,
     FoodRoutingModule,
     MaterialModule,
     CdkAccordionModule,
-
+    MaterialModule
   ],
   exports:[
-    SouthernComponent,
   ]
 })
 export class FoodModule { }
