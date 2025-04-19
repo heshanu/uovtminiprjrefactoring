@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { select, Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
-// import { AppState } from '../../../app.reducer';
-// import { getCustomerDetail, selectCustomerId, selectCustomerState } from '../../../store/customers/customer.selectors';
-// import { selectOrderDetails } from '../../../store/orders/orders.selectors';
+ import { AppState } from '../../../app.reducer';
+ import { getCustomerDetail, selectCustomerId, selectCustomerState } from '../../../store/customers/customer.selectors';
+ import { selectOrderDetails } from '../../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../../model/customerDetailsInterface';
 
 @Component({
@@ -20,16 +20,16 @@ export class MotorbikeComponent implements OnInit,OnDestroy{
    customerId!:string;
 
   //orderList$: Observable<any>;
-  orderList1!:any;
+  orderList$!:any;
 
   private subscriptionCustomerId!: Subscription;
   id!:string|undefined;
   
-    // constructor(private router:Router,private activatedRoute: ActivatedRoute,
-    //   private store: Store<AppState>){
-    //    this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
-    //   this.orderList$ =this.store.select(selectOrderDetails) 
-    // }
+    constructor(private router:Router,private activatedRoute: ActivatedRoute,
+      private store: Store<AppState>){
+       this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
+      this.orderList$ =this.store.select(selectOrderDetails) 
+    }
 
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class MotorbikeComponent implements OnInit,OnDestroy{
   ]
   
   navigateTo(link: string) {
-    /*
+    
         console.log("insdie the motorbike:",link);    
     
           this.router.navigate(['customerDashboard',this.customerId,'travelMode','motorbike', link])
@@ -59,7 +59,7 @@ export class MotorbikeComponent implements OnInit,OnDestroy{
             })
             .catch((err: Error) => {
               console.error('Navigation error:', err);
-            });*/
+            });
   }
 
     

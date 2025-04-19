@@ -2,10 +2,12 @@ import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@a
 import { FoodsInterface } from '../../model/foodrecipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-//import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
+import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
 import { FoodTypeIterface } from '../../service/foodservice.service';
 import { CustomerState } from '../../store/customers/customer.status';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { AppState } from '../../app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-foodtemplate',
@@ -21,10 +23,10 @@ export class FoodtemplateComponent implements OnInit{
 
   customerIdSubscription!:Subscription;
 
-  // constructor(private router:Router,private activatedRoute: ActivatedRoute, 
-  //   private store: Store<AppState>){
-  //      this.customerId$ = this.store.select(getCustomerDetail);
-  //   }
+  constructor(private router:Router,private activatedRoute: ActivatedRoute, 
+    private store: Store<AppState>){
+       this.customerId$ = this.store.select(getCustomerDetail);
+    }
 
   @Input() list:any[] = [];
   foodList:any[] = [];
@@ -41,7 +43,7 @@ export class FoodtemplateComponent implements OnInit{
   // Implement the navigateTo method if needed
   
   navigateTo(foodName:string) {
-    /*
+    
     console.log("Food-template",foodName);
     if (this.customerId && foodName) {
       this.router.navigate(['customerDashboard', this.customerId, 'foodslist', foodName])
@@ -53,7 +55,7 @@ export class FoodtemplateComponent implements OnInit{
       });
     } else {
       console.error('Navigation failed: this.id or foodName is undefined');
-    }*/
+    }
   
   }
 

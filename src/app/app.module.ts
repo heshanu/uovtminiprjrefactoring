@@ -74,12 +74,14 @@ import { HomeModule } from './module/home/home.module';
 import { LoginModule } from './module/login/login.module';
 import { CommonModule } from '@angular/common';
 import { BeverageModule } from './module/beverage/beverage.module';
-import { store } from './store';
 import { FoodModule } from './module/food/food.module';
 import { MaterialModule } from './shared/materialModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './app.reducer';
+import { HottravelModule } from './module/hottravel/hottravel.module';
 
 @NgModule({
   declarations: [
@@ -150,7 +152,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     BeverageconfirmComponent,
     ConfirmationModalComponent,
     SearchComponent,
-    SearchresultComponent,
+    SearchresultComponent
   ],
   imports: [
     CommonModule,
@@ -165,6 +167,12 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
         FoodModule,
         MaterialModule,
         CdkAccordionModule,
+        StoreModule.forRoot(appReducers),
+        StoreDevtoolsModule.instrument({
+          maxAge: 25,
+        }),
+        HottravelModule
+    
         
   ],
   providers: [],

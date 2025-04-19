@@ -13,9 +13,7 @@ const routes: Routes = [
   {path:'northern',component:NorthernComponent},
   {path:'chineese',component:ChineeseComponent},
   {path:'japanees',component:JapaneeseComponent},
-  {path:'traditional',component:TraditionalComponent},
-  
-
+  {path:'traditional',component:TraditionalComponent}
 ];
 
 @NgModule({

@@ -2,9 +2,9 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CustomerState } from '../../store/customers/customer.status';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { AppState } from '../../app.reducer';
-// import { Store } from '@ngrx/store';
-// import { getCustomerDetail } from '../../store/customers/customer.selectors';
+import { AppState } from '../../app.reducer';
+import { Store } from '@ngrx/store';
+import { getCustomerDetail } from '../../store/customers/customer.selectors';
 import { SpinnerService } from '../../service/spinner.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogHotelconfirmComponent } from '../dialog-hotelconfirm/dialog-hotelconfirm.component';
@@ -21,23 +21,21 @@ import { VisiblelistService } from '../../service/visiblelist.service';
 })
 export class BeveragetemplateComponent implements OnInit{
 
-  // constructor(private router:Router, 
-  //   private store: Store<AppState>,private spinnerService:SpinnerService,
-  //   private visiblelistService:VisiblelistService
-  // ){
-  //      this.customerId$ = this.store.select(getCustomerDetail);
-  //      this.filteredBeverageList = this.list;
-  //   }
+  constructor(private router:Router, 
+    private store: Store<AppState>,private spinnerService:SpinnerService,
+    private visiblelistService:VisiblelistService
+  ){
+       this.customerId$ = this.store.select(getCustomerDetail);
+       this.filteredBeverageList = this.list;
+    }
 
   customerId$!: Observable<CustomerState|undefined>;
   customerId:any;
   customerIdSubscription!:Subscription;
 
-  //isLoading$= this.spinnerService.loading$;
-
   readonly dialog = inject(MatDialog)
 
-  
+
 
   @Input() list:any[] = [];
   
@@ -58,7 +56,7 @@ export class BeveragetemplateComponent implements OnInit{
 
   // Implement the navigateTo method if needed
   navigateTo(foodName:string) {
-    /*
+    
     console.log("Beverage-template",foodName);
     if (this.customerId && foodName) {
       this.router.navigate(['customerDashboard', this.customerId, 'beveragelist', foodName])
@@ -71,7 +69,7 @@ export class BeveragetemplateComponent implements OnInit{
     } else {
       console.error('Navigation failed: this.id or foodName is undefined');
     }
-  */
+  
   }
 
   refresh(){}
@@ -108,7 +106,7 @@ export class BeveragetemplateComponent implements OnInit{
     }
   
   filterResults(text: string) {
-    /*
+    
     console.log(text);
     this.visiblelistService.updateData(text);
     
@@ -119,7 +117,6 @@ export class BeveragetemplateComponent implements OnInit{
       this.filteredBeverageList = this.beverageList.filter((beverage:any) =>
         beverage.strDrink.toLowerCase().includes(text.toLowerCase()),
       );
-*/
       console.log(this.filteredBeverageList);    
     }  
 

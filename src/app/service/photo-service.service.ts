@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-//import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PhotoServiceService{
 
   private apiUrl = 'https://api.pexels.com/v1/search';
-  private apiKey = 'environment.apiKe';
+  private apiKey = environment.photoServiceAPI;
 
   constructor(private http: HttpClient) { }
   
@@ -20,8 +20,6 @@ export class PhotoServiceService{
 
     return this.http.get(this.apiUrl, { headers });
   }
-
-  
 
   findImageByName(query: string, perPage: number = 5): Observable<any> {
     const headers = new HttpHeaders({

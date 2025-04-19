@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 m-16">
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title">{{ customerRecivedObj.name.toUpperCase() }}</h3>
+          <h3 class="card-title">{{ customerRecivedObj.name|uppercase }}</h3>
           
           <p class="card-text"><strong>Address:</strong> {{ customerRecivedObj.address }}</p>
           <p class="card-text"><strong>Age:</strong> {{ customerRecivedObj.age }}</p>
