@@ -236,7 +236,11 @@ const routes: Routes = [
    {
     path:"foodslist/traditional",
     loadChildren:()=>import('./module/food/food.module').then(m=>m.FoodModule)
-   } 
+   } ,
+   {
+    path:"hottravel",
+    loadChildren:()=>import('./module/hottravel/hottravel.module').then(m=>m.HottravelModule)
+   }
     ]
   }
 

@@ -81,6 +81,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
+import { HottravelModule } from './module/hottravel/hottravel.module';
 
 @NgModule({
   declarations: [
@@ -151,7 +152,7 @@ import { appReducers } from './app.reducer';
     BeverageconfirmComponent,
     ConfirmationModalComponent,
     SearchComponent,
-    SearchresultComponent,
+    SearchresultComponent
   ],
   imports: [
     CommonModule,
@@ -169,7 +170,8 @@ import { appReducers } from './app.reducer';
         StoreModule.forRoot(appReducers),
         StoreDevtoolsModule.instrument({
           maxAge: 25,
-        })
+        }),
+        HottravelModule
     
         
   ],
