@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { select, Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-//import { AppState } from '../../../app.reducer';
-//import { getCustomerDetail, selectCustomerId } from '../../../store/customers/customer.selectors';
-//import { selectOrderDetails } from '../../../store/orders/orders.selectors';
+import { AppState } from '../../../app.reducer';
+import { getCustomerDetail, selectCustomerId } from '../../../store/customers/customer.selectors';
+import { selectOrderDetails } from '../../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../../model/customerDetailsInterface';
 
 @Component({
@@ -21,11 +21,11 @@ export class BicycleComponent implements OnInit,OnDestroy{
   
     customerId!:string;
   
-    // constructor(private router:Router,
-    //   private store: Store<AppState>
-    // ){
-    //   this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
-    // }
+    constructor(private router:Router,
+      private store: Store<AppState>
+    ){
+      this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
+    }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -34,7 +34,7 @@ export class BicycleComponent implements OnInit,OnDestroy{
   ngOnInit(): void {
     this.subscription=this.customerObj$.subscribe((data:any) => {
       this.customerId = data._id; 
-     // console.log('Customer ID:', this.customerRecivedObj);
+      console.log('Customer ID:');
     });
   }
     items= [
@@ -45,7 +45,7 @@ export class BicycleComponent implements OnInit,OnDestroy{
      
     ]
   
-    /*
+    
     navigateTo(link: string) {
         console.log("insdie the motorbike com",link);
       
@@ -57,6 +57,6 @@ export class BicycleComponent implements OnInit,OnDestroy{
               console.error('Navigation error:', err);
             });
       
-      }*/
+      }
 
 }

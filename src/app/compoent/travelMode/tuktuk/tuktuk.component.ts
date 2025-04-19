@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { select, Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-// import { AppState } from '../../../app.reducer';
-// import { getCustomerDetail, selectCustomerId } from '../../../store/customers/customer.selectors';
-// import { selectOrderDetails } from '../../../store/orders/orders.selectors';
+import { AppState } from '../../../app.reducer';
+import { getCustomerDetail, selectCustomerId } from '../../../store/customers/customer.selectors';
+import { selectOrderDetails } from '../../../store/orders/orders.selectors';
 
 @Component({
     selector: 'app-tuktuk',
@@ -14,21 +14,21 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class TuktukComponent implements OnInit,OnDestroy{
   expandedIndex = 0;
-// customerId$: Observable<any>;
+ customerId$: Observable<any>;
   customerId: string| undefined;
 
- // orderList$: Observable<any>;
+  orderList$: Observable<any>;
   orderList1!:any;
 
   private subscriptionCustomerId!: Subscription;
   id!:string|undefined;
   
-    // constructor(private router:Router,private activatedRoute: ActivatedRoute,
-    //   private store: Store<AppState>){
-    //   this.customerId$ = this.store.select(getCustomerDetail);
-    //   this.orderList$ =this.store.select(selectOrderDetails) 
+    constructor(private router:Router,private activatedRoute: ActivatedRoute,
+      private store: Store<AppState>){
+      this.customerId$ = this.store.select(getCustomerDetail);
+      this.orderList$ =this.store.select(selectOrderDetails) 
 
-    // }
+    }
 
   ngOnDestroy(): void {
     if(this.subscriptionCustomerId){
@@ -37,9 +37,9 @@ export class TuktukComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
-    // this.subscriptionCustomerId=this.customerId$.subscribe((data:any)=>{
-    //    this.id=data._id; 
-    // })
+    this.subscriptionCustomerId=this.customerId$.subscribe((data:any)=>{
+       this.id=data._id; 
+    })
   }
     items= [
       {"itemName":"Galle Rent Tuktuk","description":"This may be motor bike","link":"galleTuktuk"},
@@ -61,14 +61,14 @@ export class TuktukComponent implements OnInit,OnDestroy{
         //   }
         //   this.id=customerId
     
-      /*
+      
           this.router.navigate(['customerDashboard',this.id,'travelMode','tuktuk', link])
             .then((nav: boolean) => {
               console.log('Navigation successful:', nav);
             })
             .catch((err: Error) => {
               console.error('Navigation error:', err);
-            });*/
+            });
       
       }
 
