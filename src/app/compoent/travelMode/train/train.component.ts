@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTrainComponent } from '../../../shared/dialog-train/dialog-train.component';
 import { DialogTrainconfirmComponent } from '../../../shared/dialog-trainconfirm/dialog-trainconfirm.component';
+import { SpinnerService } from '../../../service/spinner.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-train',
@@ -14,14 +16,20 @@ import { DialogTrainconfirmComponent } from '../../../shared/dialog-trainconfirm
 })
 export class TrainComponent implements OnInit{
 
+  readonly dialog = inject(MatDialog);
 
-  readonly dialog = inject(MatDialog)
+  isLoading$!:Observable<boolean>;
 
   date!: any;
+
   trainNumber!:any;
+
   ScheduleDeparture!:any;
+
   ActualDeparture:any;
+
   DelayInDeparture:any;
+
   trainRoutes!:TrainRoutesInterface[];
 
   selectItem(item:any,enterAnimationDuration: string, exitAnimationDuration: string) {
@@ -33,15 +41,21 @@ export class TrainComponent implements OnInit{
       }); 
     }
 
-  constructor(private dataService: TrainService,private router:Router) { }
+  constructor(private dataService: TrainService,private router:Router,
+    private spinnerService:SpinnerService
+  ) { }
 
   ngOnInit(): void {
+
+    this.isLoading$=this.spinnerService.loading$;
+    this.spinnerService.showLoading();
     this.getDate();
     this.getTrainNumber();
     this.getTrainRoute();
     this.getTrainActualDeparture();
     this.getTrainDelayInDeparture();
     this.getTrainScheduleDeparture();
+    this.spinnerService.hideLoading();
   }
 
   getDate(){
@@ -49,7 +63,7 @@ export class TrainComponent implements OnInit{
       (response:any) => {
         this.date = response.StartDate
       },
-      (error) => {
+      (error:any) => {
         console.error('Error fetching data', error);
       }
     );
@@ -102,11 +116,12 @@ export class TrainComponent implements OnInit{
   }
 
   getTrainDelayInDeparture(){
-    this.dataService.getData().subscribe(
+    this.dataService.getData()
+    .subscribe(
       (response:any) => {
         this.DelayInDeparture = response.TrainRoute.DelayInDeparture
       },
-      (error) => {
+      (error:any) => {
         console.error('Error fetching data', error);
       }
     );
