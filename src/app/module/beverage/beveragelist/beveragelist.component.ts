@@ -1,13 +1,9 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FoodserviceService, FoodTypeIterface } from '../../../service/foodservice.service';
 import { BeverageService } from '../../../service/beverage.service';
-import { finalize, Subscription } from 'rxjs';
+import { finalize, Observable, Subscription } from 'rxjs';
+import { SpinnerService } from '../../../service/spinner.service';
 
-interface Drink {
-  idDrink: string;
-  strDrink: string;
-  // ... other properties
-}
 
 @Component({
     selector: 'app-beveragelist',
@@ -16,18 +12,26 @@ interface Drink {
     standalone: false
 })
 export class BeveragelistComponent implements OnInit, OnDestroy {
-  recipeTypeList: Drink[] = [];
+  recipeTypeList: any[] = [];
+
+  isLoading$!:Observable<boolean>;
+
   loading = false;
+
   errorState = {
     hasError: false,
     message: ''
   };
+
   private beverageSubscription!: Subscription;
 
-  constructor(private beverageService: BeverageService) {}
+  constructor(private beverageService: BeverageService,
+    private spinnerService:SpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
+    this.isLoading$=this.spinnerService.loading$;
   }
 
   loadData() {
