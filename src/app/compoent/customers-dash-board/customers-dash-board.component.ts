@@ -3,10 +3,11 @@ import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { setCustomer} from '../../store/customers/customer-id.actions';
-import { Observable, Subscription } from 'rxjs';
+import { finalize, Observable, Subscription } from 'rxjs';
 import { selectCustomerId } from '../../store/customers/customer.selectors';
 import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
+import { SpinnerService } from '../../service/spinner.service';
 
 @Component({
     selector: 'app-customers-dash-board',
@@ -23,10 +24,20 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   customerId!:string|undefined;
   private subscription!: Subscription;
 
+  isLoading$!:Observable<boolean>;
+
+  loading = false;
+
+  errorState = {
+    hasError: false,
+    message: ''
+  };
+
+
   customersList:CustomerdetailsInterface[]=[];
 
   constructor(private route:Router,private activeRouter:ActivatedRoute,
-    private store: Store<AppState>){
+    private store: Store<AppState>,private spinnerService:SpinnerService){
     this.customerId$ = this.store.pipe(select(selectCustomerId));
   }
 
@@ -35,7 +46,8 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
-    
+    this.isLoading$=this.spinnerService.loading$;
+  
     this.subscription=this.customerId$.subscribe((data) => {
       this.customerId = data; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
@@ -44,9 +56,19 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   getCustomersDetails():void{
-    this.customerService.getAllCustomers().subscribe({
+    this.loading = true;
+    this.errorState = { hasError: false, message: '' };
+    this.customerService.getAllCustomers().pipe(
+      finalize(() => this.loading = false)
+    ).subscribe({
       next: (data) => (this.customersList = data),
-      error: (err) => console.error('Error fetching customers:', err),
+      error: (err) => {
+        this.errorState = {
+          hasError: true,
+          message: err.message || 'An error occurred while fetching beverages.'
+        };
+        console.error('Error fetching beverages:', err);
+      }
     });
 
   }
