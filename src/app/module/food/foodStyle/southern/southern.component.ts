@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FoodserviceService } from '../../../../service/foodservice.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { FoodsInterface } from '../../../../model/foodrecipe.model';
 import { SpinnerService } from '../../../../service/spinner.service';
 
@@ -12,21 +12,26 @@ import { SpinnerService } from '../../../../service/spinner.service';
 })
 export class SouthernComponent implements OnInit ,OnDestroy{
 
+  spinner$!:Observable<boolean>;
+  
+  constructor(private foodService:FoodserviceService,
+    public spinnerService:SpinnerService){}  
+
+
   ngOnInit(): void {
     this.getSouthernFoods();
+    this.spinner$=this.spinnerService.loading$;
   }
-  
-  constructor(private foodService:FoodserviceService,public spinner:SpinnerService){}
 
   getSouthernFoods(){
-    this.spinner.showLoading();
+    this.spinnerService.showLoading();
     this.southernFoodListSubscription=this.foodService.getSouthernFoods()
     .subscribe((food:any)=>{
       this.southernFoodList=food.recipes;
-      this.spinner.hideLoading();
+      this.spinnerService.hideLoading();
       //console.log(this.southernFoodList);   
     })
-    this.spinner.hideLoading();
+    this.spinnerService.hideLoading();
    
   }
 
