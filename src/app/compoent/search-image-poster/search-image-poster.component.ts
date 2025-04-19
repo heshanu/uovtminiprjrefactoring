@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchImagePosterComponent {
   longText='';
+  
   @Input() imagePosterList:any[]=[];
 }
