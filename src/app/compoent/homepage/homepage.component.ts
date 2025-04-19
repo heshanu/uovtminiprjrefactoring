@@ -35,11 +35,11 @@ resetList(){
 
 
 cardsList:any[]=[
-      {name:'galle',link:'../../../assets/imgs/rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
-      {name:'Jaffna',link:'../../../assets/imgs/rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
-      {name:'colombo',link:'../../../assets/imgs/rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
-      {name:'galle',link:'../../../assets/imgs/rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
-      {name:'Jaffna',link:'../../../assets/imgs/rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
-      {name:'colombo',link:'../../../assets/imgs/rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'galle',link:'rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'Jaffna',link:'rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
+      {name:'colombo',link:'rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'galle',link:'rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'Jaffna',link:'rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
+      {name:'colombo',link:'rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
     ];
 }
