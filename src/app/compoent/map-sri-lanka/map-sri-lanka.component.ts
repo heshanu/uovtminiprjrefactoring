@@ -7,17 +7,17 @@ import { Component } from '@angular/core';
     standalone: false
 })
 export class MapSriLankaComponent {
-    slMap:string="../../../assets/mapSl.png";
+    slMap:string="mapSl.png";
 
     slDestinations:any[]=[
       {
-        name:"Southern Province",link:"../../../assets/rect1.png",description:"20+ Spots"
+        name:"Southern Province",link:"rect1.png",description:"20+ Spots"
       },
       {
-        name:"North Province",link:"../../../assets/rect2.png",description:"25+ Spots"
+        name:"North Province",link:"rect2.png",description:"25+ Spots"
       },
       {
-        name:"Central Provin",link:"../../../assets/rect3.png",description:"25+ Spots"
+        name:"Central Provin",link:"rect3.png",description:"25+ Spots"
       },
     ];
         

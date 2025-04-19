@@ -7,7 +7,7 @@
 
 body {
     background-color: #f5f5f5;
-    background-image: url('../../../assets/homepage.png');
+    background-image: url('/public/homepage.png');
     background-repeat: no-repeat;
     background-position: center;
 }
