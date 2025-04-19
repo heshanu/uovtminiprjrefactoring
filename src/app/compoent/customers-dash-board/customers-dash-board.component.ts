@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { select, Store } from '@ngrx/store';
-//import { setCustomer} from '../../store/customers/customer-id.actions';
+import { select, Store } from '@ngrx/store';
+import { setCustomer} from '../../store/customers/customer-id.actions';
 import { Observable, Subscription } from 'rxjs';
-//import { selectCustomerId } from '../../store/customers/customer.selectors';
-//import { AppState } from '../../app.reducer';
+import { selectCustomerId } from '../../store/customers/customer.selectors';
+import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 
 @Component({
@@ -19,28 +19,28 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
 
   customerService=inject(CustomerdetailsService);
 
-  //customerId$: Observable<string|undefined>;
+  customerId$: Observable<string|undefined>;
   customerId!:string|undefined;
   private subscription!: Subscription;
 
   customersList:CustomerdetailsInterface[]=[];
 
-  // constructor(private route:Router,private activeRouter:ActivatedRoute,
-  //   private store: Store<AppState>){
-  //   this.customerId$ = this.store.pipe(select(selectCustomerId));
-  // }
+  constructor(private route:Router,private activeRouter:ActivatedRoute,
+    private store: Store<AppState>){
+    this.customerId$ = this.store.pipe(select(selectCustomerId));
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    /*
+    
     this.subscription=this.customerId$.subscribe((data) => {
       this.customerId = data; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
     });
-    this.getCustomersDetails();*/
+    this.getCustomersDetails();
   }
 
   getCustomersDetails():void{
@@ -51,7 +51,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
 
   }
 
-  /*
+  
   planNow(customer:CustomerdetailsInterface,_id:any) {
     console.log();
 
@@ -84,6 +84,4 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
     );
   }
   }
-
-*/
 }
