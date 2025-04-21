@@ -161,9 +161,9 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
     FoodconfirmComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
