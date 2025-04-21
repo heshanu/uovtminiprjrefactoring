@@ -85,6 +85,7 @@ import { HottravelModule } from './module/hottravel/hottravel.module';
 import { EffectsModule } from '@ngrx/effects';
 import { SpinnerService } from './service/spinner.service';
 import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travelconfirm-modal.component';
+import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component';
 
 @NgModule({
   declarations: [
@@ -156,7 +157,8 @@ import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travel
     ConfirmationModalComponent,
     SearchComponent,
     SearchresultComponent,
-    TravelconfirmModalComponent
+    TravelconfirmModalComponent,
+    FoodconfirmComponent
   ],
   imports: [
     CommonModule,

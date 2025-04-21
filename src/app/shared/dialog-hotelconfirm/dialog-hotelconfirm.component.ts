@@ -4,7 +4,7 @@ import { HotelsListInterface } from '../../model/hotel_interface';
 import { HotelobjService } from '../../service/hotelobj.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
-import { updateHotel, addHotel} from '../../store/orders/orders.actions';
+import { updateHotel, addHotel, addFood} from '../../store/orders/orders.actions';
 import { HotelItem } from '../../store/orders/orders.status';
 
 @Component({
@@ -32,6 +32,6 @@ export class DialogHotelconfirmComponent {
   
     confirmBtn(){
       this.store.dispatch(addHotel({ order:this.data }));
-    //  this.store.dispatch(updateHotel({ order:this.data}));
+     //this.store.dispatch(addFood({ order:this.data}));
     }
 }

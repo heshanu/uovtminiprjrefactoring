@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { HotelItem, OrderItem } from './orders.status';
+import { FoodItem, HotelItem, OrderItem } from './orders.status';
 
 export const loadOrders = createAction('[Order] Load Orders');
 export const loadOrdersSuccess = createAction(
@@ -19,6 +19,11 @@ export const addOrder = createAction(
 export const addHotel = createAction(
   '[Order] Add Hotel',
   props<{ order: HotelItem }>()
+);
+
+export const addFood = createAction(
+  '[Order] Add Food',
+  props<{ order: FoodItem }>()
 );
 
 export const updateOrder = createAction(
