@@ -3,19 +3,12 @@ export interface OrderItem {
   name: string;
   quantity: number;
   price: number;
+  status: 'pending' | 'processing' | 'completed' | 'cancelled'
 }
 
-export interface Order {
-  orderId: string;
-  customerId: string;
-  items: OrderItem[];
-  orderDate: string;
-  price: number;
-  status: 'pending' | 'processing' | 'completed' | 'cancelled';
-}
 export interface OrderState {
   orderUniqueId: string;
-  orderList: Order[];
+  orderList: OrderItem[];
   customerId: string;
   orderDate: string;
   totalPrice: number;

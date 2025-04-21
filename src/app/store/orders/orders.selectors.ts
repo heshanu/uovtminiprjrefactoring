@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { Order, OrderState } from "./orders.status";
+import { OrderItem, OrderState } from "./orders.status";
 import { AppState } from "../../app.reducer";
 
 // Select the customer state slice from the global state
@@ -11,7 +11,22 @@ export const selectOrderDetails  = createSelector(
   (orderState: OrderState) => orderState
 );
 
-export const selectOrdersByCustomer = (customerId: string) => createSelector(
+export const selectAllOrders = createSelector(
   selectOrderState,
-  (orders:any) => orders.filter((order:Order) => order.customerId === customerId)
+  (state: OrderState) => state.orderList
+);
+
+export const selectOrderLoading = createSelector(
+  selectOrderState,
+  (state: OrderState) => state.loading
+);
+
+export const selectOrderError = createSelector(
+  selectOrderState,
+  (state: OrderState) => state.error
+);
+
+export const selectCurrentOrderStatus = createSelector(
+  selectOrderState,
+  (state: OrderState) => state.currentOrderStatus
 );
