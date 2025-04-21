@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { BikeService } from '../../service/bike.service';
 import { BikeInterface } from '../../model/bike_interface';
 import { OrderItem, OrderState } from '../../store/orders/orders.status';
@@ -9,6 +9,9 @@ import { getCustomerDetail} from '../../store/customers/customer.selectors';
 import {selectOrderDetails } from '../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { addOrder,updateOrder } from '../../store/orders/orders.actions';
+import { TravelconfirmModalComponent } from '../travelconfirm-modal/travelconfirm-modal.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { OrderObjService } from '../../service/order-obj.service';
 
 @Component({
     selector: 'app-vehicletemplate',
@@ -21,13 +24,17 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
   orderList!: OrderState | undefined;
   private subscriptionOrdersList!: Subscription;
 
+  readonly dialog = inject(MatDialog);  
+
   customerObj$!: Observable<CustomerdetailsInterface|any>;
   private subscription!: Subscription;
   customerId!:string;
 
   @Input() bikeList: BikeInterface[] = [];
 
-  constructor(private bikeService: BikeService, private store: Store<AppState>) {
+  constructor(private bikeService: BikeService, private store: Store<AppState>,
+    private orderObjService:OrderObjService
+  ) {
     //this.customerId$ = this.store.select(selectCustomerId);
     this.orderList$ = this.store.pipe(select(selectOrderDetails));
     this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
@@ -55,17 +62,15 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
     this.bikeList = this.bikeService.getHikkaBikeList();
   }
 
-  /**
-   * export interface OrderItem {
-  productId: string;
-  name: string;
-  quantity: number;
-  price: number;
-}
 
-   */
-  selectBike(bike:any) {
+  selectBike(bike:any,enterAnimationDuration: string, exitAnimationDuration: string) {
     console.log(bike, "bike is clicked");
+
+    this.dialog.open(TravelconfirmModalComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
 
    const order:OrderItem={
     productId:bike.bikeId,
@@ -75,20 +80,9 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
     status:"pending"
    }
 
-   /*
-   export interface Order {
-     orderId: string;
-     customerId: string;
-     items: OrderItem[];
-     orderDate: string;
-     price: number;
-     status: 'pending' | 'processing' | 'completed' | 'cancelled';
-   }*/ 
-
-    
-     //this.store.dispatch(createOrder({order:order}));
-     this.store.dispatch(addOrder({ order: order }));
-     this.store.dispatch(updateOrder({ order:order}));
+   this.orderObjService.setData(order);
+     //this.store.dispatch(addOrder({ order: order }));
+     //this.store.dispatch(updateOrder({ order:order}));
 
   }
 
