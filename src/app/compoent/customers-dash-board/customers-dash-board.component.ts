@@ -4,10 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { setCustomer} from '../../store/customers/customer-id.actions';
 import { finalize, Observable, Subscription } from 'rxjs';
-import { selectCustomerId } from '../../store/customers/customer.selectors';
+import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
 import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { SpinnerService } from '../../service/spinner.service';
+import { CustomerState } from '../../store/customers/customer.status';
 
 @Component({
     selector: 'app-customers-dash-board',
@@ -20,7 +21,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
 
   customerService=inject(CustomerdetailsService);
 
-  customerId$: Observable<string|undefined>;
+  customerDetails$!: Observable<CustomerState|undefined>;
   customerId!:string|undefined;
   private subscription!: Subscription;
 
@@ -38,7 +39,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
 
   constructor(private route:Router,private activeRouter:ActivatedRoute,
     private store: Store<AppState>,private spinnerService:SpinnerService){
-    this.customerId$ = this.store.pipe(select(selectCustomerId));
+    this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
   ngOnDestroy(): void {
@@ -46,20 +47,18 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
-    this.isLoading$=this.spinnerService.loading$;
-  
-    this.subscription=this.customerId$.subscribe((data) => {
-      this.customerId = data; // Update the component's state with the new value
+
+    this.subscription=this.customerDetails$.subscribe((data) => {
+      this.customerId = data?.customer._id; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
     });
-    this.getCustomersDetails();
-  }
 
-  getCustomersDetails():void{
-    this.loading = true;
+
+    this.isLoading$=this.spinnerService.loading$;
+    this.spinnerService.showLoading();
     this.errorState = { hasError: false, message: '' };
     this.customerService.getAllCustomers().pipe(
-      finalize(() => this.loading = false)
+      finalize(() => this.spinnerService.hideLoading())
     ).subscribe({
       next: (data) => (this.customersList = data),
       error: (err) => {
@@ -70,6 +69,9 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
         console.error('Error fetching beverages:', err);
       }
     });
+
+   
+    
 
   }
 

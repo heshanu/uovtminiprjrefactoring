@@ -83,6 +83,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { HottravelModule } from './module/hottravel/hottravel.module';
 import { EffectsModule } from '@ngrx/effects';
+import { SpinnerService } from './service/spinner.service';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,7 @@ import { EffectsModule } from '@ngrx/effects';
         }),
         HottravelModule
   ],
-  providers: [],
+  providers: [SpinnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
