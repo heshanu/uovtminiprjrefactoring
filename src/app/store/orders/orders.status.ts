@@ -17,10 +17,19 @@ export interface HotelItem{
 
 }
 
+export interface FoodItem{
+    foodId:number;
+    name:string;
+    image:string;
+    ingredients:string[];
+ 
+}
+
 export interface OrderState {
   orderUniqueId: string;
   orderList: OrderItem[];
   hotelList:HotelItem[];
+  foodList:FoodItem[];
   customerId: string;
   orderDate: string;
   totalPrice: number;
@@ -33,6 +42,7 @@ export const initialOrderState: OrderState = {
   orderUniqueId: '',
   orderList: [],
   hotelList:[],
+  foodList:[],
   customerId: '',
   orderDate: '',
   totalPrice: 0,
