@@ -1,0 +1,6 @@
+@if(isLoading$|async){
+<app-spinner [isLoading]="isLoading$| async"/>
+}
+@else{
+<div id="route-map" class="map-container"></div>
+}
