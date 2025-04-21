@@ -6,9 +6,21 @@ export interface OrderItem {
   status: 'pending' | 'processing' | 'completed' | 'cancelled'
 }
 
+export interface HotelItem{
+    hotelId: string;
+    hotelName:string,
+    address:string,
+    avaliableRooms:number,
+    img:string,
+    numOfStars:number,
+    package:string[],
+
+}
+
 export interface OrderState {
   orderUniqueId: string;
   orderList: OrderItem[];
+  hotelList:HotelItem[];
   customerId: string;
   orderDate: string;
   totalPrice: number;
@@ -20,6 +32,7 @@ export interface OrderState {
 export const initialOrderState: OrderState = {
   orderUniqueId: '',
   orderList: [],
+  hotelList:[],
   customerId: '',
   orderDate: '',
   totalPrice: 0,
