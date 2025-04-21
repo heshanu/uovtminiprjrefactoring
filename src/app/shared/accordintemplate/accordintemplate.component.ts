@@ -48,9 +48,6 @@ customerIdSubscription!:Subscription;
       
       }
       
-
-
-      
   navigateTo(link: string) {
     console.log("accordintemplate",this.customerId);
       this.router.navigate(["customerDashboard/",this.customerId,"hotelslist",link])

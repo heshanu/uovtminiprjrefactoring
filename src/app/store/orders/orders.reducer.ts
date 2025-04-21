@@ -1,7 +1,7 @@
 //import { } from '@ngrx/store';
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
-import{addOrder, loadOrders, loadOrdersFailure, loadOrdersSuccess,setCurrentOrderStatus,updateOrder} from "./orders.actions"
+import{addBeverage, addFood, addHotel, addOrder, loadOrders, loadOrdersFailure, loadOrdersSuccess,setCurrentOrderStatus,updateHotel,updateOrder} from "./orders.actions"
 import * as uuid from 'uuid';
 
 export const initialState: OrderState[] = [];
@@ -26,6 +26,18 @@ export const orderReducer = createReducer(
   on(addOrder, (state, { order }) => ({
     ...state,
     orderList: [...state.orderList, order],
+  })),
+  on(addHotel, (state, { order }) => ({
+    ...state,
+    hotelList: [...state.hotelList, order],
+  })),
+  on(addFood, (state, { order }) => ({
+    ...state,
+    foodList: [...state.foodList, order],
+  })),
+  on(addBeverage, (state, { order }) => ({
+    ...state,
+    beverageList: [...state.beverageList, order],
   })),
   on(updateOrder, (state, { order }) => ({
     ...state,

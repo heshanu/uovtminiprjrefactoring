@@ -3,6 +3,7 @@ import { HotelsListInterface } from '../../model/hotel_interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCompoentComponent } from '../dialog-hotel/dialog-compoent.component';
 import { DialogHotelconfirmComponent } from '../dialog-hotelconfirm/dialog-hotelconfirm.component';
+import { HotelobjService } from '../../service/hotelobj.service';
 
 @Component({
     selector: 'app-cardtemplate',
@@ -13,12 +14,17 @@ import { DialogHotelconfirmComponent } from '../dialog-hotelconfirm/dialog-hotel
 })
 export class CardtemplateComponent implements OnInit{
 
+  constructor(private hotelObj:HotelobjService){}
+
   readonly dialog = inject(MatDialog)
 
   list:HotelsListInterface[]=[];
 
   selectItem(item:HotelsListInterface,enterAnimationDuration: string, exitAnimationDuration: string) {
+   
     console.log("booked ",item);
+    this.hotelObj.setData(item);
+
     this.dialog.open(DialogHotelconfirmComponent, {
       width: '250px',
       enterAnimationDuration,

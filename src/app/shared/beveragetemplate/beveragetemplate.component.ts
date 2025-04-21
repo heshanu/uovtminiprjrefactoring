@@ -12,6 +12,7 @@ import { DialogCompoentComponent } from '../dialog-hotel/dialog-compoent.compone
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { BeverageconfirmComponent } from '../beverageconfirm/beverageconfirm.component';
 import { VisiblelistService } from '../../service/visiblelist.service';
+import { BeverageobjService } from '../../service/beverageobj.service';
 
 @Component({
     selector: 'app-beveragetemplate',
@@ -23,7 +24,8 @@ export class BeveragetemplateComponent implements OnInit{
 
   constructor(private router:Router, 
     private store: Store<AppState>,private spinnerService:SpinnerService,
-    private visiblelistService:VisiblelistService
+    private visiblelistService:VisiblelistService,
+    private beverageObj:BeverageobjService
   ){
        this.customerId$ = this.store.select(getCustomerDetail);
        this.filteredBeverageList = this.list;
@@ -76,6 +78,7 @@ export class BeveragetemplateComponent implements OnInit{
 
 
   bookNow(item: any,enterAnimationDuration: string, exitAnimationDuration: string) {
+    this.beverageObj.setData(item);
     console.log("booked ",item);
     this.dialog.open(ConfirmationModalComponent, {
       width: '250px',

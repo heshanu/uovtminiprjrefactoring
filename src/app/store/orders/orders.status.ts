@@ -6,9 +6,38 @@ export interface OrderItem {
   status: 'pending' | 'processing' | 'completed' | 'cancelled'
 }
 
+export interface HotelItem{
+    hotelId: string;
+    hotelName:string,
+    address:string,
+    avaliableRooms:number,
+    img:string,
+    numOfStars:number,
+    package:string[],
+
+}
+
+export interface FoodItem{
+    foodId:number;
+    name:string;
+    image:string;
+    ingredients:string[];
+ 
+}
+
+export interface BeverageItem{
+    idDrink:string;
+    strDrink:string;
+    strInstructions:string;
+    price:number;
+}
+
 export interface OrderState {
   orderUniqueId: string;
   orderList: OrderItem[];
+  hotelList:HotelItem[];
+  foodList:FoodItem[];
+  beverageList:BeverageItem[];
   customerId: string;
   orderDate: string;
   totalPrice: number;
@@ -20,6 +49,9 @@ export interface OrderState {
 export const initialOrderState: OrderState = {
   orderUniqueId: '',
   orderList: [],
+  hotelList:[],
+  foodList:[],
+  beverageList:[],
   customerId: '',
   orderDate: '',
   totalPrice: 0,
