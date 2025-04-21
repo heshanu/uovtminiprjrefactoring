@@ -1,14 +1,14 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BikeService } from '../../service/bike.service';
 import { BikeInterface } from '../../model/bike_interface';
-import { OrderState } from '../../store/orders/orders.status';
+import { OrderItem, OrderState } from '../../store/orders/orders.status';
 import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
-import { setOrder } from '../../store/orders/orders.actions';
-import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
-import { selectOrderDetails } from '../../store/orders/orders.selectors';
+import { getCustomerDetail} from '../../store/customers/customer.selectors';
+import {selectOrderDetails } from '../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
+import { addOrder,updateOrder } from '../../store/orders/orders.actions';
 
 @Component({
     selector: 'app-vehicletemplate',
@@ -29,7 +29,7 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
 
   constructor(private bikeService: BikeService, private store: Store<AppState>) {
     //this.customerId$ = this.store.select(selectCustomerId);
-    this.orderList$ = this.store.select(selectOrderDetails);
+    this.orderList$ = this.store.pipe(select(selectOrderDetails));
     this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
   }
 
@@ -55,28 +55,41 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
     this.bikeList = this.bikeService.getHikkaBikeList();
   }
 
+  /**
+   * export interface OrderItem {
+  productId: string;
+  name: string;
+  quantity: number;
+  price: number;
+}
+
+   */
   selectBike(bike:any) {
     console.log(bike, "bike is clicked");
 
-    /*
-      orderId:'',
-    customerId:'',
-    orderList:[],
-    orderDate: '',
-    totalPrice: 0,
-    orderStatus: ''*/ 
+   const order:OrderItem={
+    productId:bike.bikeId,
+    name:bike.bikeName,
+    quantity:bike.quantity,
+    price:bike.ratePerDay+100,
+    status:"pending"
+   }
 
-    const order:OrderState={
-      orderId:bike.bikeId,
-      customerId:this.customerId,
-      orderList:bike,
-      orderDate:Date.now().toString(),
-      totalPrice:bike.ratePerDay+100,
-      orderStatus:"ordered"
-    }
-     this.store.dispatch(
-      setOrder({order:order})
-     );
+   /*
+   export interface Order {
+     orderId: string;
+     customerId: string;
+     items: OrderItem[];
+     orderDate: string;
+     price: number;
+     status: 'pending' | 'processing' | 'completed' | 'cancelled';
+   }*/ 
+
+    
+     //this.store.dispatch(createOrder({order:order}));
+     this.store.dispatch(addOrder({ order: order }));
+     this.store.dispatch(updateOrder({ order:order}));
+
   }
 
   ngOnDestroy(): void {

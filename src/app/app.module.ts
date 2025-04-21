@@ -82,6 +82,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { HottravelModule } from './module/hottravel/hottravel.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -172,8 +173,6 @@ import { HottravelModule } from './module/hottravel/hottravel.module';
           maxAge: 25,
         }),
         HottravelModule
-    
-        
   ],
   providers: [],
   bootstrap: [AppComponent]
