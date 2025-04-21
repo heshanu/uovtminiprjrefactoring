@@ -1,19 +1,29 @@
-
-export interface OrderState{
-  orderId:string;
-  customerId:string|undefined;
-  orderList:any[];
-  orderDate:string;
-  totalPrice:number;
-  orderStatus:string;
+export interface OrderItem {
+  productId: string;
+  name: string;
+  quantity: number;
+  price: number;
+  status: 'pending' | 'processing' | 'completed' | 'cancelled'
 }
 
-export const initialOrderState:OrderState   = {
-    orderId:'',
-    customerId:'',
-    orderList:[],
-    orderDate: '',
-    totalPrice: 0,
-    orderStatus: ''
-  };
-  
+export interface OrderState {
+  orderUniqueId: string;
+  orderList: OrderItem[];
+  customerId: string;
+  orderDate: string;
+  totalPrice: number;
+  currentOrderStatus: string;
+  loading: boolean;
+  error: string | null;
+}
+
+export const initialOrderState: OrderState = {
+  orderUniqueId: '',
+  orderList: [],
+  customerId: '',
+  orderDate: '',
+  totalPrice: 0,
+  currentOrderStatus: 'pending',
+  loading: false,
+  error: null
+};

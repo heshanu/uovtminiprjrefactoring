@@ -3,10 +3,12 @@ import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { setCustomer} from '../../store/customers/customer-id.actions';
-import { Observable, Subscription } from 'rxjs';
-import { selectCustomerId } from '../../store/customers/customer.selectors';
+import { finalize, Observable, Subscription } from 'rxjs';
+import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
 import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
+import { SpinnerService } from '../../service/spinner.service';
+import { CustomerState } from '../../store/customers/customer.status';
 
 @Component({
     selector: 'app-customers-dash-board',
@@ -19,15 +21,25 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
 
   customerService=inject(CustomerdetailsService);
 
-  customerId$: Observable<string|undefined>;
+  customerDetails$!: Observable<CustomerState|undefined>;
   customerId!:string|undefined;
   private subscription!: Subscription;
+
+  isLoading$!:Observable<boolean>;
+
+  loading = false;
+
+  errorState = {
+    hasError: false,
+    message: ''
+  };
+
 
   customersList:CustomerdetailsInterface[]=[];
 
   constructor(private route:Router,private activeRouter:ActivatedRoute,
-    private store: Store<AppState>){
-    this.customerId$ = this.store.pipe(select(selectCustomerId));
+    private store: Store<AppState>,private spinnerService:SpinnerService){
+    this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
   ngOnDestroy(): void {
@@ -35,19 +47,31 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
-    
-    this.subscription=this.customerId$.subscribe((data) => {
-      this.customerId = data; // Update the component's state with the new value
+
+    this.subscription=this.customerDetails$.subscribe((data) => {
+      this.customerId = data?.customer._id; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
     });
-    this.getCustomersDetails();
-  }
 
-  getCustomersDetails():void{
-    this.customerService.getAllCustomers().subscribe({
+
+    this.isLoading$=this.spinnerService.loading$;
+    this.spinnerService.showLoading();
+    this.errorState = { hasError: false, message: '' };
+    this.customerService.getAllCustomers().pipe(
+      finalize(() => this.spinnerService.hideLoading())
+    ).subscribe({
       next: (data) => (this.customersList = data),
-      error: (err) => console.error('Error fetching customers:', err),
+      error: (err) => {
+        this.errorState = {
+          hasError: true,
+          message: err.message || 'An error occurred while fetching beverages.'
+        };
+        console.error('Error fetching beverages:', err);
+      }
     });
+
+   
+    
 
   }
 

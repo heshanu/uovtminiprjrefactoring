@@ -1,3 +1,7 @@
+@if(isLoading$|async){
+<app-spinner [isLoading]="isLoading$| async"/>
+}
+@else{
 <div class="bg-gray-100 py-12 px-6 m-16">
   <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Customers List</h2>
 
@@ -42,6 +46,7 @@ CustomerId-{{customer._id}}
       <button class="bg-green-500 m-4 p-4" (click)="planNow(customer,customer._id)">Plan Now</button>
     </div>
   </div>
-
-
 </div>
+}
+
+

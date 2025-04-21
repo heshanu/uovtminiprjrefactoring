@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.reducer';
+import { loadCustomers } from './store/customers/customer-id.actions';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,14 @@ import { Component } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'miniprj';
+
+export class AppComponent implements OnInit{
+
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(loadCustomers());
+   
+  }
 }
+

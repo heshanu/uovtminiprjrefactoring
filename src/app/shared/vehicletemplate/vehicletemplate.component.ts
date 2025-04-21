@@ -1,14 +1,17 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { BikeService } from '../../service/bike.service';
 import { BikeInterface } from '../../model/bike_interface';
-import { OrderState } from '../../store/orders/orders.status';
+import { OrderItem, OrderState } from '../../store/orders/orders.status';
 import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
-import { setOrder } from '../../store/orders/orders.actions';
-import { getCustomerDetail, selectCustomerId } from '../../store/customers/customer.selectors';
-import { selectOrderDetails } from '../../store/orders/orders.selectors';
+import { getCustomerDetail} from '../../store/customers/customer.selectors';
+import {selectOrderDetails } from '../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
+import { addOrder,updateOrder } from '../../store/orders/orders.actions';
+import { TravelconfirmModalComponent } from '../travelconfirm-modal/travelconfirm-modal.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { OrderObjService } from '../../service/order-obj.service';
 
 @Component({
     selector: 'app-vehicletemplate',
@@ -21,15 +24,19 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
   orderList!: OrderState | undefined;
   private subscriptionOrdersList!: Subscription;
 
+  readonly dialog = inject(MatDialog);  
+
   customerObj$!: Observable<CustomerdetailsInterface|any>;
   private subscription!: Subscription;
   customerId!:string;
 
   @Input() bikeList: BikeInterface[] = [];
 
-  constructor(private bikeService: BikeService, private store: Store<AppState>) {
+  constructor(private bikeService: BikeService, private store: Store<AppState>,
+    private orderObjService:OrderObjService
+  ) {
     //this.customerId$ = this.store.select(selectCustomerId);
-    this.orderList$ = this.store.select(selectOrderDetails);
+    this.orderList$ = this.store.pipe(select(selectOrderDetails));
     this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
   }
 
@@ -55,28 +62,28 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
     this.bikeList = this.bikeService.getHikkaBikeList();
   }
 
-  selectBike(bike:any) {
+
+  selectBike(bike:any,enterAnimationDuration: string, exitAnimationDuration: string) {
     console.log(bike, "bike is clicked");
 
-    /*
-      orderId:'',
-    customerId:'',
-    orderList:[],
-    orderDate: '',
-    totalPrice: 0,
-    orderStatus: ''*/ 
+    this.dialog.open(TravelconfirmModalComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
 
-    const order:OrderState={
-      orderId:bike.bikeId,
-      customerId:this.customerId,
-      orderList:bike,
-      orderDate:Date.now().toString(),
-      totalPrice:bike.ratePerDay+100,
-      orderStatus:"ordered"
-    }
-     this.store.dispatch(
-      setOrder({order:order})
-     );
+   const order:OrderItem={
+    productId:bike.bikeId,
+    name:bike.bikeName,
+    quantity:bike.quantity,
+    price:bike.ratePerDay+100,
+    status:"pending"
+   }
+
+   this.orderObjService.setData(order);
+     //this.store.dispatch(addOrder({ order: order }));
+     //this.store.dispatch(updateOrder({ order:order}));
+
   }
 
   ngOnDestroy(): void {

@@ -14,3 +14,18 @@ export const setCustomer = createAction(
   props<CustomerState>()  // Directly use the CustomerState type for the payload
 );
 
+export const addCustomer = createAction('[Customer] Add Customer', props<{ customer: CustomerState }>());
+export const updateCustomer = createAction('[Customer] Update Customer', props<{ customer: CustomerState }>());
+export const deleteCustomer = createAction('[Customer] Delete Customer', props<{ _id: string }>());
+
+export const loadCustomers = createAction('[Customer] Load Customers');
+
+export const loadCustomersSuccess = createAction(
+  '[Customer] Load Customers Success',
+  props<{ customers: CustomerState[] }>()
+);
+
+export const loadCustomersFailure = createAction(
+  '[Customer] Load Customers Failure',
+  props<{ error: any }>()
+);

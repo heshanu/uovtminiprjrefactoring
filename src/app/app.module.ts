@@ -82,6 +82,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { HottravelModule } from './module/hottravel/hottravel.module';
+import { EffectsModule } from '@ngrx/effects';
+import { SpinnerService } from './service/spinner.service';
+import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travelconfirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +155,8 @@ import { HottravelModule } from './module/hottravel/hottravel.module';
     BeverageconfirmComponent,
     ConfirmationModalComponent,
     SearchComponent,
-    SearchresultComponent
+    SearchresultComponent,
+    TravelconfirmModalComponent
   ],
   imports: [
     CommonModule,
@@ -172,10 +176,8 @@ import { HottravelModule } from './module/hottravel/hottravel.module';
           maxAge: 25,
         }),
         HottravelModule
-    
-        
   ],
-  providers: [],
+  providers: [SpinnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
