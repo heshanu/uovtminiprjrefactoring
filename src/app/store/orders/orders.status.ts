@@ -25,11 +25,19 @@ export interface FoodItem{
  
 }
 
+export interface BeverageItem{
+    idDrink:string;
+    strDrink:string;
+    strInstructions:string;
+    price:number;
+}
+
 export interface OrderState {
   orderUniqueId: string;
   orderList: OrderItem[];
   hotelList:HotelItem[];
   foodList:FoodItem[];
+  beverageList:BeverageItem[];
   customerId: string;
   orderDate: string;
   totalPrice: number;
@@ -43,6 +51,7 @@ export const initialOrderState: OrderState = {
   orderList: [],
   hotelList:[],
   foodList:[],
+  beverageList:[],
   customerId: '',
   orderDate: '',
   totalPrice: 0,
