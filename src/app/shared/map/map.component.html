@@ -1,0 +1,39 @@
+@if(isLoading$ | async) {
+  <app-spinner [isLoading]="isLoading$ | async"/>
+} @else {
+  <section class="hero m-4 p-4">
+    <div class="overlay">
+      <div class="search-container border-solid">
+        <input 
+          type="text" 
+          class="text-black p-2 rounded border border-gray-300 w-full mb-2" 
+          [(ngModel)]="startPlace" 
+          placeholder="Starting location (e.g., Colombo)"
+          aria-label="Start location"
+        >
+        <h3 class="text-center my-2 font-semibold">To</h3>
+        <input 
+          type="text" 
+          class="text-black p-2 rounded border border-gray-300 w-full mb-2" 
+          [(ngModel)]="destinationPlace" 
+          placeholder="Destination (e.g., Galle)"
+          aria-label="Destination location"
+        >
+        <button 
+          (click)="getCoordinates()" 
+          class="bg-red-500 rounded-lg text-white p-2 hover:bg-red-600 w-full transition-colors duration-300"
+        >
+          Search Route
+        </button>
+        
+        @if(startPlace && destinationPlace) {
+          <div class="mt-2 text-center text-gray-600">
+            Route: {{startPlace}} → {{destinationPlace}}
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <div id="map" style="height: 500px;" class="m-4 rounded-lg shadow-lg"></div>
+}
