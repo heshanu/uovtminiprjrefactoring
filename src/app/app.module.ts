@@ -158,7 +158,7 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
     SearchComponent,
     SearchresultComponent,
     TravelconfirmModalComponent,
-    FoodconfirmComponent
+    FoodconfirmComponent,
   ],
   imports: [
     BrowserModule,
