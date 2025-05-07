@@ -22,6 +22,8 @@ export class ConfirmationModalComponent implements OnInit{
     ngOnInit(): void {
         this.beverageObj.data$.subscribe((data)=>{
             this.data=data;
+            this.data.quantity=10;
+            this.data.price=1200;
         })
     }
 

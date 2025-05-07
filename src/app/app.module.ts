@@ -87,6 +87,7 @@ import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travel
 import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from '../environments/environment';
+import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
 
 @NgModule({
   declarations: [
@@ -186,7 +187,8 @@ import { environment } from '../environments/environment';
           },
           useRefreshTokens: true,
           cacheLocation: 'localstorage'
-        })
+        }),
+        CalexpensesModule
        
   ],
   exports:[

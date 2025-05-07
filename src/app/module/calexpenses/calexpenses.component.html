@@ -1,0 +1,20 @@
+
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 m-8 p-8">
+    <!-- First Row -->
+    <div class="md:col-span-1">
+      <app-traveleexpenses [List]="travelList" class="h-full"/>
+    </div>
+    <div class="md:col-span-1">
+      <app-foodexpenses [List]="foodList" class="h-full"/>
+    </div>
+  
+    <!-- Second Row -->
+    <div class="md:col-span-1">
+      <app-beverageexpenses [List]="beverageList" class="h-full"/>
+    </div>
+    <!-- Empty slot or additional component if needed -->
+    <div class="md:col-span-1">
+        <app-hotelexpenses [List]="hotelList" class="h-full"/>
+    </div>
+  </div>

@@ -23,6 +23,8 @@ export class FoodconfirmComponent {
   ngOnInit() {
     this.foodObj.data$.subscribe((data:any) => {
       this.data = data;
+      data.price=100;
+      data.quantity=2;
       console.log(this.data);
       
     });

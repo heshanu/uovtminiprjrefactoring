@@ -1,0 +1,37 @@
+<!-- product-list.component.html -->
+<div class="product-list-container m-4 p-4">
+  <h2>Foods Expenses</h2>
+  
+  <div class="summary-stats">
+    <div class="stat-item">
+      <span class="stat-label">Total Products:</span>
+      <span class="stat-value" *ngIf="foodList">{{ foodList.length }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Total Quantity:</span>
+      <span class="stat-value">{{ getTotalQuantity() }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Total Value:</span>
+      <span class="stat-value">LKR {{ getTotalValue() | number }}</span>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="product-table">
+     
+      <tbody>
+        <tr *ngFor="let product of foodList">
+          <td>{{ product.foodId}}</td>
+          <td>{{ product.name | titlecase }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price | number }}</td>
+          <td>
+            
+          </td>
+          <td>LKR {{ product.quantity * product.price | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
