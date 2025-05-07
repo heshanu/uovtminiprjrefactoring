@@ -33,6 +33,8 @@ export class BeverageconfirmComponent {
  
    bookPackage(pkg:any,enterAnimationDuration: string, exitAnimationDuration: string) {
     console.log(pkg);
+    pkg.price=100;
+    pkg.quantity=10;
     this.store.dispatch(addBeverage({order:pkg}));
     this.dialog.open(ConfirmationModalComponent, {
      width: '250px',
