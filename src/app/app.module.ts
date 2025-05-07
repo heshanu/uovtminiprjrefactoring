@@ -86,6 +86,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { SpinnerService } from './service/spinner.service';
 import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travelconfirm-modal.component';
 import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -178,6 +180,15 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
           maxAge: 25,
         }),
         HottravelModule,
+        AuthModule.forRoot({
+          domain: environment.auth.domain,
+          clientId:environment.auth.clientId,
+          authorizationParams: {
+            redirect_uri: window.location.origin
+          },
+          useRefreshTokens: true,
+          cacheLocation: 'localstorage'
+        })
        
   ],
   exports:[

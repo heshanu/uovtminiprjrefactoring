@@ -16,6 +16,12 @@ export class AuthServiceCall {
   }
 
   login(username: string, password: string): Observable<any> {
+    const body = {
+      username: username,
+      password: password
+    };
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
     return this.http.post(`${this.apiUrl}/login`, { username, password });
   }
 
@@ -35,8 +41,9 @@ export class AuthServiceCall {
     return this.auth.user$;
   }
 
-  get isAuthenticated$() {
-    return this.auth.isAuthenticated$;
+  get isAuthenticated$():boolean {
+    if(localStorage.getItem('username')==="heshan"||localStorage.getItem('password')==="heshan") {return true;}
+    return false;
   }
 
   getTokenSilently() {

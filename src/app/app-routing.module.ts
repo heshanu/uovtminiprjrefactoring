@@ -41,6 +41,7 @@ import { MataravanComponent } from './compoent/travelMode/van/mataravan/matarava
 import { NuwaravanComponent } from './compoent/travelMode/van/nuwaravan/nuwaravan.component';
 import { VanComponent } from './compoent/travelMode/van/van.component';
 import { TravelModeComponent } from './module/hotel/travel-mode/travel-mode.component';
+import { authGuard } from './shared/guard/auth.guard';
 
 //lazy loading to home module
 const routes: Routes = [
@@ -49,8 +50,8 @@ const routes: Routes = [
   {path: 'login',loadChildren:()=>import("./module/login/login-routing.module").then(m=>m.LoginRoutingModule)},
   {path: 'register',loadChildren:()=>import("./module/register/register-routing.module").then(m=>m.RegisterRoutingModule)},
   {path: 'home',component:HomeComponent},
-  {path:'customerform',component:CustomerdetailComponent},
-  {path:'customersDashboard',component:CustomersDashBoardComponent},
+  {path:'customerform',component:CustomerdetailComponent,canActivate:[authGuard]},
+  {path:'customersDashboard',component:CustomersDashBoardComponent,canActivate:[authGuard]},
   
   {
     path: 'customerDashboard/:id',

@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
+    
     console.log(this.loginForm.value);
     console.log(this.loginForm.valid);
   
@@ -43,14 +44,17 @@ export class LoginComponent implements OnInit{
       const username = this.loginForm.get('name')?.value;  
       const password = this.loginForm.get('password')?.value;
   
-      if (username === "test" && password === "123456") {
-        console.log("Login Successful");
-        this.router.navigate(['/home']);
-      } else {
-        console.log("Invalid Credentials");
+      this.authService.login(username,password).subscribe(
+          () => {
+            // Redirect to a protected route or dashboard
+            this.router.navigate(['/home']);
+          },
+          (error) => {
+           // this.errorMessage = 'Invalid username or password';
+           console.log("Invalid Credentials");
         alert("Invalid username or password");
         this.router.navigate(['/login']);
-      }
-    }
+          }
+        )}
   }
 }
