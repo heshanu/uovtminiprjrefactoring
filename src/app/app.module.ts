@@ -177,7 +177,8 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
         StoreDevtoolsModule.instrument({
           maxAge: 25,
         }),
-        HottravelModule
+        HottravelModule,
+       
   ],
   exports:[
     SpinnerComponent
