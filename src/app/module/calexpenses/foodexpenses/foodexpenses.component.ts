@@ -16,14 +16,16 @@ export class FoodexpensesComponent implements OnInit{
 
   ngOnInit(): void {
     this.foodList=this.List;
+    this.getTotalQuantity();
+    this.getTotalValue();
   }
 
-  // getTotalQuantity(): number {
-  //   return this.foodList.reduce((sum, product) => sum + product.price, 0);
-  // }
+  getTotalQuantity(): number {
+    return this.foodList.reduce((sum, product) => sum + product.quantity, 0);
+  }
 
-  // getTotalValue(): number {
-  //   return this.foodList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
-  // }
+  getTotalValue(): number {
+    return this.foodList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
+  }
 
 }
