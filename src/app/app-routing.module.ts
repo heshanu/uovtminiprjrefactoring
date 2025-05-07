@@ -176,7 +176,7 @@ const routes: Routes = [
       {
         //hotelslist/northwest
         path: 'hotelslist',
-        loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
+        loadChildren:()=>import('./module/hotelsbooking/hotelsbooking.module').then(m=>m.HotelsbookingModule)
       },
       {
         path: 'hotelslist/southern',
@@ -240,7 +240,7 @@ const routes: Routes = [
    } ,
    {
     path:"hottravel",
-    loadChildren:()=>import('./module/hottravel/hottravel.module').then(m=>m.HottravelModule)
+    loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
    }
     ]
   }
