@@ -23,7 +23,7 @@ export class DialogHotelconfirmComponent {
       private store: Store<AppState> ) {}
   
     ngOnInit() {
-      this.hotelObj.data$.subscribe((data:HotelItem) => {
+      this.hotelObj.data$.subscribe((data:any) => {
         this.data = data;
         console.log(this.data);
         
@@ -31,6 +31,8 @@ export class DialogHotelconfirmComponent {
     }
   
     confirmBtn(){
+      this.data.price=100;
+      this.data.quantity=2;
       this.store.dispatch(addHotel({ order:this.data }));
      //this.store.dispatch(addFood({ order:this.data}));
     }
