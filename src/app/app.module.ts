@@ -81,7 +81,6 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
-import { HottravelModule } from './module/hottravel/hottravel.module';
 import { EffectsModule } from '@ngrx/effects';
 import { SpinnerService } from './service/spinner.service';
 import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travelconfirm-modal.component';
@@ -179,7 +178,6 @@ import { environment } from '../environments/environment';
         StoreDevtoolsModule.instrument({
           maxAge: 25,
         }),
-        HottravelModule,
         AuthModule.forRoot({
           domain: environment.auth.domain,
           clientId:environment.auth.clientId,

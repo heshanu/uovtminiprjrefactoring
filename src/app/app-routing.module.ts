@@ -240,7 +240,7 @@ const routes: Routes = [
    } ,
    {
     path:"hottravel",
-    loadChildren:()=>import('./module/hottravel/hottravel.module').then(m=>m.HottravelModule)
+    loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
    }
     ]
   }
