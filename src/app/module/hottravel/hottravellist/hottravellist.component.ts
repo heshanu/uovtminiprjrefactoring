@@ -16,30 +16,15 @@ constructor(private http:HttpClient,private photoService:PhotoServiceService){}
 
 imageData!: any[];
 
+startPlace!:string;
+
+destionationPlace!:string;
+
 photoSubs!:Subscription;
 
 image!: string;
 
 inputValue:string = '';
-
-searchImageByName(imageName: any) {
-  if (imageName) {
-   this.photoSubs= this.photoService.findImageByName(imageName).subscribe(
-      (data) => {
-        this.imageData = data.photos;
-      },
-      error => {
-        console.error('Error fetching image', error);
-      })
-    // Implement your search logic here
-  } else {
-    console.log('Image name is empty');
-  }
-}
-
-resetList(){
-  this.imageData=[];
-}
 
 
 
@@ -49,5 +34,9 @@ resetList(){
     }
   }
 
+  send(){
+    console.log(this.destionationPlace,this.startPlace);
+    
+  }
 
 }
