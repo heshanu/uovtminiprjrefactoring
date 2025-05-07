@@ -32,6 +32,7 @@ export interface BeverageItem{
     strDrink:string;
     strInstructions:string;
     price:number;
+    quantity:number;
 }
 
 export interface OrderState {

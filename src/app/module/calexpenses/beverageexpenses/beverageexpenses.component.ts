@@ -16,11 +16,11 @@ export class BeverageexpensesComponent implements OnInit{
     this.beverageList=this.List;
   }
 
-  // getTotalQuantity(): number {
-  //   return this.foodList.reduce((sum, product) => sum + product.price, 0);
-  // }
+  getTotalQuantity(): number {
+    return this.beverageList.reduce((sum, product) => sum + product.quantity, 0);
+  }
 
-  // getTotalValue(): number {
-  //   return this.foodList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
-  // }
+  getTotalValue(): number {
+    return this.beverageList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
+  }
 }
