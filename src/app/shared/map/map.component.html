@@ -1,7 +1,4 @@
-@if(isLoading$ | async) {
-  <app-spinner [isLoading]="isLoading$ | async"/>
-} @else {
-  <section class="hero m-4 p-4">
+<section class="hero m-4 p-4">
     <div class="overlay">
       <div class="search-container border-solid">
         <input 
@@ -36,4 +33,3 @@
   </section>
 
   <div id="map" style="height: 500px;" class="m-4 rounded-lg shadow-lg"></div>
-}

@@ -158,8 +158,7 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
     SearchComponent,
     SearchresultComponent,
     TravelconfirmModalComponent,
-    FoodconfirmComponent,
-    SpinnerComponent
+    FoodconfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -179,6 +178,9 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
           maxAge: 25,
         }),
         HottravelModule
+  ],
+  exports:[
+    SpinnerComponent
   ],
   providers: [SpinnerService],
   bootstrap: [AppComponent]

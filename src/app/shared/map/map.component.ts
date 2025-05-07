@@ -50,22 +50,22 @@ export class MapComponent implements  AfterViewInit ,OnInit {
     }).addTo(this.map);
 
     // Define the waypoints
-    const waypoints = [
+   const waypoints = [
       L.latLng(6.1395, 80.1063), // Starting point
       L.latLng(6.0329, 80.2168) // Destination point
     ];
 
   // Create a routing control and add it to the map
-  
+  /*
 L.Routing.control({
       waypoints: waypoints,
       routeWhileDragging: true
     }).addTo(this.map);
-
+*/
       // Add markers for the two destinations
     L.marker([6.1395, 80.1063]).addTo(this.map)
     .bindPopup('Start').openPopup();
-
+/*
     const pois = [
       { name: 'Famous Place 1', lat: 7.2906, lng: 80.6337 },
       { name: 'Famous Place 2', lat: 7.4849, lng: 80.3574 }
@@ -74,7 +74,7 @@ L.Routing.control({
     pois.forEach(poi => {
       L.marker([poi.lat, poi.lng]).addTo(this.map)
         .bindPopup(poi.name).openPopup();
-    });
+    });*/
   }
 
   getCoordinates() {
