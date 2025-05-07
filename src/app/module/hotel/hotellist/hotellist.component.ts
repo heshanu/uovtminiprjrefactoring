@@ -51,7 +51,7 @@ export class HotellistComponent implements OnInit,OnDestroy{
     {"itemName":"Beverage","description":"This may be train,bike or footbike,safari jeep","link":"beverage"},
     {"itemName":"Find a host areas in SriLanka","description":"This may be train,bike or footbike,safari jeep","link":"hottravel"},
     
-    {"itemName":"Calculate Expenss of whole trip","description":"This may be train,bike or footbike,safari jeep","link":"/modeoftravel"},
+    {"itemName":"Calculate Expenss of whole trip","description":"This may be train,bike or footbike,safari jeep","link":"calExpenses"},
     //{"itemName":"Beverage","description":"This may be train,bike or footbike,safari jeep","link":"/modeoftravel"},
    // {"itemName":"Calculate fees rent fees for travel","description":"This may be train,bike or footbike,safari jeep","link":"/modeoftravel"},
      

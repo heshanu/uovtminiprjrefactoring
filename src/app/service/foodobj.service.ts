@@ -13,9 +13,10 @@ export class FoodobjService {
       id:0,
       name:"",
       image:"",
-      ingredients:[]
-   }
-  
+      ingredients:[],
+      price:0
+    }
+    
     private dataSubject = new BehaviorSubject<FoodsInterface>(this.order);
   
     data$ = this.dataSubject.asObservable();

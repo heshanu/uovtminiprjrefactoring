@@ -11,6 +11,27 @@ export const selectOrderDetails  = createSelector(
   (orderState: OrderState) => orderState
 );
 
+export const selectOrderHotelsListDetails  = createSelector(
+  selectOrderState,
+  (orderState: OrderState) => orderState.hotelList
+);
+
+export const selectOrderTravelsListDetails  = createSelector(
+  selectOrderState,
+  (orderState: OrderState) => orderState.orderList
+);
+
+export const selectOrderBeverageListDetails  = createSelector(
+  selectOrderState,
+  (orderState: OrderState) => orderState.beverageList
+);
+
+export const selectOrderFoodsListDetails  = createSelector(
+  selectOrderState,
+  (orderState: OrderState) => orderState.foodList
+);
+
+
 export const selectAllOrders = createSelector(
   selectOrderState,
   (state: OrderState) => state.orderList

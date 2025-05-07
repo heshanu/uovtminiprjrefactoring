@@ -241,6 +241,10 @@ const routes: Routes = [
    {
     path:"hottravel",
     loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
+   },
+   {
+    path:"calExpenses",
+    loadChildren:()=>import("./module/calexpenses/calexpenses.module").then(m=>m.CalexpensesModule)
    }
     ]
   }

@@ -22,6 +22,8 @@ export interface FoodItem{
     name:string;
     image:string;
     ingredients:string[];
+    price:number;
+    quantity:number;
  
 }
 
