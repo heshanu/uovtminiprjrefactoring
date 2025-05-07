@@ -176,7 +176,7 @@ const routes: Routes = [
       {
         //hotelslist/northwest
         path: 'hotelslist',
-        loadChildren:()=>import('./module/hotelsbooking/hotelsbooking.module').then(m=>m.HotelsbookingModule)
+        loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
       },
       {
         path: 'hotelslist/southern',
