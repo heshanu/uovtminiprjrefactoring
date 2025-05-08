@@ -41,9 +41,20 @@ export const removeHotelExpenseById=createAction(
   props<{id:string}>()
 )
 
+export const addTravelExpenses=createAction(
+  "Added travelExpenses",
+  props<{expense:number}>()
+)
+
+export const removeTravelExpensesById=createAction(
+  "Removed travelExpenses from travelExpense amount",
+  props<{id:string}>()
+)
+
 export const clearHotelExpenses=createAction(
   "Clear hotelExpesnse"
 )
+
 
 export const updateOrder = createAction(
   '[Order] Update Order',
