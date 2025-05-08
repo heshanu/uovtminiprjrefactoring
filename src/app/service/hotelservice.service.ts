@@ -28,7 +28,7 @@ allHotelListLocation:any[]=[
 
 hikkaduwaHotelList:HotelsListInterface[]=[
 
-  {hotelId:"hikkahotel1",hotelName:"Chaaya trans hotel",address:"hikkaduwa",avaliableRooms:30,img:'https://www.bestoflanka.com/images/slider/stay-in-the-beach-sri-lanka/hotel-chaaya-tranz/01.jpg',numOfStars:4,
+  {hotelId:"hotel1",hotelName:"Chaaya trans hotel",address:"hikkaduwa",avaliableRooms:30,img:'https://www.bestoflanka.com/images/slider/stay-in-the-beach-sri-lanka/hotel-chaaya-tranz/01.jpg',numOfStars:4,
     package:[
       "Basic - LKR 1500/day",
       "Standard - LKR 2500/day",
@@ -40,7 +40,7 @@ hikkaduwaHotelList:HotelsListInterface[]=[
     quantity:1
   },
     {
-      hotelId:"hikkahotel2",hotelName:"citrus hotel",address:"hikkaduwa",avaliableRooms:10,img:'https://q-xx.bstatic.com/xdata/images/hotel/max500/172420812.jpg?k=869d633a82cd179e3a472d298aa3f76b585c95a51b9402b8e66e0ce99685c01a&o=',numOfStars:4,
+      hotelId:"hotel2",hotelName:"citrus hotel",address:"hikkaduwa",avaliableRooms:10,img:'https://q-xx.bstatic.com/xdata/images/hotel/max500/172420812.jpg?k=869d633a82cd179e3a472d298aa3f76b585c95a51b9402b8e66e0ce99685c01a&o=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
       "Standard - LKR 1500/day",
@@ -53,7 +53,7 @@ hikkaduwaHotelList:HotelsListInterface[]=[
     quantity:1
   },
     {
-      hotelId:"hikkahotel3",hotelName:"amana reef hotel",address:"hikkaduwa",avaliableRooms:5,img:'https://billeder.apollorejser.dk/hikka-tranz-by-cinnamon-1686470764-593102-ImageGalleryX2.jpg',numOfStars:4,
+      hotelId:"hotel3",hotelName:"amana reef hotel",address:"hikkaduwa",avaliableRooms:5,img:'https://billeder.apollorejser.dk/hikka-tranz-by-cinnamon-1686470764-593102-ImageGalleryX2.jpg',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
         "Standard - LKR 1500/day",
@@ -70,7 +70,7 @@ hikkaduwaHotelList:HotelsListInterface[]=[
 
 jaffaHotelList:HotelsListInterface[]=[
 
-  {hotelId:"jaffnahotel1",hotelName:"Tamil hotel",address:"Jaffna",avaliableRooms:30,img:'',numOfStars:4,
+  {hotelId:"hotel1",hotelName:"Tamil hotel",address:"Jaffna",avaliableRooms:30,img:'',numOfStars:4,
     package:[
       "Basic - LKR 1500/day",
       "Standard - LKR 2500/day",
@@ -83,7 +83,7 @@ jaffaHotelList:HotelsListInterface[]=[
     quantity:1
   },
     {
-      hotelId:"jaffnahotel2",hotelName:"Seabeach hotel",address:"Jaffna",avaliableRooms:10,img:'',numOfStars:4,
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Jaffna",avaliableRooms:10,img:'',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
       "Standard - LKR 1500/day",
@@ -94,7 +94,7 @@ jaffaHotelList:HotelsListInterface[]=[
     ],price:1500,
     quantity:1},
     {
-      hotelId:"jaffnahotel3",hotelName:"SeaView hotel",address:"Jaffna",avaliableRooms:5,img:'',numOfStars:4,
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Jaffna",avaliableRooms:5,img:'',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
         "Standard - LKR 1500/day",
@@ -110,7 +110,7 @@ jaffaHotelList:HotelsListInterface[]=[
 
 westernHotelList:HotelsListInterface[]=[
 
-  {hotelId:"westhotel1",hotelName:"Shangrila hotel",address:"Colombo",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"Colombo",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -125,7 +125,7 @@ westernHotelList:HotelsListInterface[]=[
     quantity:1
   },
     {
-      hotelId:"westhotel2",hotelName:"Seabeach hotel",address:"Colombo",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Colombo",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -138,7 +138,7 @@ westernHotelList:HotelsListInterface[]=[
     price:4500,
     quantity:1},
     {
-      hotelId:"westhotel3",hotelName:"SeaView hotel",address:"Colombo",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Colombo",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -155,7 +155,7 @@ westernHotelList:HotelsListInterface[]=[
 
 centralHotelList:HotelsListInterface[]=[
 
-  {hotelId:"centralhotel1",hotelName:"Shangrila hotel",address:"Central",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"Central",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -169,7 +169,7 @@ centralHotelList:HotelsListInterface[]=[
     price:1000,
     quantity:1},
     {
-      hotelId:"centralhotel2",hotelName:"Seabeach hotel",address:"Central",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Central",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -182,7 +182,7 @@ centralHotelList:HotelsListInterface[]=[
     price:1200,
     quantity:1},
     {
-      hotelId:"centralhotel3",hotelName:"SeaView hotel",address:"Central",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Central",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -199,7 +199,7 @@ centralHotelList:HotelsListInterface[]=[
 
 northwestHotelList:HotelsListInterface[]=[
 
-  {hotelId:"northwesthotel1",hotelName:"Shangrila hotel",address:"NorthWest",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"NorthWest",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -214,7 +214,7 @@ northwestHotelList:HotelsListInterface[]=[
     quantity:1},
 
     {
-      hotelId:"northwesthotel2",hotelName:"Seabeach hotel",address:"NorthWest",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"NorthWest",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -227,7 +227,7 @@ northwestHotelList:HotelsListInterface[]=[
     price:1900,
     quantity:1},
     {
-      hotelId:"northwesthotel3",hotelName:"SeaView hotel",address:"Northwest",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Northwest",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -244,7 +244,7 @@ northwestHotelList:HotelsListInterface[]=[
 
 sabaragamuwaHotelList:HotelsListInterface[]=[
 
-  {hotelId:"sabarahotel1",hotelName:"Shangrila hotel",address:"Sbaragamuwa",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"Sbaragamuwa",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -258,7 +258,7 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
     price:1100,
     quantity:1},
     {
-      hotelId:"sabarahotel2",hotelName:"Seabeach hotel",address:"NorthWest",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"NorthWest",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -271,7 +271,7 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
     price:1400,
     quantity:1},
     {
-      hotelId:"sabarahotel3",hotelName:"SeaView hotel",address:"Northwest",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Northwest",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -288,7 +288,7 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
 
 easternHotelList:HotelsListInterface[]=[
 
-  {hotelId:"easternhotel1",hotelName:"Shangrila hotel",address:"Eastern",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"Eastern",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -302,7 +302,7 @@ easternHotelList:HotelsListInterface[]=[
     price:1700,
     quantity:1},
     {
-      hotelId:"easternhotel2",hotelName:"Seabeach hotel",address:"Eastern",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Eastern",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -315,7 +315,7 @@ easternHotelList:HotelsListInterface[]=[
     price:1400,
     quantity:1},
     {
-      hotelId:"easternhotel3",hotelName:"SeaView hotel",address:"Eastern",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Eastern",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -332,7 +332,7 @@ easternHotelList:HotelsListInterface[]=[
 
 uvaHotelList:HotelsListInterface[]=[
 
-  {hotelId:"uvahotel1",hotelName:"Shangrila hotel",address:"uva",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"uva",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -346,7 +346,7 @@ uvaHotelList:HotelsListInterface[]=[
     price:1100,
     quantity:1},
     {
-      hotelId:"uvahotel2",hotelName:"Seabeach hotel",address:"Uva",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Uva",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -359,7 +359,7 @@ uvaHotelList:HotelsListInterface[]=[
     price:1700,
     quantity:1},
     {
-      hotelId:"uvahotel3",hotelName:"SeaView hotel",address:"Uva",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"Uva",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
@@ -377,7 +377,7 @@ uvaHotelList:HotelsListInterface[]=[
 
 northCentralList:HotelsListInterface[]=[
 
-  {hotelId:"northcentralhotel1",hotelName:"Shangrila hotel",address:"North Central",
+  {hotelId:"hotel1",hotelName:"Shangrila hotel",address:"North Central",
     avaliableRooms:30,
     img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
@@ -391,7 +391,7 @@ northCentralList:HotelsListInterface[]=[
     price:1200,
     quantity:1},
     {
-      hotelId:"northcentralhotel2",hotelName:"Seabeach hotel",address:"North Central",
+      hotelId:"hotel2",hotelName:"Seabeach hotel",address:"North Central",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
     package:[
       "Basic - LKR 500/day",
@@ -404,7 +404,7 @@ northCentralList:HotelsListInterface[]=[
     price:1800,
     quantity:1},
     {
-      hotelId:"northcentralhotel3",hotelName:"SeaView hotel",address:"North Central",
+      hotelId:"hotel3",hotelName:"SeaView hotel",address:"North Central",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
       package:[
         "Basic - LKR 500/day",
