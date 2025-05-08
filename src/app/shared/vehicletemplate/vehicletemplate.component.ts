@@ -76,7 +76,7 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
     productId:bike.bikeId,
     name:bike.bikeName,
     quantity:bike.quantity,
-    price:bike.ratePerDay+100,
+    price:bike.ratePerDay,
     status:"pending"
    }
 

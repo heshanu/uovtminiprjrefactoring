@@ -30,6 +30,8 @@ export class TravelconfirmModalComponent implements OnInit{
 
   confirmBtn(){
     this.store.dispatch(addOrder({ order: this.data }));
-    this.store.dispatch(updateOrder({ order:this.data}));
+    console.log(this.data);
+    
+   // this.store.dispatch(updateOrder({ order:this.data}));
   }
 }

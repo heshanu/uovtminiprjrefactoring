@@ -39,7 +39,7 @@ export class TraveleexpensesComponent implements OnInit{
   }
 
   getTotalValue(): number {
-    return this.travelList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
+    return this.travelList.reduce((sum, product) => sum + (product.quantity * product.ratePerDay), 0);
   }
 
   setTravelExpenses(quantity:number,ratePerDay:number){
