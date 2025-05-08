@@ -22,7 +22,6 @@
        
         <tbody>
           <tr *ngFor="let product of List$|async">
-            <td>{{ product.hotelId}}</td>
             <td>{{ product.hotelName | titlecase }}</td>
             <td>{{ product.quantity }}</td>
             <td>{{ product.price | number }}</td>

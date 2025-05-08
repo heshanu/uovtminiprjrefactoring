@@ -55,3 +55,8 @@ export const selectCurrentOrderStatus = createSelector(
   selectOrderState,
   (state: OrderState) => state.currentOrderStatus
 );
+
+export const getHotelExpenseValue=createSelector(
+  selectOrderState,
+  (state: OrderState) => state.totalHotelExpenses
+)
