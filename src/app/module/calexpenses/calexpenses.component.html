@@ -1,25 +1,44 @@
-<button 
-  class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded mt-4"
-  (click)="clearAllExpenses()"
->
-  Clear All Hotel Expenses
-</button>
+<div class="min-h-screen bg-gray-50 p-6">
+  <!-- Header Section -->
+  <header class="mb-8 text-center">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">
+      Total Expenditure: 
+      <span class="text-blue-600">
+        {{ calculateTotalExpenditure() | async | currency:'USD':'symbol':'1.2-2' }}
+      </span>
+    </h1>
+    <button 
+      class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg mt-4
+             transition-colors duration-300 shadow-md hover:shadow-lg
+             focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+      (click)="clearAllExpenses()"
+    >
+      <i class="fas fa-trash-alt mr-2"></i> Clear All Expenses
+    </button>
+  </header>
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 m-8 p-8">
-    <!-- First Row -->
-    <div class="md:col-span-1">
-      <app-traveleexpenses [List$]="travelList$" class="h-full"/>
-    </div>
-    <div class="md:col-span-1">
-      <app-foodexpenses [List$]="foodList$" class="h-full"/>
-    </div>
-  
-    <!-- Second Row -->
-    <div class="md:col-span-1">
-      <app-beverageexpenses [List$]="beverageList$" class="h-full"/>
-    </div>
-    <!-- Empty slot or additional component if needed -->
-    <div class="md:col-span-1">
+  <!-- Expenses Grid -->
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <!-- Travel Expenses -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+        <app-traveleexpenses [List$]="travelList$" class="h-full"/>
+      </div>
+
+      <!-- Food Expenses -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+        <app-foodexpenses [List$]="foodList$" class="h-full"/>
+      </div>
+
+      <!-- Beverage Expenses -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+        <app-beverageexpenses [List$]="beverageList$" class="h-full"/>
+      </div>
+
+      <!-- Hotel Expenses -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
         <app-hotelexpenses [List$]="hotelList$" class="h-full"/>
+      </div>
     </div>
   </div>
+</div>
