@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-traveleexpenses',
@@ -8,12 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TraveleexpensesComponent implements OnInit{
 
-  @Input() List!:any[];
+  @Input() List$!:Observable<any>;
 
   travelList!:any[];
 
   ngOnInit(): void {
-    this.travelList=this.List;
+    this.List$.subscribe((val)=>{
+      this.travelList=val;
+    })
   }
 
 

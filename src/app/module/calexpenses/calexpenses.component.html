@@ -1,9 +1,16 @@
 
-
+<button 
+class="m-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200 
+focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+(click)="clearHotelExpnses()"
+>
+Clear from total expenses
+</button>
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 m-8 p-8">
+</div>
     <!-- First Row -->
     <div class="md:col-span-1">
-      <app-traveleexpenses [List]="travelList" class="h-full"/>
+      <app-traveleexpenses [List$]="travelList$" class="h-full"/>
     </div>
     <div class="md:col-span-1">
       <app-foodexpenses [List]="foodList" class="h-full"/>
@@ -15,6 +22,5 @@
     </div>
     <!-- Empty slot or additional component if needed -->
     <div class="md:col-span-1">
-        <app-hotelexpenses [List]="hotelList" class="h-full"/>
-    </div>
+        <app-hotelexpenses [List$]="hotelList$" class="h-full"/>
   </div>
