@@ -8,7 +8,7 @@ import { AppState } from '../../app.reducer';
 import { getCustomerDetail} from '../../store/customers/customer.selectors';
 import {selectOrderDetails } from '../../store/orders/orders.selectors';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
-import { addOrder,updateOrder } from '../../store/orders/orders.actions';
+import { addOrder,} from '../../store/orders/orders.actions';
 import { TravelconfirmModalComponent } from '../travelconfirm-modal/travelconfirm-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrderObjService } from '../../service/order-obj.service';

@@ -8,8 +8,8 @@ export class BicycleService {
 
  galleBicycleList:BikeInterface[]=[
  
-   {bikeId:'b1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-   {bikeId:'b2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+   {bikeId:'b1',bikeName:'lumala',color:'red',condition:'good',quantity:1,img:'',rating:4,ratePerDay:200},
+   {bikeId:'b2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:1,img:'',rating:5,ratePerDay:500}  
    
  ];
  
