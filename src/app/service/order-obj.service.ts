@@ -15,10 +15,11 @@ export class OrderObjService {
     name:'',
     quantity:0,
     price:0,
-    status:"pending"
+    status:"pending",
+    
    }
 
-  private dataSubject = new BehaviorSubject<OrderItem>(this.order);
+  private dataSubject = new BehaviorSubject<any>(this.order);
 
   data$ = this.dataSubject.asObservable();
 

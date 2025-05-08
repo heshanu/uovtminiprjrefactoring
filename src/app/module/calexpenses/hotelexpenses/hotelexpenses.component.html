@@ -13,7 +13,7 @@
       </div>
       <div class="stat-item">
         <span class="stat-label">Total Value:</span>
-        <span class="stat-value">LKR {{ getTotalValue() | number }}</span>
+        <span class="stat-value">LKR {{  hotelExpenses$|async }}</span>
       </div>
     </div>
   
@@ -21,8 +21,7 @@
       <table class="product-table">
        
         <tbody>
-          <tr *ngFor="let product of hotelList">
-            <td>{{ product.hotelId}}</td>
+          <tr *ngFor="let product of List$|async">
             <td>{{ product.hotelName | titlecase }}</td>
             <td>{{ product.quantity }}</td>
             <td>{{ product.price | number }}</td>

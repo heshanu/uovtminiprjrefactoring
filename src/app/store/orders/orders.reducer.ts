@@ -1,10 +1,11 @@
 //import { } from '@ngrx/store';
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
-import{addBeverage, addFood, addHotel, addHotelExpenses, addOrder, loadOrders, loadOrdersFailure, loadOrdersSuccess,removeHotelExpenseById,setCurrentOrderStatus,updateHotel,updateOrder} from "./orders.actions"
+import{addBeverage, addFood, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders, 
+  loadOrdersFailure, loadOrdersSuccess,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,updateHotel} from "./orders.actions"
 import * as uuid from 'uuid';
 
-export const initialState: OrderState[] = [];
+export const initialState: OrderState[]=[];
 
 export const orderReducer = createReducer(
   initialOrderState,
@@ -39,19 +40,19 @@ export const orderReducer = createReducer(
     ...state,
     beverageList: [...state.beverageList, order],
   })),
-  on(updateOrder, (state, { order }) => ({
-    ...state,
-    loading: false,
-    customerId:state.customerId,
-    orderUniqueId:uuid.v4(),
-    orderDate:new Date().toDateString(),
-    totalPrice:state.totalPrice + order.price,
-    currentOrderStatus:"pending",
-    error:null,
-    orderList: state.orderList.map(existingOrder =>
-      existingOrder.productId === order.productId ? { ...existingOrder, ...order } : existingOrder
-    ),
-  })),
+  // on(updateOrder, (state, { order }) => ({
+  //   ...state,
+  //   loading: false,
+  //   customerId:state.customerId,
+  //   orderUniqueId:uuid.v4(),
+  //   orderDate:new Date().toDateString(),
+  //   totalPrice:state.totalPrice + order.price,
+  //   currentOrderStatus:"pending",
+  //   error:null,
+  //   orderList: state.orderList.map(existingOrder =>
+  //     existingOrder.productId === order.productId ? { ...existingOrder, ...order } : existingOrder
+  //   ),
+  // })),
   on(setCurrentOrderStatus, (state, { status }) => ({
     ...state,
     currentOrderStatus: status,
@@ -79,6 +80,37 @@ export const orderReducer = createReducer(
       totalHotelExpenses: newTotal
     };
   }),
+  on(addTravelExpenses, (state, { expense }) => ({
+    ...state,
+    totalTravelExpenses:state.totalTravelExpenses+expense
+  })),
+  on(removeTravelExpenseById, (state, { id }) => {
+    // Find the expense to be removed
+    const expenseToRemove = state.orderList.find(expense => expense.productId=== id);
+    
+    if (!expenseToRemove) {
+      return state; // return unchanged state if expense not found
+    }
+  
+    // Calculate new total
+    const newTotal = state.totalTravelExpenses - (0);
+    
+    // Return new state
+    return {
+      ...state,
+      orderList: state.orderList.filter(travel =>travel.productId  !== id),
+      //hotelExpenses: state.hotelList.filter(expense => expense.hotelId !== id),
+      totalTravelExpenses: newTotal
+    };
+  }),
+  on(clearHotelexpense, (state) => ({
+    ...state,     
+    totalHotelExpenses: 0,
+    totalBeverageExpenses:0,
+    totalFoodExpenses:0,
+    totalTravelExpenses:0      
+  })),
+
   // Update Order Status
   /**
    * export interface OrderState {
