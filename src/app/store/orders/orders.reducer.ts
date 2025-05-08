@@ -5,7 +5,7 @@ import{addBeverage, addFood, addHotel, addHotelExpenses, addOrder, addTravelExpe
   loadOrdersFailure, loadOrdersSuccess,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,updateHotel} from "./orders.actions"
 import * as uuid from 'uuid';
 
-export const initialState: OrderState[] = [];
+export const initialState: OrderState[]=[];
 
 export const orderReducer = createReducer(
   initialOrderState,
