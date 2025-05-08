@@ -71,3 +71,10 @@ export const getFoodExpenseValue=createSelector(
   (state: OrderState) => state.totalFoodExpenses
 )
 
+export const getBeverageExpenseValue=createSelector(
+  selectOrderState,
+  (state: OrderState) => state.totalBeverageExpenses
+)
+
+
+

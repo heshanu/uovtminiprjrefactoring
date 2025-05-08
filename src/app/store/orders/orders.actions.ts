@@ -61,6 +61,17 @@ export const removeFoodExpenseById=createAction(
   props<{id:string}>()
 );
 
+export const addBeverageExpenses=createAction(
+  "[Order] Added Beverage Expenses",
+  props<{expense:number}>()
+)
+
+export const removeBeverageExpenseById=createAction(
+  "[Order] Removed Beverage from food expense amount",
+  props<{id:string}>()
+);
+
+
 
 export const clearHotelexpense=createAction(
   "clear hotel expenses",
