@@ -31,8 +31,6 @@ export class DialogHotelconfirmComponent {
     }
   
     confirmBtn(){
-      this.data.price=100;
-      this.data.quantity=2;
       this.store.dispatch(addHotel({ order:this.data }));
      //this.store.dispatch(addFood({ order:this.data}));
     }

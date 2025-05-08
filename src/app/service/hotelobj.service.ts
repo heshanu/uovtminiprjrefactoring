@@ -17,7 +17,9 @@ export class HotelobjService {
     avaliableRooms:0,
     img:'',
     numOfStars:0,
-    package:[]
+    package:[],
+    price:0,
+    quantity:0
      }
   
     private dataSubject = new BehaviorSubject<HotelsListInterface>(this.order);
