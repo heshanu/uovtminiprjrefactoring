@@ -5,5 +5,7 @@ export interface HotelsListInterface{
     avaliableRooms:number,
     img:string,
     numOfStars:number,
-    package:string[]
+    package:string[],
+    price:number,
+    quantity:number
 }

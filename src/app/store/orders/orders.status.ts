@@ -16,7 +16,6 @@ export interface HotelItem{
     package:string[];
     price:number;
     quantity:number
-
 }
 
 export interface FoodItem{
