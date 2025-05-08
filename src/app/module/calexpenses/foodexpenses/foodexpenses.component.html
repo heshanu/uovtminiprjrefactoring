@@ -13,7 +13,7 @@
     </div>
     <div class="stat-item">
       <span class="stat-label">Total Value:</span>
-      <span class="stat-value">LKR {{ getTotalValue() | number }}</span>
+      <span class="stat-value">LKR {{ foodExpenses$|async}}</span>
     </div>
   </div>
 
@@ -21,8 +21,7 @@
     <table class="product-table">
      
       <tbody>
-        <tr *ngFor="let product of foodList">
-          <td>{{ product.foodId}}</td>
+        <tr *ngFor="let product of List$|async">
           <td>{{ product.name | titlecase }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.price | number }}</td>
@@ -30,6 +29,22 @@
             
           </td>
           <td>LKR {{ product.quantity * product.price | number }}</td>
+          <td>
+            <button 
+              class="m-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              (click)="setFoodExpenses(product.quantity, product.price)"
+            >
+              Add to total cost
+            </button>
+          </td>
+          <td>
+            <button 
+              class="m-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              (click)="reducedFoodExpense(product.id)"
+            >
+              Remove from total cost
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

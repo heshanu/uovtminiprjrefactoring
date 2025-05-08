@@ -19,7 +19,7 @@ export interface HotelItem{
 }
 
 export interface FoodItem{
-    foodId:number;
+    foodId:string;
     name:string;
     image:string;
     ingredients:string[];
