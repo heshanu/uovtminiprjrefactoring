@@ -65,3 +65,16 @@ export const getTravelExpenseValue=createSelector(
   selectOrderState,
   (state: OrderState) => state.totalTravelExpenses
 )
+
+export const getFoodExpenseValue=createSelector(
+  selectOrderState,
+  (state: OrderState) => state.totalFoodExpenses
+)
+
+export const getBeverageExpenseValue=createSelector(
+  selectOrderState,
+  (state: OrderState) => state.totalBeverageExpenses
+)
+
+
+

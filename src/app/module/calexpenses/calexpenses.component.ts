@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.reducer';
 import { Store } from '@ngrx/store';
-import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails} from "../../store/orders/orders.selectors"
+import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue} from "../../store/orders/orders.selectors"
 import { HotelsListInterface, } from '../../model/hotel_interface';
 import { FoodItem } from '../../store/orders/orders.status';
 import { FoodsInterface } from '../../model/foodrecipe.model';
@@ -31,6 +31,12 @@ export class CalexpensesComponent implements OnInit {
   travelList!:any[];
   travelListSubs!:Subscription;
 
+  foodExpenditure$!:Observable<number>;
+  beverageExpenditure$!:Observable<number>;
+  travelExpenditure$!:Observable<number>;
+  hotelExpenditure$!:Observable<number>;
+
+  totalExpenditure$!:Observable<number>;
 
   constructor(private store: Store<AppState>) {
     // Select the hotel list from the store
@@ -38,9 +44,15 @@ export class CalexpensesComponent implements OnInit {
     this.foodList$=this.store.select(selectOrderFoodsListDetails);
     this.beverageList$=this.store.select(selectOrderBeverageListDetails);
     this.travelList$=this.store.select(selectOrderTravelsListDetails);
+
+    this.foodExpenditure$=this.store.select(getFoodExpenseValue);
+    this.hotelExpenditure$=this.store.select(getHotelExpenseValue);
+    this.beverageExpenditure$=this.store.select(getBeverageExpenseValue);
+    this.travelExpenditure$=this.store.select(getTravelExpenseValue);
   }
 
   ngOnInit() {
+    //this.totalExpenditure$=this.foodExpenditure$ + this.hotelExpenditure$ + this.beverageExpenditure$+this.travelExpenditure$;
     this.hotelListSubs=this.hotelList$.subscribe((val)=>{
       this.hotelList=val
     })
@@ -59,7 +71,18 @@ export class CalexpensesComponent implements OnInit {
     this.store.dispatch(clearHotelexpense());
   }
     
+  calculateTotalExpenditure(): Observable<number> {
+    return combineLatest([
+      this.foodExpenditure$,
+      this.hotelExpenditure$,
+      this.beverageExpenditure$,
+      this.travelExpenditure$
+    ]).pipe(
+      map(([food, hotel, beverage, travel]) => food + hotel + beverage + travel)
+    );
 
+    
+  }
 }
   
 
