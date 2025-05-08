@@ -1,8 +1,8 @@
 //import { } from '@ngrx/store';
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
-import{addBeverage, addFood, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders, 
-  loadOrdersFailure, loadOrdersSuccess,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,updateHotel} from "./orders.actions"
+import{addBeverage, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders, 
+  loadOrdersFailure, loadOrdersSuccess,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,updateHotel} from "./orders.actions"
 import * as uuid from 'uuid';
 
 export const initialState: OrderState[]=[];
@@ -93,7 +93,7 @@ export const orderReducer = createReducer(
     }
   
     // Calculate new total
-    const newTotal = state.totalTravelExpenses - (0);
+    const newTotal = state.totalTravelExpenses - expenseToRemove.price;
     
     // Return new state
     return {
@@ -103,6 +103,34 @@ export const orderReducer = createReducer(
       totalTravelExpenses: newTotal
     };
   }),
+  on(addFoodExpenses, (state, { expense }) => ({
+    ...state,
+    totalFoodExpenses:state.totalFoodExpenses+expense
+  })),
+  on(removeFoodExpenseById, (state, { id }) => {
+    // Find the expense to be removed
+    const expenseToRemove = state.foodList.find(expense => expense.foodId=== id);
+    
+    if (!expenseToRemove) {
+      return state; // return unchanged state if expense not found
+    }
+  
+    // Calculate new total
+    var newTotal = state.totalTravelExpenses -expenseToRemove.price;
+    if(newTotal<0){
+      newTotal=0
+    }
+    
+    // Return new state
+    return {
+      ...state,
+      foodList: state.foodList.filter(food =>food.foodId!== id),
+      //hotelExpenses: state.hotelList.filter(expense => expense.hotelId !== id),
+      totalFoodExpenses: newTotal
+    };
+  }),
+  
+
   on(clearHotelexpense, (state) => ({
     ...state,     
     totalHotelExpenses: 0,

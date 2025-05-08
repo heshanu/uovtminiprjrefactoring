@@ -10,7 +10,7 @@ export class FoodobjService {
     constructor() { }
   
     order:FoodsInterface={
-      id:0,
+      foodId:"",
       name:"",
       image:"",
       ingredients:[],

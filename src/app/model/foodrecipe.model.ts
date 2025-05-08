@@ -1,5 +1,5 @@
 export interface FoodsInterface{
-   id:number;
+   foodId:string;
    name:string;
    image:string;
    ingredients:string[];
