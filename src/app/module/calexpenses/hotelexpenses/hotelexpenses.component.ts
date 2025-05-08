@@ -3,7 +3,8 @@ import { HotelsListInterface } from '../../../model/hotel_interface';
 import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { addHotelExpenses,removeHotelExpenseById } from '../../../store/orders/orders.actions';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import {getHotelExpenseValue} from "../../../store/orders/orders.selectors";
 
 @Component({
   selector: 'app-hotelexpenses',
@@ -14,9 +15,11 @@ import { Observable } from 'rxjs';
 export class HotelexpensesComponent implements OnInit{
 
   hotelExpenses$!:Observable<number>;
+  hotelSub!:Subscription;
 
   constructor(   private store:Store<AppState>){
-    this.hotelExpenses$
+      this.hotelExpenses$ = this.store.select(getHotelExpenseValue);
+   //   this.hotelExpenses$=this.store.select()
   }
   
   @Input() List$!:Observable<any>;

@@ -5,6 +5,7 @@ import{ OrderObjService } from "../../service/order-obj.service"
 import { AppState } from '../../app.reducer';
 import { Store } from '@ngrx/store';
 import { addOrder, updateOrder } from '../../store/orders/orders.actions';
+import { BikeInterface } from '../../model/bike_interface';
 
 @Component({
   selector: 'app-travelconfirm-modal',
@@ -16,13 +17,13 @@ export class TravelconfirmModalComponent implements OnInit{
 
   readonly dialogRef = inject(MatDialogRef<TravelconfirmModalComponent>);
 
-  data!:OrderItem;
+  data!:any;
 
   constructor(private OrderObjService : OrderObjService,
     private store: Store<AppState> ) {}
 
   ngOnInit() {
-    this.OrderObjService.data$.subscribe((data:OrderItem) => {
+    this.OrderObjService.data$.subscribe((data:any) => {
       this.data = data;
     });
   }
