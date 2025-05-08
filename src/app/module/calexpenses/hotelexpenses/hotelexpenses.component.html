@@ -21,7 +21,7 @@
       <table class="product-table">
        
         <tbody>
-          <tr *ngFor="let product of hotelList">
+          <tr *ngFor="let product of List$|async">
             <td>{{ product.hotelId}}</td>
             <td>{{ product.hotelName | titlecase }}</td>
             <td>{{ product.quantity }}</td>
@@ -46,6 +46,7 @@
                 Remove from total cost
               </button>
             </td>
+            
           </tr>
         </tbody>
       </table>
