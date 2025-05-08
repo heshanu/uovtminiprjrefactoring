@@ -1,7 +1,7 @@
 //import { } from '@ngrx/store';
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
-import{addBeverage, addFood, addHotel, addOrder, loadOrders, loadOrdersFailure, loadOrdersSuccess,setCurrentOrderStatus,updateHotel,updateOrder} from "./orders.actions"
+import{addBeverage, addFood, addHotel, addHotelExpenses, addOrder, loadOrders, loadOrdersFailure, loadOrdersSuccess,removeHotelExpenseById,setCurrentOrderStatus,updateHotel,updateOrder} from "./orders.actions"
 import * as uuid from 'uuid';
 
 export const initialState: OrderState[] = [];
@@ -55,10 +55,30 @@ export const orderReducer = createReducer(
   on(setCurrentOrderStatus, (state, { status }) => ({
     ...state,
     currentOrderStatus: status,
-  }))
-
-
-
+  })),
+  on(addHotelExpenses, (state, { expense }) => ({
+    ...state,
+    totalHotelExpenses:state.totalHotelExpenses+expense
+  })),
+  on(removeHotelExpenseById, (state, { id }) => {
+    // Find the expense to be removed
+    const expenseToRemove = state.hotelList.find(expense => expense.hotelId=== id);
+    
+    if (!expenseToRemove) {
+      return state; // return unchanged state if expense not found
+    }
+  
+    // Calculate new total
+    const newTotal = state.totalHotelExpenses - expenseToRemove.price;
+    
+    // Return new state
+    return {
+      ...state,
+      hotelList: state.hotelList.filter(hotel => hotel.hotelId !== id),
+      hotelExpenses: state.hotelList.filter(expense => expense.hotelId !== id),
+      totalHotelExpenses: newTotal
+    };
+  }),
   // Update Order Status
   /**
    * export interface OrderState {

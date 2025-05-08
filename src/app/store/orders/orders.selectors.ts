@@ -31,6 +31,10 @@ export const selectOrderFoodsListDetails  = createSelector(
   (orderState: OrderState) => orderState.foodList
 );
 
+export const selectHotelExpenses=createSelector(
+  selectOrderState,
+  (exp:OrderState)=>exp.totalHotelExpenses
+);
 
 export const selectAllOrders = createSelector(
   selectOrderState,

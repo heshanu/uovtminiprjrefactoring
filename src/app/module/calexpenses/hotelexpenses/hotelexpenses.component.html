@@ -30,6 +30,22 @@
               
             </td>
             <td>LKR {{ product.quantity * product.price | number }}</td>
+            <td>
+              <button 
+                class="m-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                (click)="setHotelExpenses(product.quantity, product.price)"
+              >
+                Add to total cost
+              </button>
+            </td>
+            <td>
+              <button 
+                class="m-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                (click)="reducedHotelExpense(product.hotelId)"
+              >
+                Remove from total cost
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

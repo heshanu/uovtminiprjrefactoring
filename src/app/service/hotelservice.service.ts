@@ -36,7 +36,9 @@ hikkaduwaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],price:1500,
+    quantity:1
+  },
     {
       hotelId:"hotel2",hotelName:"citrus hotel",address:"hikkaduwa",avaliableRooms:10,img:'https://q-xx.bstatic.com/xdata/images/hotel/max500/172420812.jpg?k=869d633a82cd179e3a472d298aa3f76b585c95a51b9402b8e66e0ce99685c01a&o=',numOfStars:4,
     package:[
@@ -46,7 +48,10 @@ hikkaduwaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:2500,
+    quantity:1
+  },
     {
       hotelId:"hotel3",hotelName:"amana reef hotel",address:"hikkaduwa",avaliableRooms:5,img:'https://billeder.apollorejser.dk/hikka-tranz-by-cinnamon-1686470764-593102-ImageGalleryX2.jpg',numOfStars:4,
       package:[
@@ -56,7 +61,9 @@ hikkaduwaHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:1000,
+    quantity:1
     }
   
 ];
@@ -71,7 +78,10 @@ jaffaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1500,
+    quantity:1
+  },
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Jaffna",avaliableRooms:10,img:'',numOfStars:4,
     package:[
@@ -81,7 +91,8 @@ jaffaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],price:1500,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Jaffna",avaliableRooms:5,img:'',numOfStars:4,
       package:[
@@ -91,7 +102,9 @@ jaffaHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:3500,
+    quantity:1
     }
 ];
 
@@ -107,7 +120,10 @@ westernHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1500,
+    quantity:1
+  },
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Colombo",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -118,7 +134,9 @@ westernHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:4500,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Colombo",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -129,7 +147,9 @@ westernHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:6500,
+    quantity:1
     }
 ];
 
@@ -145,7 +165,9 @@ centralHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1000,
+    quantity:1},
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Central",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -156,7 +178,9 @@ centralHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1200,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Central",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -167,7 +191,9 @@ centralHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:1800,
+    quantity:1
     }
 ];
 
@@ -183,7 +209,10 @@ northwestHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:2500,
+    quantity:1},
+
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"NorthWest",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -194,7 +223,9 @@ northwestHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1900,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Northwest",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -205,7 +236,9 @@ northwestHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:1200,
+    quantity:1
     }
 ];
 
@@ -221,7 +254,9 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1100,
+    quantity:1},
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"NorthWest",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -232,7 +267,9 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1400,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Northwest",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -243,7 +280,9 @@ sabaragamuwaHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:1100,
+    quantity:1
     }
 ];
 
@@ -259,7 +298,9 @@ easternHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1700,
+    quantity:1},
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Eastern",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -270,7 +311,9 @@ easternHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1400,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Eastern",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -281,7 +324,9 @@ easternHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:1900,
+    quantity:1
     }
 ];
 
@@ -297,7 +342,9 @@ uvaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1100,
+    quantity:1},
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"Uva",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -308,7 +355,9 @@ uvaHotelList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1700,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"Uva",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -319,7 +368,9 @@ uvaHotelList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:7500,
+    quantity:1
     }
 
 ]
@@ -336,7 +387,9 @@ northCentralList:HotelsListInterface[]=[
       "Luxury - LKR 6000/day",
       "Weekly Deal - LKR 12000/week",
       "Monthly Special - LKR 35000/month"
-    ]},
+    ],
+    price:1200,
+    quantity:1},
     {
       hotelId:"hotel2",hotelName:"Seabeach hotel",address:"North Central",
       avaliableRooms:10,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -347,7 +400,9 @@ northCentralList:HotelsListInterface[]=[
       "Luxury - LKR 4000/day",
       "Weekly Deal - LKR 2000/week",
       "Monthly Special - LKR 15000/month"
-    ]},
+    ],
+    price:1800,
+    quantity:1},
     {
       hotelId:"hotel3",hotelName:"SeaView hotel",address:"North Central",
       avaliableRooms:5,img:'https://media.istockphoto.com/id/183886840/photo/a-woman-in-a-oil-overlooking-phuket-thailand.jpg?s=612x612&w=is&k=20&c=UD8E969E_w4RZP7f_8wzF3wwW3eQfS84jC7-TL2AvaY=',numOfStars:4,
@@ -358,7 +413,9 @@ northCentralList:HotelsListInterface[]=[
         "Luxury - LKR 4000/day",
         "Weekly Deal - LKR 2000/week",
         "Monthly Special - LKR 15000/month"
-      ]
+      ],
+      price:6500,
+    quantity:1
     }
 
 ]
