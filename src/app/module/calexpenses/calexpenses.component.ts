@@ -6,7 +6,7 @@ import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderT
 import { HotelsListInterface, } from '../../model/hotel_interface';
 import { FoodItem } from '../../store/orders/orders.status';
 import { FoodsInterface } from '../../model/foodrecipe.model';
-import {clearHotelExpenses } from '../../store/orders/orders.actions';
+
 @Component({
   selector: 'app-calexpenses',
   standalone: false,
@@ -55,9 +55,6 @@ export class CalexpensesComponent implements OnInit {
     })
   }
 
-  clearHotelExpnses() {
-    this.store.dispatch(clearHotelExpenses())
-    }
-    
+
 }
   

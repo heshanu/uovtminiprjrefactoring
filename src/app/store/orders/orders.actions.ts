@@ -1,4 +1,4 @@
-import { createAction, props, provideState } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { BeverageItem, FoodItem, HotelItem, OrderItem, OrderState } from './orders.status';
 
 export const loadOrders = createAction('[Order] Load Orders');
@@ -40,21 +40,6 @@ export const removeHotelExpenseById=createAction(
   "[Order] Removed hotelExpenses from hotelexpense amount",
   props<{id:string}>()
 )
-
-export const addTravelExpenses=createAction(
-  "Added travelExpenses",
-  props<{expense:number}>()
-)
-
-export const removeTravelExpensesById=createAction(
-  "Removed travelExpenses from travelExpense amount",
-  props<{id:string}>()
-)
-
-export const clearHotelExpenses=createAction(
-  "Clear hotelExpesnse"
-)
-
 
 export const updateOrder = createAction(
   '[Order] Update Order',
