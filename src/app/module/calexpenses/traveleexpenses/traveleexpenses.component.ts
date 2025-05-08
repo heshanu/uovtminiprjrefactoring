@@ -1,8 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AppState } from '../../../app.reducer';
-import { addTravelExpenses,removeHotelExpenseById } from '../../../store/orders/orders.actions';
 
 @Component({
   selector: 'app-traveleexpenses',
@@ -12,16 +8,12 @@ import { addTravelExpenses,removeHotelExpenseById } from '../../../store/orders/
 })
 export class TraveleexpensesComponent implements OnInit{
 
-  constructor(private store: Store<AppState>){}
-
-  @Input() List$!:Observable<any>;
+  @Input() List!:any[];
 
   travelList!:any[];
 
   ngOnInit(): void {
-    this.List$.subscribe((val)=>{
-      this.travelList=val;
-    })
+    this.travelList=this.List;
   }
 
 
@@ -30,14 +22,6 @@ export class TraveleexpensesComponent implements OnInit{
   }
 
   getTotalValue(): number {
-    return this.travelList.reduce((sum, product) => sum + (product.quantity * product.ratePerDay), 0);
-  }
-
-  reducedTravelExpense(id: string) {
-      this.store.dispatch(removeHotelExpenseById({id:id}));
-  }
-    
-  setTravelExpenses(quantity:number,pricePerDay:number) {
-      this.store.dispatch(addTravelExpenses({expense:quantity*pricePerDay}));
+    return this.travelList.reduce((sum, product) => sum + (product.quantity * product.price), 0);
   }
 }

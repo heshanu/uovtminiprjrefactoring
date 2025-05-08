@@ -3,7 +3,6 @@ import { HotelsListInterface } from '../../../model/hotel_interface';
 import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { addHotelExpenses,removeHotelExpenseById } from '../../../store/orders/orders.actions';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hotelexpenses',
@@ -16,15 +15,12 @@ export class HotelexpensesComponent implements OnInit{
   constructor(   private store:Store<AppState>){
   }
   
-  @Input() List$!:Observable<any>;
+  @Input() List!:any[];
 
   hotelList!:any[];
 
   ngOnInit(): void {
-    this.List$.subscribe((val:any)=>{
-      this.hotelList=val
-    });
-    
+    this.hotelList=this.List;
     this.getTotalQuantity();
     this.getTotalValue();
   }
@@ -39,12 +35,14 @@ export class HotelexpensesComponent implements OnInit{
 
   setHotelExpenses(quantity:number,price:number){
     this.store.dispatch(addHotelExpenses({expense:quantity*price}));
+    this.getTotalQuantity();
+    this.getTotalValue();
   }
 
   reducedHotelExpense(id:string){
     this.store.dispatch(removeHotelExpenseById({id:id}));
+    this.getTotalQuantity();
+    this.getTotalValue()
   }
-
- 
 
 }
