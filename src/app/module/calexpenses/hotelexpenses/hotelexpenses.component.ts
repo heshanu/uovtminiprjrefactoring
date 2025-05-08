@@ -13,7 +13,10 @@ import { Observable } from 'rxjs';
 })
 export class HotelexpensesComponent implements OnInit{
 
+  hotelExpenses$!:Observable<number>;
+
   constructor(   private store:Store<AppState>){
+    this.hotelExpenses$
   }
   
   @Input() List$!:Observable<any>;
