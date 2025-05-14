@@ -1,59 +1,95 @@
-# Miniprj
+# MiniProject is for sem 5 project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+A modern web application for exploring tourist management,guide can easily managed and plan tours and functions within smart phone.
 
-## Development server
+GitHub Repo - https://github.com/heshanu/uovtminiprjrefactoring.git
 
-To start a local development server, run:
+## 🚀 Features
 
-```bash
-ng serve
-```
+- User authentication with login interface
+- User can easily add customer using filling form.
+- MAnaged food costs.
+- Managed beverage costs.
+- Manged hotels costs.
+- Managed mode of travels like bike,threewheel,van etc...
+- Managed Famous places with search option.
+- Mobile-first responsive design that works across all devices
+- Calculate whole trip and function.
+- Optimized for Netifly deployment
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📱 Live Demo
 
-## Code scaffolding
+Experience MovieExplorer in action: https://uovtminiprj.netlify.app/
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🖥️ Technologies Used
 
-```bash
-ng generate component component-name
-```
+- Angular with TypeScript
+- Tailwind CSS for styling
+- Redux and ngrx
+- Lucide React for icons
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠️ Quick Start
 
-```bash
-ng generate --help
-```
+### Option 1: Local Development
 
-## Building
+1. Clone the repository
+   ```bash
+   git clone https://github.com/heshanu/uovtminiprjrefactoring.git
+   cd movieexplorer
+   ```
 
-To build the project run:
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-```bash
-ng build
-```
+3. Update `.env` file in the root directory with your TMDb API key
+   ```
+   VITE_TMDB_API_KEY=your_tmdb_api_key
+   VITE_TMDB_API_URL=https://api.themoviedb.org/3
+   VITE_TMDB_IMAGE_URL=https://image.tmdb.org/t/p
+   ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. Run the development server
+   ```bash
+   npm start
+   ```
 
-## Running unit tests
+## 🚢 Deployment
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Deploy to Netifly
 
-```bash
-ng test
-```
+1. Fork or clone this repository to your GitHub account
 
-## Running end-to-end tests
+2. Connect your GitHub repository to Vercel
 
-For end-to-end (e2e) testing, run:
+3. Deploy! Vercel will automatically build and deploy your app.
 
-```bash
-ng e2e
-```
+## 📱 Responsive Design
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The application follows a mobile-first approach with optimized layouts for:
+- Mobile devices (< 640px)
+- Tablets (640px - 1024px) 
+- Desktops (> 1024px)
 
-## Additional Resources
+All components are designed to provide an optimal experience on any device. The grid layout automatically adjusts based on screen size:
+- Mobile: 1 column
+- Tablet: 2-3 columns
+- Desktop: 4-5 columns
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🎨 Theme
+
+The app features a distinctive yellow and black theme with support for both light and dark modes:
+
+- Light mode: Yellow accents on white background
+- Dark mode: Yellow accents on black background
+
+User preferences are stored in localStorage and applied automatically on return visits.
+
+## 🔒 Authentication
+
+For demo purposes, the app uses a simplified authentication system stored in localStorage. Any username with a password of at least 4 characters will work.
+
+## 📝 License
+
+This project is for educational purposes only and is not affiliated.
