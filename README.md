@@ -6,7 +6,7 @@ Prototype Link-https://www.figma.com/design/hG2wjspyIrbAq7EF1LL0jV/GuideBuddy---
 
 GitHub Repo - https://github.com/heshanu/uovtminiprjrefactoring.git
 
-Project management dashboard-https://app.clickup.com/90181029509/v/l/2kzkakm5-358
+Project management dashboard - https://sharing.clickup.com/90181029509/l/h/2kzkakm5-358/5797a9e740bd52d
 
 ## 🚀 Features
 
