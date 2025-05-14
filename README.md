@@ -2,7 +2,11 @@
 
 A modern web application for exploring tourist management,guide can easily managed and plan tours and functions within smart phone.
 
+Prototype Link-https://www.figma.com/design/hG2wjspyIrbAq7EF1LL0jV/GuideBuddy---travel-website-ui-design--Community-?node-id=0-1&t=oESIWNTQHkAOkDK4-1
+
 GitHub Repo - https://github.com/heshanu/uovtminiprjrefactoring.git
+
+Project management dashboard-https://app.clickup.com/90181029509/v/l/2kzkakm5-358
 
 ## 🚀 Features
 
