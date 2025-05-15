@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ThemeService } from '../../service/theme.service';
 
 @Component({
     selector: 'app-header',
@@ -6,6 +8,5 @@ import { Component } from '@angular/core';
     styleUrl: './header.component.css',
     standalone: false
 })
-export class HeaderComponent {
+export class HeaderComponent {}
 
-}
