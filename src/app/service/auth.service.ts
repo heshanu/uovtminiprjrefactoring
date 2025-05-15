@@ -9,7 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AuthServiceCall {
 
-  private apiUrl = 'http://localhost:3000'; // URL of your Node.js server
+  private apiUrl = 'https://uovtminiprj-backend.vercel.app';
 
   register(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, { username, password });
@@ -41,8 +41,9 @@ export class AuthServiceCall {
     return this.auth.user$;
   }
 
-  get isAuthenticated$():boolean {
-    if(localStorage.getItem('username')==="heshan"||localStorage.getItem('password')==="heshan") {return true;}
+  get isAuthenticated$(): boolean {
+    
+    if(localStorage.getItem('username')||localStorage.getItem('password')) {return true;}
     return false;
   }
 
