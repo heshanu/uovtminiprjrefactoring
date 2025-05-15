@@ -88,6 +88,7 @@ import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from '../environments/environment';
 import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
+import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.component';
 
 @NgModule({
   declarations: [
@@ -160,7 +161,8 @@ import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
     SearchComponent,
     SearchresultComponent,
     TravelconfirmModalComponent,
-    FoodconfirmComponent
+    FoodconfirmComponent,
+    ThemeToggleComponent
   ],
   imports: [
     BrowserModule,
