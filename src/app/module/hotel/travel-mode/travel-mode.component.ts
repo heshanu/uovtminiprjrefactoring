@@ -13,7 +13,10 @@ import { CustomerdetailsInterface } from '../../../model/customerDetailsInterfac
     styleUrl: './travel-mode.component.css',
     standalone: false
 })
-export class TravelModeComponent implements OnInit,OnDestroy{
+export class TravelModeComponent implements OnInit, OnDestroy{
+  
+  btnCaption = "Back";
+  btnColor = "red";
 
      customerObj$!: Observable<CustomerdetailsInterface|any>;
       private subscription!: Subscription;

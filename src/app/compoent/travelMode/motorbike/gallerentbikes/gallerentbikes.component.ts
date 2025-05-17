@@ -10,6 +10,8 @@ import { BikeInterface } from '../../../../model/bike_interface';
     standalone: false
 })
 export class GallerentbikesComponent implements OnInit{
+  btnCaption = "Back";
+  btnColor = "red";
 
   constructor(private bikeService:BikeService ){}
 

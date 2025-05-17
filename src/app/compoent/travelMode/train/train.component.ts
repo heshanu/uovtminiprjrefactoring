@@ -147,4 +147,6 @@ export class TrainComponent implements OnInit{
       });
     }
 
+  btnCaption = "Back";
+  btnColor = "red";
 }

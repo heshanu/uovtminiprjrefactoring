@@ -60,3 +60,4 @@ export class FoodtemplateComponent implements OnInit{
   }
 
 }
+

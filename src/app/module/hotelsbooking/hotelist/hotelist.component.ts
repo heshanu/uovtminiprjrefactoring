@@ -9,6 +9,9 @@ import { HotelserviceService } from '../../../service/hotelservice.service';
 })
 export class HotelistComponent implements OnInit{
 
+  btnCaption = "Back";
+  btnColor = "red";
+
   constructor(private hotelListService:HotelserviceService){}
 
   ngOnInit(): void {

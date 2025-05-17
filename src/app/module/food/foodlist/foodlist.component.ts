@@ -21,5 +21,8 @@ export class FoodlistComponent implements OnInit{
   ngOnInit(): void {
     this.recipeTypeList=this.foodserviceService.getFoodTypes();
   }
+
+  btnCaption = "Back";
+  btnColor = "red";
 }
 

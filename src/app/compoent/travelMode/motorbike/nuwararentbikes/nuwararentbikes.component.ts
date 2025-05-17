@@ -9,6 +9,8 @@ import { BikeService } from '../../../../service/bike.service';
     standalone: false
 })
 export class NuwararentbikesComponent {
+  btnCaption = "Back";
+  btnColor = "red";
   constructor(private bikeService:BikeService ){}
 
   ngOnInit(): void {

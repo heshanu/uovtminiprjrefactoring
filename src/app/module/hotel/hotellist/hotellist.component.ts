@@ -24,6 +24,8 @@ export class HotellistComponent implements OnInit,OnDestroy{
   customerObj$!: Observable<CustomerdetailsInterface|any>;
   private subscription!: Subscription;
 
+  btnCaption = "Back";
+  btnColor = "red";
   customerId!:string;
 
   constructor(private router:Router,private activatedRoute: ActivatedRoute,

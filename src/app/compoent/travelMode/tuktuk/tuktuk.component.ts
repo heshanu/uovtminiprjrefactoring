@@ -72,4 +72,6 @@ export class TuktukComponent implements OnInit,OnDestroy{
       
       }
 
+  btnCaption = "Back";
+  btnColor = "red";
 }

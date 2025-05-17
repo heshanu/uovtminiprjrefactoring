@@ -20,6 +20,8 @@ import { OrderObjService } from '../../service/order-obj.service';
     standalone: false
 })
 export class VehicletemplateComponent implements OnInit, OnDestroy {
+  btnCaption = "Back";
+  btnColor = "red";
   orderList$!: Observable<OrderState>;
   orderList!: OrderState | undefined;
   private subscriptionOrdersList!: Subscription;

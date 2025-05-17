@@ -60,5 +60,8 @@ export class CarComponent implements OnInit,OnDestroy{
               console.error('Navigation error:', err);
             });
       
-      }
+  }
+  
+  btnCaption = "Back";
+  btnColor = "red";
 }

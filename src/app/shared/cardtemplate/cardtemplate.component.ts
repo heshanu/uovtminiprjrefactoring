@@ -73,5 +73,8 @@ openPackageDialog(item: HotelsListInterface,$event: MouseEvent) {
       }
     });
   }
+
+  btnCaption = "Back";
+  btnColor = "red";
 }
 

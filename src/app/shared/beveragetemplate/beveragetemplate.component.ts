@@ -123,6 +123,7 @@ export class BeveragetemplateComponent implements OnInit{
       console.log(this.filteredBeverageList);    
     }  
 
-  
+  btnCaption = "Back";
+  btnColor = "red";
 
 } 
