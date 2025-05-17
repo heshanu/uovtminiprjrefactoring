@@ -15,7 +15,10 @@ import { CustomerState } from '../../store/customers/customer.status';
     styleUrl: './accordintemplate.component.css',
     standalone: false
 })
-export class AccordintemplateComponent implements OnInit,OnDestroy{
+export class AccordintemplateComponent implements OnInit, OnDestroy{
+  
+  btnCaption = "back";
+  btnColor = "red";
 
 hotelsList:HotelsListInterface[]=[];
 

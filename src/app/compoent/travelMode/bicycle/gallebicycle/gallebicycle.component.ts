@@ -17,6 +17,9 @@ export class GallebicycleComponent implements OnInit{
     }
     
   
-      bicycleList:BikeInterface[]=[];
+  bicycleList: BikeInterface[] = [];
+  
+  btnCaption = "Back"; 
+  btnColor = "red";
 
 }

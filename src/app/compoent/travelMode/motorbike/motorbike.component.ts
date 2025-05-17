@@ -13,7 +13,9 @@ import { CustomerdetailsInterface } from '../../../model/customerDetailsInterfac
     styleUrl: './motorbike.component.css',
     standalone: false
 })
-export class MotorbikeComponent implements OnInit,OnDestroy{
+export class MotorbikeComponent implements OnInit, OnDestroy{
+  btnCaption = "Back";
+  btnColor = "red";
 
    customerObj$!: Observable<CustomerdetailsInterface|any>;
    private subscription!: Subscription;

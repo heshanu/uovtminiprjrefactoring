@@ -12,6 +12,7 @@ import { TraditionalComponent } from './foodStyle/traditional/traditional.compon
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { CardTemplateFoodsComponent } from '../../shared/card-template-foods/card-template-foods.component';
 import { CommonModule } from '@angular/common';
+import { SharedcompoentModule } from "../sharedcompoent/sharedcompoent.module";
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { CommonModule } from '@angular/common';
     FoodRoutingModule,
     MaterialModule,
     CdkAccordionModule,
-    MaterialModule
-  ],
+    MaterialModule,
+    SharedcompoentModule
+],
   exports:[
   ]
 })

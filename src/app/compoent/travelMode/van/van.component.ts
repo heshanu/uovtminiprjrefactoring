@@ -60,4 +60,6 @@ export class VanComponent  implements OnInit,OnDestroy{
       
       }
 
+  btnCaption = "Back";
+  btnColor = "red";
 }
