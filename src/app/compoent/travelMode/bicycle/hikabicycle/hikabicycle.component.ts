@@ -16,6 +16,9 @@ export class HikabicycleComponent implements OnInit{
       }
       
     
-        bicycleList:BikeInterface[]=[];
+  bicycleList: BikeInterface[] = [];
+  
+  btnCaption="Back";
+  btnColor = "red";
 
 }

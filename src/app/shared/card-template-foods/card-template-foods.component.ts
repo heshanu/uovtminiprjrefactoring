@@ -75,4 +75,8 @@ openPackageDialog(item: FoodsInterface,$event: MouseEvent) {
       }
     });
   }
+
+  
+  btnCaption="Back";
+  btnColor = "red";
 }

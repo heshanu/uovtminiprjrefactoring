@@ -8,6 +8,7 @@ import { FoodexpensesComponent } from './foodexpenses/foodexpenses.component';
 import { BeverageexpensesComponent } from './beverageexpenses/beverageexpenses.component';
 import { TraveleexpensesComponent } from './traveleexpenses/traveleexpenses.component';
 import { MaterialModule } from '../../shared/materialModule';
+import { SharedcompoentModule } from '../sharedcompoent/sharedcompoent.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MaterialModule } from '../../shared/materialModule';
   imports: [
     CommonModule,
     CalexpensesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedcompoentModule
   ]
 })
 export class CalexpensesModule { }

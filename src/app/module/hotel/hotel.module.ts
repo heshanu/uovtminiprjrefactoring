@@ -6,6 +6,7 @@ import { MaterialModule } from '../../shared/materialModule';
 import { TravelModeComponent } from './travel-mode/travel-mode.component';
 import { CustomerObjectService } from '../../service/customer-object.service';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { SharedcompoentModule } from '../sharedcompoent/sharedcompoent.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     CommonModule,
     HotelRoutingModule,
     MaterialModule,
-    CdkAccordionModule 
+    CdkAccordionModule,
+    SharedcompoentModule
     ],
   exports:[
   ],

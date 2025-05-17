@@ -89,6 +89,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from '../environments/environment';
 import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
 import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.component';
+import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
 
 @NgModule({
   declarations: [
@@ -190,7 +191,8 @@ import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.compo
           useRefreshTokens: true,
           cacheLocation: 'localstorage'
         }),
-        CalexpensesModule
+    CalexpensesModule,
+    SharedcompoentModule
        
   ],
   exports:[

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { BeverageRoutingModule } from './beverage-routing.module';
 import { MaterialModule } from '../../shared/materialModule';
+import { SharedcompoentModule } from '../sharedcompoent/sharedcompoent.module';
 @NgModule({
   declarations: [
   ],
   imports: [
     CommonModule,
     BeverageRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedcompoentModule
   ]
 })
 export class BeverageModule { }

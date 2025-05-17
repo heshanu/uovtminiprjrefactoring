@@ -83,6 +83,10 @@ export class CalexpensesComponent implements OnInit {
 
     
   }
+
+  
+  btnCaption= "Back";
+  btnColor = "red";
 }
   
 
