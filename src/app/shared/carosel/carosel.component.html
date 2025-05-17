@@ -1,4 +1,4 @@
-<div class="relative w-full overflow-hidden">
+<div class="relative w-full overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     <!-- Carousel Wrapper -->
     <div class="flex transition-transform duration-500 ease-out" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
       <div *ngFor="let img of imgs" class="w-full flex-shrink-0">

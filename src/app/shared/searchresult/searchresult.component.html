@@ -1,5 +1,5 @@
 @if(result|| text){
-<mat-card class="example-card w-full" appearance="outlined" *ngFor="let res of result"
+<mat-card class="example-card w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" appearance="outlined" *ngFor="let res of result"
                (click)="openPackageDialog(result, $event)">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>

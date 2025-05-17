@@ -1,4 +1,4 @@
-<cdk-accordion class="example-accordion" class="m-16 p-4">
+<cdk-accordion class="example-accordion" class="m-16 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     @for (item of foodList ; track item; let index = $index) {
     <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item">
       <button
