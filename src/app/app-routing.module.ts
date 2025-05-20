@@ -50,8 +50,8 @@ const routes: Routes = [
   {path: 'login',loadChildren:()=>import("./module/login/login-routing.module").then(m=>m.LoginRoutingModule)},
   {path: 'register',loadChildren:()=>import("./module/register/register-routing.module").then(m=>m.RegisterRoutingModule)},
   {path: 'home',component:HomeComponent},
-  {path:'customerform',component:CustomerdetailComponent,canActivate:[authGuard]},
-  {path:'customersDashboard',component:CustomersDashBoardComponent,canActivate:[authGuard]},
+  {path:'customerform',component:CustomerdetailComponent},
+  {path:'customersDashboard',component:CustomersDashBoardComponent},
   
   {
     path: 'customerDashboard/:id',
