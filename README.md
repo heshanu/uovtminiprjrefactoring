@@ -8,9 +8,9 @@ GitHub Repo - https://github.com/heshanu/uovtminiprjrefactoring.git
 
 Project management dashboard - https://sharing.clickup.com/90181029509/l/h/2kzkakm5-358/5797a9e740bd52d
 
-Documentation for this prokect-https://drive.google.com/drive/folders/1YjQW-yXFJjtoX2RdIfNkVrJUif6RdP1l?usp=sharing
+Documentation for this project-https://drive.google.com/drive/folders/1YjQW-yXFJjtoX2RdIfNkVrJUif6RdP1l?usp=sharing
 
-Mid viva presentation link-https://docs.google.com/presentation/d/1mbBpGNPc-SE6c2zlDS_02g0O-RPVKHjN/edit?usp=sharing&ouid=101018828781151942682&rtpof=true&sd=true
+Mid viva presentation link-https://docs.google.com/presentation/d/1M_Whi8kb2mymbWHgIDKusU7cm5JyJ-YW/edit?usp=drive_link&ouid=101018828781151942682&rtpof=true&sd=true
 
 ## 🚀 Features
 
