@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
   show!: boolean;
 
   homePageImages:any[]=[
-    "../assets/rect1.png",,
-    "../assets/rect2.png",
-    "../assets/rect3.png"
+    "rect1.png",,
+    "rect2.png",
+    "rect3.png"
   ];
 
   getAuth(): void { 
