@@ -90,6 +90,7 @@ import { environment } from '../environments/environment';
 import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
 import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.component';
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
+import { authGuard } from './shared/guard/auth.guard';
 
 @NgModule({
   declarations: [
