@@ -43,7 +43,7 @@ export class AuthServiceCall {
 
   get isAuthenticated$(): boolean {
     
-    if(localStorage.getItem('username')||localStorage.getItem('password')) {return true;}
+    if(localStorage.getItem('username')=="test"||localStorage.getItem('password')=='test') {return true;}
     return false;
   }
 

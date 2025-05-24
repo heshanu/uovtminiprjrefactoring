@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.valid) {
       const username = this.loginForm.get('name')?.value;  
       const password = this.loginForm.get('password')?.value;
-  
+    
       this.authService.login(username,password).subscribe(
           () => {
             // Redirect to a protected route or dashboard
