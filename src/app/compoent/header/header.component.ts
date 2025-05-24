@@ -17,7 +17,11 @@ export class HeaderComponent implements OnInit{
        this.isShow=this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
     }
 
-    isShow!:Observable<boolean>;
+    isShow!: Observable<boolean>;
+    
+    logOut(): void { 
+        this.authService.logout();
+    }
 
 }
 

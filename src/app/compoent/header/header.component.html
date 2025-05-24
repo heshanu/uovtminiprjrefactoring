@@ -6,7 +6,13 @@
       <li><a href="customerform">Customer Registeration</a></li>
     </ul>
   </nav>
-  <ul class="flex space-x-4">
+  <ul class="flex space-x-4" *ngIf="isShow">
+    <li>
+      <a routerLink="login" (click)="logOut()"
+        class="register bg-blue-300 m-4 p-2 rounded hover:bg-blue-400 transition duration-300">
+        LogOut
+      </a>
+    </li>
     <li>
       <app-theme-toggle />
     </li>
