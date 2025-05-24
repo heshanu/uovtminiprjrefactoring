@@ -20,11 +20,11 @@ export class HomeComponent implements OnInit {
     "rect3.png"
   ];
 
-  getAuth(): void { 
-   this.show= this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
-  }
+  // getAuth(): void { 
+  //  this.show= this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
+  // }
 
   ngOnInit(): void {
-    this.getAuth();
+    //this.getAuth();
   }
 }
