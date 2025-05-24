@@ -12,7 +12,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit{
 
-  loginForm!:FormGroup;
+  loginForm!: FormGroup;
+  show!: boolean;
+  
+  errorMessage!: string;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,private router: Router,
@@ -21,40 +24,67 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(3)]]
     });
-
   }
 
   get name():any{
-    return this.loginForm.get('name');
+    return this.loginForm.get('username');
   }
 
   get paswrd():any {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
+  /*
+  onSubmit(): void {
     
-    console.log(this.loginForm.value);
-    console.log(this.loginForm.valid);
+    console.log('Form Value:', this.loginForm.value);
+    console.log('Form Valid:', this.loginForm.valid);
   
     if (this.loginForm.valid) {
-      const username = this.loginForm.get('name')?.value;  
+      const username = this.loginForm.get('username')?.value; // Ensure field name matches your form (e.g., 'name' → 'username')
       const password = this.loginForm.get('password')?.value;
   
-      this.authService.login(username,password).subscribe(
-          () => {
-            // Redirect to a protected route or dashboard
-            this.router.navigate(['/home']);
+      this.authService.login(username, password).subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          console.error('Login failed:', error);
+          // Display a user-friendly error (avoid alert() in production)
+          this.errorMessage = 'Invalid username or password';
+          // Optionally reset the password field for UX
+          this.loginForm.get('password')?.reset();
+        }
+      });
+    } else {
+      // Highlight form errors if invalid
+      this.loginForm.markAllAsTouched();
+    }
+  }*/
+  
+    onSubmit() {
+      if (this.loginForm.valid) {
+        const { username, password } = this.loginForm.value;
+
+        console.log(username,password);
+        
+        
+        this.authService.login(username, password).subscribe({
+          next: (textResponse) => {
+            if (textResponse === "Login successful") {
+              this.router.navigate(['/home']);
+            }
           },
-          (error) => {
-           // this.errorMessage = 'Invalid username or password';
-           console.log("Invalid Credentials");
-        alert("Invalid username or password");
-        this.router.navigate(['/login']);
+          error: (err) => {
+            console.error('Error:', err);
+            this.errorMessage = "Login failed";
           }
-        )}
-  }
+        });
+
+       
+      }
+    }
 }
