@@ -1,33 +1,33 @@
-<div class="flex space-x-4 m-16">
-  <div class="w-1/4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 m-16">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">{{ customerRecivedObj.name|uppercase }}</h3>
-          
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-16">
+  <!-- Side Panel -->
+  <div class="w-full md:w-1/4">
+    <div class="grid grid-cols-1 gap-6 p-4">
+      <div class="card bg-white shadow rounded-lg">
+        <div class="card-body p-4">
+          <h3 class="card-title text-xl font-bold">{{ customerRecivedObj.name|uppercase }}</h3>
+
           <p class="card-text"><strong>Address:</strong> {{ customerRecivedObj.address }}</p>
           <p class="card-text"><strong>Age:</strong> {{ customerRecivedObj.age }}</p>
           <p class="card-text"><strong>Travel Mode:</strong> {{ customerRecivedObj.travelMode }}</p>
-          
+
           <hr class="my-2 border-gray-300">
-          
+
           <p class="card-text"><strong>Food List:</strong> {{ customerRecivedObj.foodList }}</p>
           <p class="card-text"><strong>Food Option:</strong> {{ customerRecivedObj.foodListOption }}</p>
           <p class="card-text"><strong>Beverage List:</strong> {{ customerRecivedObj.beverageList }}</p>
           <p class="card-text"><strong>Beverage Option:</strong> {{ customerRecivedObj.beverageListOption }}</p>
-    
+
           <hr class="my-2 border-gray-300">
-    
-          <p class="card-text"><strong>Start Date:</strong>{{ customerRecivedObj.startDate |date  }}
-          <p class="card-text"><strong>End Date:</strong> {{ customerRecivedObj.endDate  |date }}
+
+          <p class="card-text"><strong>Start Date:</strong> {{ customerRecivedObj.startDate | date }}</p>
+          <p class="card-text"><strong>End Date:</strong> {{ customerRecivedObj.endDate | date }}</p>
         </div>
       </div>
     </div>
-    
-    <!-- Other customer dashboard content -->
   </div>
 
-  <div class="w-3/4"> 
-    <router-outlet/>
+  <!-- Main Content -->
+  <div class="w-full md:w-3/4">
+    <router-outlet></router-outlet>
   </div>
 </div>
