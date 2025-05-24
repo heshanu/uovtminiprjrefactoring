@@ -12,6 +12,8 @@ Documentation for this project-https://drive.google.com/drive/folders/1YjQW-yXFJ
 
 Mid viva presentation link-https://docs.google.com/presentation/d/1M_Whi8kb2mymbWHgIDKusU7cm5JyJ-YW/edit?usp=drive_link&ouid=101018828781151942682&rtpof=true&sd=true
 
+backend -endpoints postman-https://documenter.getpostman.com/view/7287191/2sB2qcBfq2
+
 ## 🚀 Features
 
 - User authentication with login interface
