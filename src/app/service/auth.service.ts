@@ -47,7 +47,7 @@ export class AuthServiceCall{
   }
 
 
-  isAuthenticated$(username: string, password: string): Observable<boolean> {
+  isAuthenticated$(username: any, password: any): Observable<boolean> {
     // Temporary fix for current implementation
     const storedUser = localStorage.getItem('username');
     const storedPass = localStorage.getItem('password');
