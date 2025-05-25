@@ -52,7 +52,6 @@ const routes: Routes = [
   {path: 'home',component:HomeComponent},
   {path:'customerform',component:CustomerdetailComponent,canActivate:[authGuard]},
   {path:'customersDashboard',component:CustomersDashBoardComponent,canActivate:[authGuard]},
-  
   {
     path: 'customerDashboard/:id',
     component: CustomerDashBoardComponent,
