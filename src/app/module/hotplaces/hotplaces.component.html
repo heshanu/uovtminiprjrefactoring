@@ -23,19 +23,6 @@
             <div class="relative min-h-32">
                 <app-sharedspinner [isLoading]="isLoading$|async" class="flex justify-center items-center" />
                 @if (cleanResponse) {
-                <!-- <div class="mt-4 p-4 bg-gray-100 rounded-lg prose max-w-none text-gray-700 whitespace-pre-wrap">
-                    @if (seeAll) {
-                    {{ cleanResponse }}
-                    <button type="button"
-                        class="mt-8 mx-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                        (click)="seeAll = !seeAll">See Less</button>
-                    } @else {
-                    {{cleanResponse.substring(0,250)}}
-                    <button
-                        class="mt-8 mx-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                        (click)="seeAll = !seeAll">See More</button>
-                    }
-                </div> -->
                 <app-output [cleanResponse]="cleanResponse" [seeAll]="seeAll" />
                 }
             </div>
