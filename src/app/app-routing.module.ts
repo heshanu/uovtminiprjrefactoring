@@ -47,8 +47,8 @@ import { authGuard } from './shared/guard/auth.guard';
 const routes: Routes = [
   {path: '',component:HomepageComponent},
   {path: 'reservation',loadChildren: () => import('./module/reservation/reservation.module').then(m => m.ReservationModule)},
-  {path: 'login',loadChildren:()=>import("./module/login/login-routing.module").then(m=>m.LoginRoutingModule)},
-  {path: 'register',loadChildren:()=>import("./module/register/register-routing.module").then(m=>m.RegisterRoutingModule)},
+  {path: 'login',loadChildren:()=>import("./module/login/login.module").then(m=>m.LoginModule)},
+  {path: 'register',loadChildren:()=>import("./module/register/register.module").then(m=>m.RegisterModule)},
   {path: 'home',component:HomeComponent},
   {path:'customerform',component:CustomerdetailComponent,canActivate:[authGuard]},
   {path:'customersDashboard',component:CustomersDashBoardComponent,canActivate:[authGuard]},
@@ -238,10 +238,10 @@ const routes: Routes = [
     path:"foodslist/traditional",
     loadChildren:()=>import('./module/food/food.module').then(m=>m.FoodModule)
    } ,
-  //  {
-  //   path:"hottravel",
-  //   loadChildren:()=>import('./module/map/map.module').then(m=>m.MapModule)
-  //  },
+   {
+    path:"hottravel",
+    loadChildren:()=>import('./module/hotplaces/hotplaces.module').then(m=>m.HotplacesModule)
+   },
    {
     path:"calExpenses",
     loadChildren:()=>import("./module/calexpenses/calexpenses.module").then(m=>m.CalexpensesModule)
