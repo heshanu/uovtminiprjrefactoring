@@ -91,6 +91,7 @@ import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
 import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.component';
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
 import { authGuard } from './shared/guard/auth.guard';
+import { RegisterModule } from './module/register/register.module';
 
 @NgModule({
   declarations: [
@@ -193,7 +194,9 @@ import { authGuard } from './shared/guard/auth.guard';
           cacheLocation: 'localstorage'
         }),
     CalexpensesModule,
-    SharedcompoentModule
+    SharedcompoentModule,
+    FormsModule,
+    RegisterModule
        
   ],
   exports:[
