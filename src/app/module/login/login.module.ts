@@ -11,11 +11,12 @@ import { MaterialModule } from '../../shared/materialModule';
 
 @NgModule({ declarations: [
         LoginComponent
-    ], imports: [BrowserModule,
+], imports: [
         CommonModule,
         LoginRoutingModule,
         ReactiveFormsModule,
-        FormsModule,
+    FormsModule,
+        MaterialModule
     ],
     providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class LoginModule {

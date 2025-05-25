@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent
   ],
   imports: [
+    RegisterRoutingModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule

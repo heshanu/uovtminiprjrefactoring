@@ -6,5 +6,6 @@ export const environment = {
           clientId: 'v3ZJkkusUt3rp8e3W1gpZWeiyFWLGh1t',
           redirectUri: window.location.origin,
              clientSecret:'7elrIJS_tFIDK9Nqo4nj2RUBmDd7rAAuoglSrldaUDb1-gAgGwYS_mKGkUPMk2Qd'
-        }
+    },
+    googleGenAIKey: 'YOUR_API_KEY_HERE' 
 };
