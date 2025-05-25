@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthServiceCall } from '../../service/auth.service';
 
 @Component({
     selector: 'app-home',
@@ -6,12 +7,24 @@ import { Component } from '@angular/core';
     styleUrl: './home.component.css',
     standalone: false
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   
+  constructor(private authService: AuthServiceCall) { 
+
+  }
+  show!: boolean;
+
   homePageImages:any[]=[
-    "../assets/rect1.png",,
-    "../assets/rect2.png",
-    "../assets/rect3.png"
+    "rect1.png",,
+    "rect2.png",
+    "rect3.png"
   ];
 
+  // getAuth(): void { 
+  //  this.show= this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
+  // }
+
+  ngOnInit(): void {
+    //this.getAuth();
+  }
 }

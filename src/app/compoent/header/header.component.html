@@ -1,21 +1,16 @@
 <header>
   <nav>
     <div class="text-black text-lg">GuideBuddy</div>
-    <ul>
+    <ul *ngIf="isShow">
       <li><a routerLink="customersDashboard">Customers Dashboard</a></li>
       <li><a href="customerform">Customer Registeration</a></li>
     </ul>
   </nav>
-  <ul class="flex space-x-4">
+  <ul class="flex space-x-4" *ngIf="isShow">
     <li>
-      <a routerLink="/login" routerLinkActive="/login"
+      <a routerLink="login" (click)="logOut()"
         class="register bg-blue-300 m-4 p-2 rounded hover:bg-blue-400 transition duration-300">
-        Login
-      </a>
-    </li>
-    <li>
-      <a routerLink="/register" class="register bg-blue-300 m-4 p-2 rounded hover:bg-blue-400 transition duration-300">
-        Register
+        LogOut
       </a>
     </li>
     <li>

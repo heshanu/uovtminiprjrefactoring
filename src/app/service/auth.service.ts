@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import { map, Observable, of, tap } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,45 +9,64 @@ export class AuthServiceCall {
 
   private apiUrl = 'https://uovtminiprj-backend.vercel.app';
 
-  register(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, { username, password });
+  constructor(private http: HttpClient, public auth: AuthService) { }
+
+  register(username: string, password: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    return this.http.post(
+      `${this.apiUrl}/register`,
+      { username, password },
+      {
+        headers,
+        responseType: 'text'
+      }
+    );
   }
 
-  login(username: string, password: string): Observable<any> {
-    const body = {
-      username: username,
-      password: password
-    };
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-    return this.http.post(`${this.apiUrl}/login`, { username, password });
-  }
+  login(username: string, password: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
 
-  getAllUsers():Observable<any>{
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    
+    return this.http.post(
+      `${this.apiUrl}/login`,
+      { username, password },
+      {
+        headers,
+        responseType: 'text'
+      }
+    );
+  }
+  
+  getAllUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/all`);
   }
 
-  logout() {
-    this.auth.logout({ 
-      logoutParams: {
-        returnTo: window.location.origin
-      }
-    });
+  logout(): void {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
   }
 
-  get user$() {
-    return this.auth.user$;
-  }
-
-  get isAuthenticated$(): boolean {
+  isAuthenticated$(username: any, password: any): Observable<boolean> {
+    // Temporary fix for current implementation
+    const storedUser = localStorage.getItem('username');
+    const storedPass = localStorage.getItem('password');
     
-    if(localStorage.getItem('username')||localStorage.getItem('password')) {return true;}
-    return false;
+    // Compare both username AND password (not OR)
+    const isValid = storedUser === username && storedPass === password;
+    
+    return of(isValid);
   }
 
   getTokenSilently() {
     return this.auth.getAccessTokenSilently();
   }
-
-  constructor(private http:HttpClient,public auth: AuthService) {}
+  
 }

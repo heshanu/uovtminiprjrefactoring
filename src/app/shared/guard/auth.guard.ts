@@ -1,17 +1,24 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthServiceCall } from '../../service/auth.service';
-import { async, map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthServiceCall);
   const router = inject(Router);
 
-  if (authService.isAuthenticated$) {
-    return true;
-  } else {
-    // Redirect to the login page or handle unauthorized access
-   // router.navigate(['/login']);
-    return false;
+  // Get credentials from storage (temporary approach)
+  const username = localStorage.getItem('username');
+  const password = localStorage.getItem('password');
+
+  if (!username || !password) {
+    return of(router.parseUrl('/login'));
   }
+
+  return authService.isAuthenticated$(username, password).pipe(
+    map(authenticated => {
+      if (authenticated) return true;
+      return router.parseUrl('/login');
+    })
+  );
 };
