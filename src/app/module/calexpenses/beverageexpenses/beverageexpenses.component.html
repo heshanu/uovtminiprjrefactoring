@@ -1,53 +1,70 @@
-<!-- product-list.component.html -->
-<div class="product-list-container m-4 p-4">
-    <h2>Beverage Expenses</h2>
-    
-    <div class="summary-stats">
-      <div class="stat-item">
-        <span class="stat-label">Total Products:</span>
-        <span class="stat-value" *ngIf="beverageList">{{ beverageList.length }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Total Quantity:</span>
-        <span class="stat-value">{{ getTotalQuantity() }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Total Value:</span>
-        <span class="stat-value">LKR {{  beverageExpenses$|async }}</span>
+<div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+  <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">Beverage Expenses</h2>
+
+  <!-- Summary Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+      <div class="text-gray-600 text-sm font-medium">Total Products</div>
+      <div class="text-2xl font-semibold text-gray-900 mt-1">
+        {{ beverageList.length || 0 }}
       </div>
     </div>
-  
-    <div class="table-responsive">
-      <table class="product-table">
-       
-        <tbody>
-          <tr *ngFor="let product of List$|async">
-            <td>{{ product.strDrink}}</td>
-            <td>{{ product.name | titlecase }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.price | number }}</td>
-            <td>
-              
-            </td>
-            <td>LKR {{ product.quantity * product.price }}</td>
-            <td>
-              <button 
-                class="m-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                (click)="setBeverageExpenses(product.quantity, product.price)"
-              >
-                Add to total cost
-              </button>
-            </td>
-            <td>
-              <button 
-                class="m-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                (click)="reducedBeverageExpense(product.idDrink)"
-              >
-                Remove from total cost
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+      <div class="text-gray-600 text-sm font-medium">Total Quantity</div>
+      <div class="text-2xl font-semibold text-gray-900 mt-1">
+        {{ getTotalQuantity() }}
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+      <div class="text-gray-600 text-sm font-medium">Total Value</div>
+      <div class="text-2xl font-semibold text-gray-900 mt-1">
+        LKR {{ beverageExpenses$ | async }}
+      </div>
     </div>
   </div>
+
+  <!-- Table Container -->
+  <div class="overflow-x-auto rounded-lg shadow-sm border border-gray-200">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Drink ID</th>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+          <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let product of List$ | async">
+          <td class="px-4 py-3 text-sm text-gray-900">{{ product.strDrink }}</td>
+          <td class="px-4 py-3 text-sm text-gray-900">{{ product.name | titlecase }}</td>
+          <td class="px-4 py-3 text-sm text-gray-900">{{ product.quantity }}</td>
+          <td class="px-4 py-3 text-sm text-gray-900">{{ product.price | number }}</td>
+          <td class="px-4 py-3 text-sm font-medium text-gray-900">LKR {{ product.quantity * product.price }}</td>
+          <td class="px-4 py-3 text-sm space-x-2">
+            <button
+              class="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200 text-xs sm:text-sm"
+              (click)="setBeverageExpenses(product.quantity, product.price)">
+              <span class="hidden sm:inline">Add to</span> Cost
+            </button>
+            <button
+              class="px-3 py-1.5 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-200 text-xs sm:text-sm"
+              (click)="reducedBeverageExpense(product.idDrink)">
+              <span class="hidden sm:inline">Remove</span>
+              <span class="sm:hidden">×</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="(List$ | async)?.length === 0" class="text-center py-8 text-gray-500">
+    No beverages found
+  </div>
+</div>
