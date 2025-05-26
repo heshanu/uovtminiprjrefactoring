@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.reducer';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue} from "../../store/orders/orders.selectors"
 import { HotelsListInterface, } from '../../model/hotel_interface';
 import { FoodItem } from '../../store/orders/orders.status';
 import { FoodsInterface } from '../../model/foodrecipe.model';
 import { clearHotelexpense} from '../../store/orders/orders.actions';
+import { getCustomerDetail, getCustomerID } from '../../store/customers/customer.selectors';
+import { CustomerdetailsService } from '../../service/customerdetails.service';
 @Component({
   selector: 'app-calexpenses',
   standalone: false,
@@ -37,8 +39,17 @@ export class CalexpensesComponent implements OnInit {
   hotelExpenditure$!:Observable<number>;
 
   totalExpenditure$!:Observable<number>;
+  totalExpenditure!:number;
 
-  constructor(private store: Store<AppState>) {
+  customerIDSubsription!:Subscription;
+  customerID$!:Observable<any>;
+  customerID!:string;
+
+  customerObj$!: Observable<any>;
+  customerRecivedObj!:any;
+
+
+  constructor(private store: Store<AppState>,private customerdetailsService:CustomerdetailsService) {
     // Select the hotel list from the store
     this.hotelList$ = this.store.select(selectOrderHotelsListDetails);
     this.foodList$=this.store.select(selectOrderFoodsListDetails);
@@ -49,6 +60,9 @@ export class CalexpensesComponent implements OnInit {
     this.hotelExpenditure$=this.store.select(getHotelExpenseValue);
     this.beverageExpenditure$=this.store.select(getBeverageExpenseValue);
     this.travelExpenditure$=this.store.select(getTravelExpenseValue);
+
+    this.customerObj$ = this.store.pipe(select(getCustomerDetail));
+
   }
 
   ngOnInit() {
@@ -65,6 +79,9 @@ export class CalexpensesComponent implements OnInit {
     this.travelListSubs=this.travelList$.subscribe((val)=>{
       this.travelList=val
     })
+    this.customerIDSubsription=this.customerObj$.subscribe((val)=>{
+      this.customerID=val._id;
+    })
   }
 
   clearAllExpenses() {
@@ -79,14 +96,26 @@ export class CalexpensesComponent implements OnInit {
       this.travelExpenditure$
     ]).pipe(
       map(([food, hotel, beverage, travel]) => food + hotel + beverage + travel)
-    );
-
-    
+    ); 
   }
 
   
   btnCaption= "Back";
   btnColor = "red";
+
+  closePlan(expense:any){
+    console.log(this.customerID);
+    
+     this.customerdetailsService.updateCustomer(this.customerID,expense,"COMPLETED")
+     .subscribe(
+      response => {
+        console.log('Customer updated successfully:', response);
+      },
+      error => {
+        console.error('Error updating customer:', error);
+      }
+    );
+  }
 }
   
 
