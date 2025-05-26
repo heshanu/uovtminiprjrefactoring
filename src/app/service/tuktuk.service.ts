@@ -20,7 +20,6 @@ export class TuktukService {
      {bikeId:'jaffnatukb2',bikeName:'bajaj 2 stroke',color:'green',condition:'mint condition',quantity:1,img:'tuktuk2.jpg',rating:5,ratePerDay:500}  
      
    ];
-   
    mataraTukTukList:BikeInterface[]=[
    
      {bikeId:'mataratukb1',bikeName:'bajaj 2 sttoke',color:'red',condition:'good',quantity:1,img:'tuktuk1.jpg',rating:4,ratePerDay:200},
