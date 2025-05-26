@@ -15,7 +15,7 @@ export class MatararentbikesComponent {
   constructor(private bikeService:BikeService ){}
 
   ngOnInit(): void {
-    this.bikeList=this.bikeService.getHikkaBikeList()
+    this.bikeList = this.bikeService.getMataraBikeList();
   }
   
 

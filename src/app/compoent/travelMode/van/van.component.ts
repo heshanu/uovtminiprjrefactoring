@@ -41,10 +41,10 @@ export class VanComponent  implements OnInit,OnDestroy{
     })
   }
     items= [
-      {"itemName":"Galle Rent Vans","description":"This may be motor bike","link":"gallevan"},
-      {"itemName":"Hikkaduwa Rent Vans","description":"This may be motor bike","link":"hikkavan"},
-      {"itemName":"Matara Rent Vans","description":"This may be motor bike","link":"mataravan"},
-      {"itemName":"Nuwara Rent Vans","description":"This may be motor bike","link":"nuwaravan"},
+      {"itemName":"Galle Rent Vans","description":"This may be motor van","link":"gallevan"},
+      {"itemName":"Hikkaduwa Rent Vans","description":"This may be motor van","link":"hikkavan"},
+      {"itemName":"Matara Rent Vans","description":"This may be motor van","link":"mataravan"},
+      {"itemName":"Nuwara Rent Vans","description":"This may be motor van","link":"nuwaravan"},
      
     ]
   

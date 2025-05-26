@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BikeInterface } from '../../../../model/bike_interface';
 import { VanService } from '../../../../service/van.service';
+import { CarService } from '../../../../service/car.service';
 
 @Component({
     selector: 'app-gallecar',
@@ -10,12 +11,12 @@ import { VanService } from '../../../../service/van.service';
 })
 export class GallecarComponent implements OnInit{
 
-  constructor(private vanService:VanService ){}
-  vanList:BikeInterface[]=[];
+  constructor(private carService:CarService ){}
+  carList:BikeInterface[]=[];
     
     ngOnInit(): void {
-      this.vanList=this.vanService.getGalleVanList();
-      console.log(this.vanList);
+      this.carList = this.carService.getGalleCarList();
+    //  console.log(this.vanList);
       
     }
     
