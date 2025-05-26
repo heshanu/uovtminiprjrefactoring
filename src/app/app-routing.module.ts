@@ -137,7 +137,7 @@ const routes: Routes = [
         component:HikkavanComponent
       },
       {
-        path:'travelMode/van/matataravan',
+        path:'travelMode/van/mataravan',
         component:MataravanComponent
       },
       {

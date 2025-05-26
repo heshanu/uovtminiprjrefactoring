@@ -33,6 +33,7 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
   customerId!:string;
 
   @Input() bikeList: BikeInterface[] = [];
+  list!: BikeInterface[];
 
   constructor(private bikeService: BikeService, private store: Store<AppState>,
     private orderObjService:OrderObjService
@@ -43,6 +44,7 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.list = this.bikeList;
     this.subscription=this.customerObj$.subscribe((data:any) => {
       this.customerId = data._id; 
      // console.log('Customer ID:', this.customerRecivedObj);
@@ -57,11 +59,7 @@ export class VehicletemplateComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.getBikeList();
-  }
-
-  getBikeList() {
-    this.bikeList = this.bikeService.getHikkaBikeList();
+    //this.getBikeList(;
   }
 
 
