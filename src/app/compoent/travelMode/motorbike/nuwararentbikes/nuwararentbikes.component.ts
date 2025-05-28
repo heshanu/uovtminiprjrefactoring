@@ -14,7 +14,7 @@ export class NuwararentbikesComponent {
   constructor(private bikeService:BikeService ){}
 
   ngOnInit(): void {
-    this.bikeList=this.bikeService.getHikkaBikeList()
+    this.bikeList = this.bikeService.getNuwaraBikeList();
   }
   
 

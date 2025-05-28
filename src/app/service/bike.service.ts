@@ -8,36 +8,40 @@ export class BikeService {
 
 gallebikeList:BikeInterface[]=[
 
-  {bikeId:'gallebikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-  {bikeId:'gallebikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+  {bikeId:'gallebikeb1',bikeName:'Pulsar 150',color:'red',condition:'good',quantity:1,img:'pulsar150.jpg',rating:4,ratePerDay:200},
+  { bikeId: 'gallebikeb2', bikeName: 'Honda Navi', color: 'green', condition: 'mint condition', quantity: 1, img: 'navi.jpg', rating: 5, ratePerDay: 500 },
+  {bikeId:'gallebikeb3',bikeName:'Pulsar 160',color:'red',condition:'good',quantity:1,img:'pulsar150.jpg',rating:4,ratePerDay:200},
+  {bikeId:'gallebikeb2',bikeName:'Honda Navi v1',color:'green',condition:'mint condition',quantity:1,img:'navi.jpg',rating:5,ratePerDay:500}  
   
 ];
 
 jaffanaBikeList:BikeInterface[]=[
 
-  {bikeId:'jaffnabikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-  {bikeId:'jaffnabikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+  {bikeId:'jaffnabikeb1',bikeName:'Honda Navi',color:'red',condition:'good',quantity:1,img:'navi.jpg',rating:4,ratePerDay:200},
+  {bikeId:'jaffnabikeb2',bikeName:'Pulsar 150',color:'green',condition:'mint condition',quantity:1,img:'pulsar150.jpg',rating:5,ratePerDay:500}  
   
 ];
 
 mataraBikeList:BikeInterface[]=[
 
-  {bikeId:'matarabikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-  {bikeId:'matarabikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+  {bikeId:'matarabikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:1,img:'',rating:4,ratePerDay:200},
+  {bikeId:'matarabikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:1,img:'',rating:5,ratePerDay:500}  
   
 ];
 
 hikkaBikeList:BikeInterface[]=[
 
-  {bikeId:'matarabikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-  {bikeId:'matarabikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+  {bikeId:'hikkabikeb1',bikeName:'pulsar150',color:'red',condition:'good',quantity:1,img:'pulsar150.jpg',rating:4,ratePerDay:200},
+  { bikeId: 'hikkabikeb2', bikeName: 'pleasurebike', color: 'green', condition: 'mint condition', quantity: 1, img: 'pleasurebike.jpg', rating: 5, ratePerDay: 500 },
+  {bikeId:'hikkabikeb3',bikeName:'FZ',color:'red',condition:'good',quantity:1,img:'fx.jpg',rating:4,ratePerDay:200},
+  {bikeId:'hikkabikeb4',bikeName:'Pleasure',color:'green',condition:'mint condition',quantity:1,img:'pleasurebike.jpg',rating:5,ratePerDay:500}  
   
 ];
 
 nuwaraBikeList:BikeInterface[]=[
 
-  {bikeId:'nuwarabikeb1',bikeName:'lumala',color:'red',condition:'good',quantity:10,img:'',rating:4,ratePerDay:200},
-  {bikeId:'nuwarabikeb2',bikeName:'dunlop',color:'green',condition:'mint condition',quantity:2,img:'',rating:5,ratePerDay:500}  
+  {bikeId:'nuwarabikeb1',bikeName:'FZ',color:'red',condition:'good',quantity:1,img:'fx.jpg',rating:4,ratePerDay:200},
+  {bikeId:'nuwarabikeb2',bikeName:'Pleasure',color:'green',condition:'mint condition',quantity:1,img:'pleasurebike.jpg',rating:5,ratePerDay:500}  
   
 ];
 
