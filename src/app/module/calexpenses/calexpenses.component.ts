@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.reducer';
 import { select, Store } from '@ngrx/store';
-import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue} from "../../store/orders/orders.selectors"
+import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue, getFullExpense} from "../../store/orders/orders.selectors"
 import { HotelsListInterface, } from '../../model/hotel_interface';
 import { FoodItem } from '../../store/orders/orders.status';
 import { FoodsInterface } from '../../model/foodrecipe.model';
-import { clearHotelexpense} from '../../store/orders/orders.actions';
-import { getCustomerDetail, getCustomerID } from '../../store/customers/customer.selectors';
+import { clearHotelexpense, setTotalExpenses} from '../../store/orders/orders.actions';
+import { getCustomerDetail, getCustomerExpenseById, getCustomerID } from '../../store/customers/customer.selectors';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
+import { calculateCustomerExpenses } from '../../store/customers/customer-id.actions';
 @Component({
   selector: 'app-calexpenses',
   standalone: false,
@@ -48,6 +49,8 @@ export class CalexpensesComponent implements OnInit {
   customerObj$!: Observable<any>;
   customerRecivedObj!:any;
 
+  customerTotalExpense$!: Observable<number>;
+  customerTotalExpense!: any;
 
   constructor(private store: Store<AppState>,private customerdetailsService:CustomerdetailsService) {
     // Select the hotel list from the store
@@ -63,31 +66,36 @@ export class CalexpensesComponent implements OnInit {
 
     this.customerObj$ = this.store.pipe(select(getCustomerDetail));
 
+    this.customerTotalExpense$ = this.store.pipe(select(getFullExpense));
   }
 
   ngOnInit() {
     //this.totalExpenditure$=this.foodExpenditure$ + this.hotelExpenditure$ + this.beverageExpenditure$+this.travelExpenditure$;
-    this.hotelListSubs=this.hotelList$.subscribe((val)=>{
-      this.hotelList=val
+    this.hotelListSubs = this.hotelList$.subscribe((val) => {
+      this.hotelList = val
     })
-    this.foodListSubs=this.foodList$.subscribe((val)=>{
-      this.foodList=val
+    this.foodListSubs = this.foodList$.subscribe((val) => {
+      this.foodList = val
     })
-    this.beverageListSubs=this.beverageList$.subscribe((val)=>{
-      this.beverageList=val
+    this.beverageListSubs = this.beverageList$.subscribe((val) => {
+      this.beverageList = val
     })
-    this.travelListSubs=this.travelList$.subscribe((val)=>{
-      this.travelList=val
+    this.travelListSubs = this.travelList$.subscribe((val) => {
+      this.travelList = val
     })
-    this.customerIDSubsription=this.customerObj$.subscribe((val)=>{
-      this.customerID=val._id;
+    this.customerIDSubsription = this.customerObj$.subscribe((val) => {
+      this.customerID = val._id;
+    })
+
+    this.customerTotalExpense$.subscribe((val) => {
+      this.customerTotalExpense = val;
     })
   }
 
   clearAllExpenses() {
     this.store.dispatch(clearHotelexpense());
   }
-    
+
   calculateTotalExpenditure(): Observable<number> {
     return combineLatest([
       this.foodExpenditure$,
@@ -96,26 +104,26 @@ export class CalexpensesComponent implements OnInit {
       this.travelExpenditure$
     ]).pipe(
       map(([food, hotel, beverage, travel]) => food + hotel + beverage + travel)
-    ); 
+    );
   }
 
-  
+
   btnCaption= "Back";
   btnColor = "red";
 
-  closePlan(expense:any){
-    console.log(this.customerID);
-    
-     this.customerdetailsService.updateCustomer(this.customerID,expense,"COMPLETED")
-     .subscribe(
-      response => {
-        console.log('Customer updated successfully:', response);
-      },
-      error => {
-        console.error('Error updating customer:', error);
-      }
-    );
+  closePlan() {
+    this.store.dispatch(setTotalExpenses({expenses:this.customerTotalExpense}));
+    console.log(this.customerTotalExpense);
+    this.customerdetailsService.updateCustomer(this.customerID,this.customerTotalExpense,"COMPLETED")
+    .subscribe(
+     response => {
+       console.log('Customer updated successfully:', response);
+     },
+     error => {
+       console.error('Error updating customer:', error);
+     }
+   );
   }
 }
-  
+
 

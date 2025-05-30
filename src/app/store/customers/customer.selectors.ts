@@ -7,7 +7,7 @@ export const selectCustomerState = (state: AppState) => state.customers;
 
 //Selector to get the customer ID
 export const selectCustomerId = createSelector(
-  selectCustomerState, 
+  selectCustomerState,
   (state: CustomerState) => state.customer?._id // Return the _id field from the state
 );
 
@@ -20,4 +20,9 @@ export const getCustomerDetail = createSelector(
 export const getCustomerID = createSelector(
   selectCustomerState,
   (state: CustomerState) => state.customer.id
+)
+
+export const getCustomerExpenseById = createSelector(
+  selectCustomerState,
+  (state: CustomerState) => state.customer.totalExpense
 )

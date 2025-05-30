@@ -1,8 +1,8 @@
 //import { } from '@ngrx/store';
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
-import{addBeverage, addBeverageExpenses, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders, 
-  loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,updateHotel} from "./orders.actions"
+import{addBeverage, addBeverageExpenses, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders,
+  loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,setTotalExpenses} from "./orders.actions"
 import * as uuid from 'uuid';
 
 export const initialState: OrderState[]=[];
@@ -64,14 +64,14 @@ export const orderReducer = createReducer(
   on(removeHotelExpenseById, (state, { id }) => {
     // Find the expense to be removed
     const expenseToRemove = state.hotelList.find(expense => expense.hotelId=== id);
-    
+
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
-  
+
     // Calculate new total
     const newTotal = state.totalHotelExpenses - expenseToRemove.price;
-    
+
     // Return new state
     return {
       ...state,
@@ -87,14 +87,14 @@ export const orderReducer = createReducer(
   on(removeTravelExpenseById, (state, { id }) => {
     // Find the expense to be removed
     const expenseToRemove = state.orderList.find(expense => expense.productId=== id);
-    
+
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
-  
+
     // Calculate new total
     const newTotal = state.totalTravelExpenses - expenseToRemove.price;
-    
+
     // Return new state
     return {
       ...state,
@@ -110,17 +110,17 @@ export const orderReducer = createReducer(
   on(removeFoodExpenseById, (state, { id }) => {
     // Find the expense to be removed
     const expenseToRemove = state.foodList.find(expense => expense.foodId=== id);
-    
+
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
-  
+
     // Calculate new total
     var newTotal = state.totalTravelExpenses -expenseToRemove.price;
     if(newTotal<0){
       newTotal=0
     }
-    
+
     // Return new state
     return {
       ...state,
@@ -129,7 +129,7 @@ export const orderReducer = createReducer(
       totalFoodExpenses: newTotal
     };
   }),
-  
+
   on(addBeverageExpenses, (state, { expense }) => ({
     ...state,
     totalBeverageExpenses:state.totalBeverageExpenses+expense
@@ -138,8 +138,8 @@ export const orderReducer = createReducer(
     // Find the expense to be removed
     const expenseToRemove = state.beverageList.find(expense => expense.idDrink=== id);
     console.log(id);
-    
-    
+
+
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
@@ -149,7 +149,7 @@ export const orderReducer = createReducer(
     if(newTotal<0){
       newTotal=0
     }
-    
+
     // Return new state
     return {
       ...state,
@@ -160,10 +160,15 @@ export const orderReducer = createReducer(
   }),
 
   on(clearHotelexpense, (state) => ({
-    ...state,     
+    ...state,
     totalHotelExpenses: 0,
     totalBeverageExpenses:0,
     totalFoodExpenses:0,
-    totalTravelExpenses:0      
+    totalTravelExpenses:0
+  })),
+
+  on(setTotalExpenses, (state) => ({
+    ...state,
+    totalExpense:state.totalBeverageExpenses+state.totalFoodExpenses+state.totalHotelExpenses+state.totalTravelExpenses
   })),
 )

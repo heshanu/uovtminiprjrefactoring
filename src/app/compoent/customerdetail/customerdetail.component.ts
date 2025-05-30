@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
     standalone: false
 })
 export class CustomerdetailComponent implements OnInit{
-  
+
   registrationForm!:FormGroup;
 
   private destroy$ = new Subject<void>();
@@ -30,9 +30,9 @@ export class CustomerdetailComponent implements OnInit{
   startDates!:any;
 
   customerDetails!:CustomerdetailsInterface[]
- 
+
   ngOnInit(): void {
-    
+
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       age: ['', [Validators.required]],
@@ -45,7 +45,7 @@ export class CustomerdetailComponent implements OnInit{
       beverageListOption:[],
       startDate:['',Validators.required],
       endDate:['',Validators.required]
-      
+
     });
 
     this.days=this.calenderService.getDayClasses;
