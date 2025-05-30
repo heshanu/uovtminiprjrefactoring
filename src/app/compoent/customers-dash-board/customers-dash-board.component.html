@@ -43,9 +43,9 @@
         <h5 class="text-red-500">{{ customer.endDate | date: 'yyyy-MM-dd' }}</h5>
         CustomerId-{{customer._id}}
       </div>
-      <div class="text-gray-700 text-sm mt-4" [hidden]="customer.status=='ongoing'">
-        <strong class="text-gray-900">Total Expenses:</strong>
-        <h5 class="text-red-500">{{customer.totalExpense}}</h5>
+      <div class="text-gray-700 text-md mt-4" [hidden]="customer.status=='ongoing'">
+        <strong class="text-gray-900">Total Expenses</strong>
+        <h5 class="text-red-500">LKRS:{{customer.totalExpense}}</h5>
       </div>
       <div class="text-gray-700 text-sm mt-4">
         <strong class="text-gray-900">Customer Expenses Calculation Status:</strong>
