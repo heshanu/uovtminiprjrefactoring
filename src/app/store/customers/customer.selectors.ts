@@ -16,3 +16,8 @@ export const getCustomerDetail = createSelector(
   selectCustomerState,
   (state: CustomerState) => state
 );
+
+export const getCustomerID = createSelector(
+  selectCustomerState,
+  (state: CustomerState) => state.customer.id
+)

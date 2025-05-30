@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { setCustomer} from './customer-id.actions';
 import { CustomerState, initialCustomerState } from './customer.status';
-import {loadCustomers,loadCustomersFailure,loadCustomersSuccess} from "./customer-id.actions"
+import {loadCustomers,loadCustomersFailure,loadCustomersSuccess,setCustomer} from "./customer-id.actions"
 
 export const customerReducer = createReducer(
   initialCustomerState,
@@ -20,6 +19,7 @@ export const customerReducer = createReducer(
     ...state,
     loading: false,
     error: error,
-  }))
+  })),
+
 );
 

@@ -10,5 +10,7 @@ export interface CustomerdetailsInterface{
     beverageList:string,
     beverageListOption?: string,
     startDate: string,
-    endDate:string   
+    endDate:string,
+    status?:string,
+    totalExpense?:number   
 }

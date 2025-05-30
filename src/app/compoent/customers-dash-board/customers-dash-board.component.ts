@@ -9,7 +9,6 @@ import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { SpinnerService } from '../../service/spinner.service';
 import { CustomerState } from '../../store/customers/customer.status';
-
 @Component({
     selector: 'app-customers-dash-board',
     templateUrl: './customers-dash-board.component.html',
@@ -25,15 +24,12 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   customerId!:string|undefined;
   private subscription!: Subscription;
 
-  isLoading$!:Observable<boolean>;
-
-  loading = false;
-
+  isLoading$!: Observable<boolean>;
+  
   errorState = {
     hasError: false,
     message: ''
   };
-
 
   customersList:CustomerdetailsInterface[]=[];
 
@@ -43,7 +39,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -52,7 +48,6 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
       this.customerId = data?.customer._id; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
     });
-
 
     this.isLoading$=this.spinnerService.loading$;
     this.spinnerService.showLoading();
@@ -68,11 +63,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
         };
         console.error('Error fetching beverages:', err);
       }
-    });
-
-   
-    
-
+    });    
   }
 
   
@@ -107,5 +98,9 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
       })
     );
   }
+  }
+
+  completed() {
+    this.route.navigate(['']);
   }
 }

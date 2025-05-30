@@ -4,7 +4,7 @@ import { CalenderService } from '../../service/calender.service';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-//import { NotificationService } from '../../notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-customerdetail',
@@ -65,26 +65,32 @@ export class CustomerdetailComponent implements OnInit{
     if (this.registrationForm.valid) {
       console.log('Form Submitted:', this.registrationForm.value);
       console.log(this.days);
-      this.customerDetailsService.registerCustomer(this.registrationForm.value)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (cus) => {
-          if (cus != null) {
-            console.log('Customer registered successfully');
-            // Provide user feedback, e.g., show a success message
-          } else {
-            console.log('Form is empty');
+
+      this.customerDetailsService.registerCustomer(this.registrationForm.value).subscribe({
+  next: (textResponse:any) => {
+            if (textResponse === "Customer registered successfully") {
+
+              //this.router.navigate(['/home']);
+              console.log("succefully tr");
+            }
+          },
+          error: (err) => {
+            console.error('Error:', err);
+         //   this.errorMessage = "Login failed";
           }
-        },
-        error: (err) => {
-          console.error('Error registering customer', err);
-          // Provide user feedback, e.g., show an error message
-        }
-      });
-  } else {
+        });
+                      Swal.fire({
+  title: 'Action Successfully executed',
+  text: 'Customer registered successfully',
+  icon: 'success',
+  confirmButtonText: 'OK'
+});
+      } else {
     console.log('Form is invalid');
     // Provide user feedback, e.g., highlight invalid fields
   }
+
+  this.registrationForm.reset();
 }
 
   onFileChange(event: any) {
@@ -109,4 +115,6 @@ export class CustomerdetailComponent implements OnInit{
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+
 }

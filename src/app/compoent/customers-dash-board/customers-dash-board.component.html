@@ -1,13 +1,13 @@
 @if(isLoading$|async){
-<app-spinner [isLoading]="isLoading$| async"/>
+<app-spinner [isLoading]="isLoading$| async" />
 }
 @else{
 <div class="bg-gray-100 py-12 px-6 m-16">
   <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Customers List</h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <div *ngFor="let customer of customersList" 
-         class="bg-white p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+    <div *ngFor="let customer of customersList"
+      class="bg-white p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
 
       <h3 class="text-xl font-semibold text-gray-900 mb-2">
         Name: <span class="text-green-600">{{customer.name|uppercase}}</span>
@@ -37,16 +37,26 @@
       <div class="border-t border-gray-300 my-3"></div>
 
       <div class="text-gray-700 text-sm">
-        <strong class="text-gray-900">Duration:</strong> 
+        <strong class="text-gray-900">Duration:</strong>
         <h5 class="text-red-500">{{ customer.startDate | date: 'yyyy-MM-dd' }}</h5>
-       -
-       <h5 class="text-red-500">{{ customer.endDate | date: 'yyyy-MM-dd' }}</h5>
-CustomerId-{{customer._id}}
+        -
+        <h5 class="text-red-500">{{ customer.endDate | date: 'yyyy-MM-dd' }}</h5>
+        CustomerId-{{customer._id}}
       </div>
-      <button class="bg-green-500 m-4 p-4" (click)="planNow(customer,customer._id)">Plan Now</button>
+      <div class="text-gray-700 text-sm mt-4" [hidden]="customer.status=='ongoing'">
+        <strong class="text-gray-900">Total Expenses:</strong>
+        <h5 class="text-red-500">{{customer.totalExpense}}</h5>
+      </div>
+      <div class="text-gray-700 text-sm mt-4">
+        <strong class="text-gray-900">Customer Expenses Calculation Status:</strong>
+        @if(customer.status!="ongoing"){ <h5 class="text-red-500 bg-gray-100 text-center text-3xl m-4">
+          {{customer.status}}</h5>}
+        @else{ <h5 class="text-green-500 bg-gray-100 text-center text-3xl m-4">{{customer.status}}</h5>}
+      </div>
+      <button class="bg-green-500 m-4 p-4" (click)="planNow(customer,customer._id)"
+        [hidden]="customer.status!='ongoing'">Plan Now</button>
+      <button class="bg-red-500 m-4 p-4" (click)="completed()">Completed</button>
     </div>
   </div>
 </div>
 }
-
-
