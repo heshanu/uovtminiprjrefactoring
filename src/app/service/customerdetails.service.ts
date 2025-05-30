@@ -8,8 +8,8 @@ import { CustomerdetailsInterface } from '../model/customerDetailsInterface';
 })
 export class CustomerdetailsService {
 
-  //private apiUrl = 'https://uovtminiprj-backend.vercel.app'
-   private apiUrl='http://localhost:3000'
+  private apiUrl = 'https://uovtminiprj-backend.vercel.app'
+  // private apiUrl='http://localhost:3000'
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) {}
