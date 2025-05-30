@@ -25,7 +25,7 @@ export interface FoodItem{
     ingredients:string[];
     price:number;
     quantity:number;
- 
+
 }
 
 export interface BeverageItem{
@@ -51,7 +51,8 @@ export interface OrderState {
   totalHotelExpenses:number;
   totalFoodExpenses:number;
   totalBeverageExpenses:number;
-  totalTravelExpenses:number;
+  totalTravelExpenses: number;
+  totalExpense: number;
 }
 
 export const initialOrderState: OrderState = {
@@ -69,5 +70,6 @@ export const initialOrderState: OrderState = {
   totalHotelExpenses:0,
   totalFoodExpenses:0,
   totalBeverageExpenses:0,
-  totalTravelExpenses:0
+  totalTravelExpenses: 0,
+  totalExpense: 0
 };
