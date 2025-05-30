@@ -29,3 +29,9 @@ export const loadCustomersFailure = createAction(
   '[Customer] Load Customers Failure',
   props<{ error: any }>()
 );
+
+export const calculateCustomerExpenses = createAction(
+  '[Customer] Calculate Customers Fees',
+  props<{ expenses: any }>()
+);
+

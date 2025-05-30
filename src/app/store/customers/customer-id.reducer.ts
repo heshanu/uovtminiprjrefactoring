@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { CustomerState, initialCustomerState } from './customer.status';
-import {loadCustomers,loadCustomersFailure,loadCustomersSuccess,setCustomer} from "./customer-id.actions"
+import {loadCustomers,loadCustomersFailure,loadCustomersSuccess,setCustomer,calculateCustomerExpenses} from "./customer-id.actions"
 
 export const customerReducer = createReducer(
   initialCustomerState,
@@ -20,6 +20,10 @@ export const customerReducer = createReducer(
     loading: false,
     error: error,
   })),
-
+  on(calculateCustomerExpenses, (state, { expenses }) => ({
+    ...state,
+    loading: false,
+    totalExpense: expenses+state.customer.totalExpense
+  })),
 );
 

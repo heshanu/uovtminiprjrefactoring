@@ -25,7 +25,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   private subscription!: Subscription;
 
   isLoading$!: Observable<boolean>;
-  
+
   errorState = {
     hasError: false,
     message: ''
@@ -34,7 +34,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   customersList:CustomerdetailsInterface[]=[];
 
   constructor(private route:Router,private activeRouter:ActivatedRoute,
-    private store: Store<AppState>,private spinnerService:SpinnerService){
+    private store: Store<AppState>,private spinnerService:SpinnerService,private customerDetailsService:CustomerdetailsService){
     this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
@@ -63,10 +63,9 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
         };
         console.error('Error fetching beverages:', err);
       }
-    });    
+    });
   }
 
-  
   planNow(customer:CustomerdetailsInterface,_id:any) {
     console.log();
 
@@ -76,7 +75,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
     //  this.store.dispatch(setCustomerId({_id}));
      console.log("customer is is set",_id);
      console.log(customer);
-     
+
      this.store.dispatch(
       setCustomer({
         customer: {
@@ -91,7 +90,9 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
           beverageList: customer.beverageList,
           beverageListOption: customer.beverageListOption,
           startDate: customer.startDate,
-          endDate: customer.endDate
+          endDate: customer.endDate,
+          status:customer.status,
+          totalExpense:customer.totalExpense
         },
         loading: true,
         error: null
@@ -100,7 +101,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
   }
 
-  completed() {
+  completed(customer: CustomerdetailsInterface) {
     this.route.navigate(['']);
   }
 }

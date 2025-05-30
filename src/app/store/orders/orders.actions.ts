@@ -92,3 +92,10 @@ export const setCurrentOrderStatus = createAction(
   '[Order] Set Current Order Status',
   props<{ status: string }>()
 );
+
+export const setTotalExpenses = createAction(
+  '[Order] Set Total Expenses',
+  props<{ expenses: number }>()
+);
+
+

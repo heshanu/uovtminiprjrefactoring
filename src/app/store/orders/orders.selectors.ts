@@ -76,5 +76,7 @@ export const getBeverageExpenseValue=createSelector(
   (state: OrderState) => state.totalBeverageExpenses
 )
 
-
-
+export const getFullExpense=createSelector(
+  selectOrderState,
+  (state: OrderState) => state.totalExpense
+)

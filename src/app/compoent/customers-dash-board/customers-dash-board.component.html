@@ -55,7 +55,7 @@
       </div>
       <button class="bg-green-500 m-4 p-4" (click)="planNow(customer,customer._id)"
         [hidden]="customer.status!='ongoing'">Plan Now</button>
-      <button class="bg-red-500 m-4 p-4" (click)="completed()">Completed</button>
+      <button class="bg-red-500 m-4 p-4" (click)="completed(customer)">Completed</button>
     </div>
   </div>
 </div>
