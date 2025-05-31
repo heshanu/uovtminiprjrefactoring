@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { getFoodExpenseValue } from '../../../store/orders/orders.selectors';
-import { addFoodExpenses, removeFoodExpenseById } from '../../../store/orders/orders.actions';
+import { addFoodExpenses,removeFoodExpenseById } from '../../../store/orders/orders.actions';
 
 @Component({
   selector: 'app-foodexpenses',
@@ -17,7 +17,7 @@ export class FoodexpensesComponent implements OnInit{
 
   foodExpenses$!:Observable<number>;
   hotelSub!:Subscription;
-  
+
     constructor(   private store:Store<AppState>){
         this.foodExpenses$ = this.store.select(getFoodExpenseValue);
      //   this.hotelExpenses$=this.store.select()
@@ -31,9 +31,8 @@ export class FoodexpensesComponent implements OnInit{
     this.List$.subscribe((val)=>{
       this.foodList=val;
     })
-    // this.foodList=this.List;
-    // this.getTotalQuantity();
-    // this.getTotalValue();
+    this.getTotalQuantity();
+    this.getTotalValue();
   }
 
   getTotalQuantity(): number {
@@ -45,12 +44,12 @@ export class FoodexpensesComponent implements OnInit{
   }
 
   reducedFoodExpense(id:string) {
-        this.store.dispatch(removeFoodExpenseById({id:id}));
+  this.store.dispatch(removeFoodExpenseById({id:id}));
   }
 
   setFoodExpenses(quantity: number,price:number) {
       this.store.dispatch(addFoodExpenses({expense:quantity*price}));
     }
-      
+
 
 }
