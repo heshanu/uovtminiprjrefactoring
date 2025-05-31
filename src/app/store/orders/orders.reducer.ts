@@ -3,7 +3,6 @@ import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
 import{addBeverage, addBeverageExpenses, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders,
   loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,setTotalExpenses} from "./orders.actions"
-
 export const initialState: OrderState[]=[];
 
 export const orderReducer = createReducer(
@@ -110,23 +109,26 @@ export const orderReducer = createReducer(
     // Find the expense to be removed
     console.log("Hiiii");
     const expenseToRemove = state.foodList.find(expense => expense.foodId=== id);
-    console.log(expenseToRemove+"food total expense to remove");
+
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
-
-
     // Calculate new total
     const newTotal = state.totalFoodExpenses - expenseToRemove.price;
-    console.log(newTotal+"food total expense");
 
-    // Return new stat
+    // Calculate new total
+    var newTotal = state.totalTravelExpenses -expenseToRemove.price;
+    if(newTotal<0){
+      newTotal=0
+    }
+
     return {
       ...state,
       foodList: state.foodList.filter(food =>food.foodId  !== id),
       totalFoodExpenses: newTotal
     };
   }),
+
   on(addBeverageExpenses, (state, { expense }) => ({
     ...state,
     totalBeverageExpenses:state.totalBeverageExpenses+expense
