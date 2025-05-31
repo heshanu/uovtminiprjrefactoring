@@ -114,9 +114,6 @@ export const orderReducer = createReducer(
       return state; // return unchanged state if expense not found
     }
     // Calculate new total
-    const newTotal = state.totalFoodExpenses - expenseToRemove.price;
-
-    // Calculate new total
     var newTotal = state.totalTravelExpenses -expenseToRemove.price;
     if(newTotal<0){
       newTotal=0
