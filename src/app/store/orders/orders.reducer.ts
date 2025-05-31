@@ -3,7 +3,6 @@ import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
 import{addBeverage, addBeverageExpenses, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders,
   loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,setTotalExpenses} from "./orders.actions"
-import * as uuid from 'uuid';
 
 export const initialState: OrderState[]=[];
 
@@ -109,27 +108,25 @@ export const orderReducer = createReducer(
   })),
   on(removeFoodExpenseById, (state, { id }) => {
     // Find the expense to be removed
+    console.log("Hiiii");
     const expenseToRemove = state.foodList.find(expense => expense.foodId=== id);
-
+    console.log(expenseToRemove+"food total expense to remove");
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
     }
 
-    // Calculate new total
-    var newTotal = state.totalTravelExpenses -expenseToRemove.price;
-    if(newTotal<0){
-      newTotal=0
-    }
 
-    // Return new state
+    // Calculate new total
+    const newTotal = state.totalFoodExpenses - expenseToRemove.price;
+    console.log(newTotal+"food total expense");
+
+    // Return new stat
     return {
       ...state,
-      foodList: state.foodList.filter(food =>food.foodId!== id),
-      //hotelExpenses: state.hotelList.filter(expense => expense.hotelId !== id),
+      foodList: state.foodList.filter(food =>food.foodId  !== id),
       totalFoodExpenses: newTotal
     };
   }),
-
   on(addBeverageExpenses, (state, { expense }) => ({
     ...state,
     totalBeverageExpenses:state.totalBeverageExpenses+expense
@@ -138,7 +135,6 @@ export const orderReducer = createReducer(
     // Find the expense to be removed
     const expenseToRemove = state.beverageList.find(expense => expense.idDrink=== id);
     console.log(id);
-
 
     if (!expenseToRemove) {
       return state; // return unchanged state if expense not found
