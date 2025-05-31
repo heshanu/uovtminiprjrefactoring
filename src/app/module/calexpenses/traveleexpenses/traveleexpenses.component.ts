@@ -45,7 +45,7 @@ export class TraveleexpensesComponent implements OnInit{
   setTravelExpenses(quantity:number,ratePerDay:number){
       this.store.dispatch(addTravelExpenses({expense:quantity*ratePerDay}));
     }
-  
+
   reducedTravelExpense(id:string){
       this.store.dispatch(removeTravelExpenseById({id:id}));
     }
