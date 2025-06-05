@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceCall } from '../../service/auth.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
 
   loginForm!: FormGroup;
   show!: boolean;
-  
+
   errorMessage!: string;
 
   constructor(private fb: FormBuilder,
@@ -39,14 +40,14 @@ export class LoginComponent implements OnInit{
 
   /*
   onSubmit(): void {
-    
+
     console.log('Form Value:', this.loginForm.value);
     console.log('Form Valid:', this.loginForm.valid);
-  
+
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value; // Ensure field name matches your form (e.g., 'name' → 'username')
       const password = this.loginForm.get('password')?.value;
-  
+
       this.authService.login(username, password).subscribe({
         next: () => {
           this.router.navigate(['/home']);
@@ -64,27 +65,39 @@ export class LoginComponent implements OnInit{
       this.loginForm.markAllAsTouched();
     }
   }*/
-  
+
     onSubmit() {
       if (this.loginForm.valid) {
         const { username, password } = this.loginForm.value;
 
         console.log(username,password);
-        
-        
+
+
         this.authService.login(username, password).subscribe({
           next: (textResponse) => {
             if (textResponse === "Login successful") {
+                                    Swal.fire({
+                title: 'Action Successfully executed',
+                text: 'Customer registered successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
               this.router.navigate(['/home']);
             }
           },
           error: (err) => {
+                                  Swal.fire({
+              title: 'Action Successfully executed',
+              text: 'Customer registered not successful',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
             console.error('Error:', err);
             this.errorMessage = "Login failed";
           }
         });
 
-       
+
       }
     }
 }
