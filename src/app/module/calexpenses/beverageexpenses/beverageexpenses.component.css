@@ -3,7 +3,7 @@
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  
+
   .summary-stats {
     display: flex;
     gap: 20px;
@@ -12,27 +12,27 @@
     background: #f5f5f5;
     border-radius: 8px;
   }
-  
+
   .summary-stats .stat-item {
     display: flex;
     flex-direction: column;
   }
-  
+
   .summary-stats .stat-item .stat-label {
     font-size: 0.9rem;
     color: #666;
   }
-  
+
   .summary-stats .stat-item .stat-value {
     font-size: 1.2rem;
     font-weight: bold;
   }
-  
+
   .product-table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   .product-table th {
     background-color: #3f51b5;
     color: white;
@@ -41,48 +41,73 @@
     cursor: pointer;
     position: relative;
   }
-  
+
   .product-table th:hover {
     background-color: #303f9f;
   }
-  
+
   .product-table th span {
     position: absolute;
     right: 8px;
   }
-  
+
   .product-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
-  
+
   .product-table tr:hover {
     background-color: #f5f5f5;
   }
-  
+
   .product-table tr.duplicate {
     background-color: #fff3cd;
   }
-  
+
   .product-table tr.duplicate:hover {
     background-color: #ffe69c;
   }
-  
+
   .product-table .status-badge {
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
   }
-  
+
   .product-table .status-badge.status-pending {
     background-color: #ffecb3;
     color: #ff6f00;
   }
-  
+
   .product-table .status-badge.status-approved {
     background-color: #c8e6c9;
     color: #2e7d32;
   }
-  
+
+    :root {
+
+      --primary-color: #3f51b5;
+      --accent-color: #ff4081;
+      --background-color: #f5f5f5;
+      --text-color: #212121;
+      --card-bg: #ffffff;
+      margin-top: 100px;
+    }
+
+    .dark-theme {
+      --accent-color: #ff80ab;
+      --background-color: #303030;
+      --text-color: white;
+      --card-bg: #424242;
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
   /* Add other status styles as needed */

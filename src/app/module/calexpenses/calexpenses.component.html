@@ -1,7 +1,7 @@
-<div class="min-h-screen bg-gray-50 p-4 sm:p-6">
+<div class="min-h-screen bg-50 p-4 sm:p-6">
   <!-- Header Section -->
   <header class="mb-6 sm:mb-8 text-center">
-    <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+    <h1 class="text-2xl sm:text-3xl font-bold text-800 mb-2">
       Total Expenditure:
       <span class="text-blue-600">
         LKRS {{ calculateTotalExpenditure() | async | number : '1.2-2'}}
@@ -24,22 +24,22 @@
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 xl:gap-8">
       <!-- Travel Expenses -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+      <div class="bg rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
         <app-traveleexpenses [List$]="travelList$" class="h-full" />
       </div>
 
       <!-- Food Expenses -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+      <div class="bg rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
         <app-foodexpenses [List$]="foodList$" class="h-full" />
       </div>
 
       <!-- Beverage Expenses -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+      <div class="bg rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
         <app-beverageexpenses [List$]="beverageList$" class="h-full" />
       </div>
 
       <!-- Hotel Expenses -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+      <div class="bg rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
         <app-hotelexpenses [List$]="hotelList$" class="h-full" />
       </div>
     </div>
