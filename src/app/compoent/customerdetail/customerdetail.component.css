@@ -1,3 +1,30 @@
 form {
     max-width: 600px;
   }
+
+
+    :root {
+
+      --primary-color: #3f51b5;
+      --accent-color: #ff4081;
+      --background-color: #f5f5f5;
+      --text-color: #212121;
+      --card-bg: #ffffff;
+      margin-top: 100px;
+    }
+
+    .dark-theme {
+      --accent-color: #ff80ab;
+      --background-color: #303030;
+      --text-color: white;
+      --card-bg: #424242;
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
