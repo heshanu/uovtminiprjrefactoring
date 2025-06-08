@@ -1,6 +1,6 @@
 <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
-    <ng-container [ngSwitch]="currentTheme$ | async">
-      <mat-icon *ngSwitchCase="'dark'"><img src="sunny.png"></mat-icon>
-      <mat-icon *ngSwitchDefault>contrast</mat-icon>
-    </ng-container>
-  </button> 
+  <ng-container [ngSwitch]="currentTheme$ | async">
+    <mat-icon *ngSwitchCase="'dark'">light_mode</mat-icon>
+    <mat-icon *ngSwitchDefault>contrast</mat-icon>
+  </ng-container>
+</button>
