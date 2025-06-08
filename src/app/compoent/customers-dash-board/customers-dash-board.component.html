@@ -66,27 +66,27 @@
   <app-spinner [isLoading]="isLoading$ | async" />
 </div>
 } @else {
-<div class="min-h-screen bg-gray-50 py-4 px-4 sm:py-8 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-50 py-4 px-4 sm:py-8 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <!-- Header Section -->
     <div class="text-center mb-6 sm:mb-8 lg:mb-12">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-900 mb-2">
         Customers List
       </h2>
-      <p class="text-gray-600 text-sm sm:text-base">
+      <p class="text-600 text-sm sm:text-base">
         Manage and track your customer bookings
       </p>
     </div>
 
     <!-- Customer Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-      <div *ngFor="let customer of customersList"
-        class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden">
+      <div *ngFor="let customer of customersList" class="rounded-xl shadow-md hover:shadow-xl transition-all duration-300
+          transform hover:-translate-y-1 border border-100 overflow-hidden">
 
         <!-- Card Header -->
-        <div class="p-4 sm:p-6 border-b border-gray-100">
+        <div class="p-4 sm:p-6 border-b border-100">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-            <h3 class="text-lg sm:text-xl font-semibold text-gray-900 flex items-center gap-2">
+            <h3 class="text-lg sm:text-xl font-semibold text-900 flex items-center gap-2">
               <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -100,10 +100,10 @@
           <!-- Status Badge -->
           <div class="flex justify-start">
             <span [ngClass]="{
-                  'bg-green-100 text-green-800 border-green-200': customer.status === 'ongoing',
-                  'bg-blue-100 text-blue-800 border-blue-200': customer.status === 'completed',
-                  'bg-red-100 text-red-800 border-red-200': customer.status === 'cancelled'
-                }" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border">
+                    'bg-green-100 text-green-800 border-green-200': customer.status === 'ongoing',
+                    'bg-blue-100 text-blue-800 border-blue-200': customer.status === 'completed',
+                    'bg-red-100 text-red-800 border-red-200': customer.status === 'cancelled'
+                  }" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border">
               {{ customer.status | uppercase }}
             </span>
           </div>
@@ -114,39 +114,39 @@
 
           <!-- Address Section -->
           <div class="flex items-start gap-3">
-            <svg class="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
             <div class="min-w-0 flex-1">
-              <p class="text-xs sm:text-sm font-medium text-gray-900 mb-1">Address</p>
-              <p class="text-xs sm:text-sm text-gray-600 break-words">{{ customer.address }}</p>
+              <p class="text-xs sm:text-sm font-medium text-900 mb-1">Address</p>
+              <p class="text-xs sm:text-sm text-600 break-words">{{ customer.address }}</p>
             </div>
           </div>
 
           <!-- Accommodation -->
           <div>
-            <p class="text-xs sm:text-sm font-medium text-gray-900 mb-1">Accommodation</p>
-            <p class="text-xs sm:text-sm text-gray-600">{{ customer.accomadation }}</p>
+            <p class="text-xs sm:text-sm font-medium text-900 mb-1">Accommodation</p>
+            <p class="text-xs sm:text-sm text-600">{{ customer.accomadation }}</p>
           </div>
 
           <!-- Food Section -->
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4">
                 </path>
               </svg>
-              <p class="text-xs sm:text-sm font-medium text-gray-900">Food</p>
+              <p class="text-xs sm:text-sm font-medium text-900">Food</p>
             </div>
             <div class="pl-6 space-y-1">
-              <p class="text-xs text-gray-600">
+              <p class="text-xs text-600">
                 <span class="font-medium">List:</span> {{ customer.foodList }}
               </p>
-              <p class="text-xs text-gray-600">
+              <p class="text-xs text-600">
                 <span class="font-medium">Options:</span> {{ customer.foodListOption }}
               </p>
             </div>
@@ -155,33 +155,33 @@
           <!-- Beverage Section -->
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
               </svg>
               <p class="text-xs sm:text-sm font-medium text-gray-900">Beverages</p>
             </div>
             <div class="pl-6 space-y-1">
-              <p class="text-xs text-gray-600">
+              <p class="text-xs text-600">
                 <span class="font-medium">List:</span> {{ customer.beverageList }}
               </p>
-              <p class="text-xs text-gray-600">
+              <p class="text-xs text-600">
                 <span class="font-medium">Options:</span> {{ customer.beverageListOption }}
               </p>
             </div>
           </div>
 
           <!-- Divider -->
-          <div class="border-t border-gray-200 my-4"></div>
+          <div class="border-t border-200 my-4"></div>
 
           <!-- Duration Section -->
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              <p class="text-xs sm:text-sm font-medium text-gray-900">Duration</p>
+              <p class="text-xs sm:text-sm font-medium text-900">Duration</p>
             </div>
             <div class="pl-6">
               <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-xs sm:text-sm">
@@ -193,19 +193,19 @@
                   {{ customer.endDate | date: 'MMM dd, yyyy' }}
                 </span>
               </div>
-              <p class="text-xs text-gray-500 mt-1">Customer ID: {{ customer._id }}</p>
+              <p class="text-xs text-500 mt-1">Customer ID: {{ customer._id }}</p>
             </div>
           </div>
 
           <!-- Total Expenses (Hidden for ongoing status) -->
           <div *ngIf="customer.status !== 'ongoing'" class="space-y-2">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-500" fill="none" s troke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
                 </path>
               </svg>
-              <p class="text-xs sm:text-sm font-medium text-gray-900">Total Expenses</p>
+              <p class="text-xs sm:text-sm font-medium text-900">Total Expenses</p>
             </div>
             <div class="pl-6">
               <p class="text-lg sm:text-xl font-bold text-red-600">
