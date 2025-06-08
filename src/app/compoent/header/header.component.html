@@ -1,9 +1,13 @@
 <header>
   <nav>
-    <div class="text-black text-lg">GuideBuddy</div>
+    <div class="text-lg">GuideBuddy</div>
     <ul *ngIf="isShow">
-      <li><a routerLink="customersDashboard">Customers Dashboard</a></li>
-      <li><a routerLink="customerform">Customer Registeration</a></li>
+      <li><a routerLink="customersDashboard">
+          <div class="text-lg">Customers Dashboard</div>
+        </a></li>
+      <li><a routerLink="customerform" class="text-lg">
+          <div class="text-lg">Customer Registeration</div>
+        </a></li>
     </ul>
   </nav>
   <ul class="flex space-x-4" *ngIf="isShow">
