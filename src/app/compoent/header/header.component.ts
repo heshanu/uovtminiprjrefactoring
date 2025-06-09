@@ -21,7 +21,13 @@ export class HeaderComponent implements OnInit{
 
     logOut(): void {
         this.authService.logout();
-    }
+  }
+
+  isLoginLabel():boolean {
+    if (localStorage.getItem("username") || localStorage.getItem("password")) {
+      return true;
+    } return false;
+  }
 
 }
 
