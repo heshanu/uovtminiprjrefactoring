@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit{
     }
 
     isShow!: Observable<boolean>;
-    
-    logOut(): void { 
+
+    logOut(): void {
         this.authService.logout();
     }
 

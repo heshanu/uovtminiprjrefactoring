@@ -19,19 +19,22 @@ export class CustomerDashBoardComponent implements OnInit,OnDestroy{
   customerRecivedObj!:CustomerdetailsInterface|any;
   private subscription!: Subscription;
 
+  sidePanelOpen = false
+  showMobileToggle = false
+
    constructor(private route:Router,
       private store: Store<AppState>){
       this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
-  
+
     }
- 
- 
+
+
   ngOnInit(): void {
     this.subscription=this.customerObj$.subscribe((data) => {
-      this.customerRecivedObj = data; 
+      this.customerRecivedObj = data;
       console.log('Customer ID:', this.customerRecivedObj);
 
-      
+
     });
      }
 
@@ -39,7 +42,16 @@ export class CustomerDashBoardComponent implements OnInit,OnDestroy{
    if(this.subscription){
     this.subscription.unsubscribe();
    }
-     }
   }
 
-   
+
+  toggleSidePanel(): void {
+    this.sidePanelOpen = !this.sidePanelOpen
+  }
+
+  closeSidePanel(): void {
+    this.sidePanelOpen = false
+  }
+  }
+
+

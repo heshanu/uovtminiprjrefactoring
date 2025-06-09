@@ -1,33 +1,168 @@
-<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-16">
-  <!-- Side Panel -->
-  <div class="w-full md:w-1/4">
-    <div class="grid grid-cols-1 gap-6 p-4">
-      <div class="card bg-white shadow rounded-lg">
-        <div class="card-body p-4">
-          <h3 class="card-title text-xl font-bold">{{ customerRecivedObj.name|uppercase }}</h3>
-
-          <p class="card-text"><strong>Address:</strong> {{ customerRecivedObj.address }}</p>
-          <p class="card-text"><strong>Age:</strong> {{ customerRecivedObj.age }}</p>
-          <p class="card-text"><strong>Travel Mode:</strong> {{ customerRecivedObj.travelMode }}</p>
-
-          <hr class="my-2 border-gray-300">
-
-          <p class="card-text"><strong>Food List:</strong> {{ customerRecivedObj.foodList }}</p>
-          <p class="card-text"><strong>Food Option:</strong> {{ customerRecivedObj.foodListOption }}</p>
-          <p class="card-text"><strong>Beverage List:</strong> {{ customerRecivedObj.beverageList }}</p>
-          <p class="card-text"><strong>Beverage Option:</strong> {{ customerRecivedObj.beverageListOption }}</p>
-
-          <hr class="my-2 border-gray-300">
-
-          <p class="card-text"><strong>Start Date:</strong> {{ customerRecivedObj.startDate | date }}</p>
-          <p class="card-text"><strong>End Date:</strong> {{ customerRecivedObj.endDate | date }}</p>
+<div class="min-h-screen">
+  <div class="container mx-auto px-4 py-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Side Panel -->
+      <div class="w-full lg:w-80 xl:w-96">
+        <mat-card class="sticky top-6 shadow-lg border-0">
+          <mat-card-header class="pb-4">
+            <div mat-card-avatar class="flex items-center justify-center">
+              <mat-icon class="text-primary-600">person</mat-icon>
+            </div>
+            <mat-card-title class="text-xl lg:text-2xl font-bold
+            text-900 break-words">
+              {{ customerRecivedObj.name | uppercase }}
+            </mat-card-title>
+            <mat-card-subtitle class="text-sm text-600">
+              Customer Details
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="space-y-6">
+            <!-- Personal Information Section -->
+            <div class="space-y-3">
+              <h4 class="text-sm font-semibold text-900 uppercase tracking-wide
+              border-b border-200 pb-2">
+                Personal Information
+              </h4>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <mat-icon class="text-500 text-base mt-0.5">location_on</mat-icon>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-xs font-medium text-600 uppercase tracking-wide">Address</p>
+                    <p class="text-sm text-900 break-words">{{ customerRecivedObj.address }}</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <mat-icon class="text-500 text-base mt-0.5">cake</mat-icon>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-xs font-medium text-600 uppercase tracking-wide">Age</p>
+                    <p class="text-sm text-900">{{ customerRecivedObj.age }} years</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <mat-icon class="text-500 text-base mt-0.5">directions_car</mat-icon>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-xs font-medium text-600 uppercase tracking-wide">Travel Mode</p>
+                    <p class="text-sm text-900">{{ customerRecivedObj.travelMode }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <!-- Food & Beverage Section -->
+            <div class="space-y-3">
+              <h4 class="text-sm font-semibold text-900 uppercase tracking-wide
+              border-b border-200 pb-2">
+                Food & Beverages
+              </h4>
+              <div class="space-y-4">
+                <!-- Food Section -->
+                <div class="bg-50 rounded-lg p-3">
+                  <div class="flex items-center gap-2 mb-2">
+                    <mat-icon class="text-orange-600 text-base">restaurant</mat-icon>
+                    <span class="text-sm font-medium text-orange-900">Food Preferences</span>
+                  </div>
+                  <div class="space-y-1 pl-6">
+                    <p class="text-xs text-600">
+                      <span class="font-medium">List:</span> {{ customerRecivedObj.foodList }}
+                    </p>
+                    <p class="text-xs">
+                      <span class="font-medium">Option:</span> {{ customerRecivedObj.foodListOption }}
+                    </p>
+                  </div>
+                </div>
+                <!-- Beverage Section -->
+                <div class="rounded-lg p-3">
+                  <div class="flex items-center gap-2 mb-2">
+                    <mat-icon class="text-blue-600 text-base">local_cafe</mat-icon>
+                    <span class="text-sm font-medium text-blue-900">Beverage Preferences</span>
+                  </div>
+                  <div class="space-y-1 pl-6">
+                    <p class="text-xs text-600">
+                      <span class="text-400">List:</span> {{ customerRecivedObj.beverageList }}
+                    </p>
+                    <p class="text-xs text-600">
+                      <span class="font-medium">Option:</span> {{ customerRecivedObj.beverageListOption }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <!-- Travel Dates Section -->
+            <div class="space-y-3">
+              <h4 class="text-sm font-semibold text-900 uppercase tracking-wide
+              border-b border-200 pb-2">
+                Travel Schedule
+              </h4>
+              <div class="rounded-lg p-4">
+                <div class="flex items-center gap-2 mb-3">
+                  <mat-icon class="text-green-600 text-base">event</mat-icon>
+                  <span class="text-sm font-medium text-green-900">Duration</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <mat-icon class="text-green-500 text-sm">play_arrow</mat-icon>
+                    <div>
+                      <p class="text-xs">Start Date</p>
+                      <p class="text-sm font-medium text-900">
+                        {{ customerRecivedObj.startDate | date:'fullDate' }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <mat-icon class="text-red-500 text-sm">stop</mat-icon>
+                    <div>
+                      <p class="text-xs text-600">End Date</p>
+                      <p class="text-sm font-medium text-900">
+                        {{ customerRecivedObj.endDate | date:'fullDate' }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- Main Content Area -->
+      <div class="flex-1 min-w-0">
+        <div class="rounded-lg shadow-sm border border-200 min-h-[600px]">
+          <!-- Content Header (Optional) -->
+          <div class="border-b border-200 px-6 py-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h2 class="text-lg font-semibold text-900">Customer Management</h2>
+                <p class="text-sm text-600">Manage customer details and bookings</p>
+              </div>
+              <!-- Breadcrumb or Navigation (Optional) -->
+              <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm">
+                  <li>
+                    <a href="#" class="text-500 hover:text-700">Dashboard</a>
+                  </li>
+                  <li>
+                    <mat-icon class="text-400 text-sm">chevron_right</mat-icon>
+                  </li>
+                  <li class="text-900 font-medium">Customer Details</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- Router Outlet Content -->
+          <div class="p-6">
+            <router-outlet></router-outlet>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Main Content -->
-  <div class="w-full md:w-3/4">
-    <router-outlet></router-outlet>
-  </div>
 </div>
+
+<!-- Mobile Drawer Toggle (for very small screens) -->
+<button mat-fab color="primary" class="fixed bottom-4 right-4 lg:hidden z-50" (click)="toggleSidePanel()"
+  [class.hidden]="!showMobileToggle">
+  <mat-icon>{{ sidePanelOpen ? 'close' : 'info' }}</mat-icon>
+</button>
+
+<!-- Mobile Overlay -->
+<div *ngIf="sidePanelOpen" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" (click)="closeSidePanel()"></div>
