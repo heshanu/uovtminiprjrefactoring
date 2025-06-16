@@ -30,6 +30,7 @@
     "@reduxjs/angular-redux": "^2.0.1",
     "@reduxjs/toolkit": "^2.2.7",
     "@tailwindcss/postcss": "^4.1.4",
+    "@twilio/conversations": "^2.6.2",
     "@types/leaflet-routing-machine": "^3.2.8",
     "@types/twilio": "^3.19.2",
     "leaflet": "^1.9.4",

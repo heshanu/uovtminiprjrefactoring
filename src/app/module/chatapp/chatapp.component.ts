@@ -28,6 +28,8 @@ export class ChatappComponent implements OnInit{
   status = '';
   statusColor = 'text-muted';
   sentMessages: any[] = [];
+   btnCaption= "Back";
+  btnColor = "red";
 
    constructor(private http: HttpClient, private store: Store<AppState>,private whatsappService: WhatappService){
       this.totalObseravable$=this.store.pipe(select(getFullExpense));
@@ -49,18 +51,27 @@ export class ChatappComponent implements OnInit{
     this.isSending = true;
     this.status = 'Sending...';
     this.statusColor = 'text-primary';
-    const phoneNumber = this.recipient; // Local Sri Lanka number
-    this.message="Your order's total Expenses is:,"+this.totalObseravable;
+    const phoneNumber = this.recipient;
 
-    if(this.totalObseravable!==0 && this.totalObseravable!=undefined){
+    if(this.recipient){
           this.whatsappService.sendTemplateMessage(phoneNumber, this.message)
       .subscribe({
         next: (response) => {
           this.status = 'Message sent successfully!';
+           this.statusColor = 'text-success';
+      this.sentMessages.push({
+        to: this.recipient,
+        message: this.message,
+        timestamp: new Date(),
+      //  sid:environment.TWILIO_ACCOUNT_SID
+      });
           console.log('Twilio response:', response);
+
         },
         error: (err) => {
           this.status = `Error: ${err.error?.message || err.message}`;
+        //  this.status = `Error: ${this.recipient.error}`;
+      this.statusColor = 'text-danger';
           console.error('Twilio error:', err);
         }
       });
