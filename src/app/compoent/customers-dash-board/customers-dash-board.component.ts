@@ -92,7 +92,8 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
           startDate: customer.startDate,
           endDate: customer.endDate,
           status:customer.status,
-          totalExpense:customer.totalExpense
+          totalExpense:customer.totalExpense,
+          phonenum:customer.phonenum
         },
         loading: true,
         error: null

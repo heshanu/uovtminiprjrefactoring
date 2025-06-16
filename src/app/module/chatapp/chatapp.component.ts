@@ -28,6 +28,8 @@ export class ChatappComponent implements OnInit{
   status = '';
   statusColor = 'text-muted';
   sentMessages: any[] = [];
+   btnCaption= "Back";
+  btnColor = "red";
 
    constructor(private http: HttpClient, private store: Store<AppState>,private whatsappService: WhatappService){
       this.totalObseravable$=this.store.pipe(select(getFullExpense));

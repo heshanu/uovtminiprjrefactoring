@@ -26,3 +26,4 @@ export const getCustomerExpenseById = createSelector(
   selectCustomerState,
   (state: CustomerState) => state.customer.totalExpense
 )
+

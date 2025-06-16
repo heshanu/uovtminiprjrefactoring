@@ -14,7 +14,7 @@ export class WhatappService {
   private authToken = environment.TWILIO_AUTH_TOKEN;
   private twilioNumber = environment.TWILIO_PHONE_NUMBER;
 
-  private client!: Client;
+  reciptant!:string;
 
   constructor(private http: HttpClient) {
 
@@ -26,7 +26,7 @@ export class WhatappService {
     body: string,
   ) {
     const apiUrl = `https://api.twilio.com/2010-04-01/Accounts/${this.accountSid}/Messages.json`;
-
+        this.reciptant=to;
     // Prepare form data
     const formData = new URLSearchParams();
     formData.set('To', `whatsapp:${to}`);
@@ -37,9 +37,9 @@ export class WhatappService {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic ' + btoa(`${this.accountSid}:${this.authToken}`)
     });
-
     // Send request
     return this.http.post(apiUrl, formData.toString(), { headers });
   }
+
 
 }

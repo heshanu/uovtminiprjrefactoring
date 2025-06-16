@@ -11,6 +11,7 @@
             <mat-card-title class="text-xl lg:text-2xl font-bold
             text-900 break-words">
               {{ customerRecivedObj.name | uppercase }}
+              {{customerRecivedObj.phoneNumnber}}
             </mat-card-title>
             <mat-card-subtitle class="text-sm text-600">
               Customer Details
@@ -29,6 +30,13 @@
                   <div class="min-w-0 flex-1">
                     <p class="text-xs font-medium text-600 uppercase tracking-wide">Address</p>
                     <p class="text-sm text-900 break-words">{{ customerRecivedObj.address }}</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <mat-icon class="text-500 text-base mt-0.5">phone</mat-icon>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-xs font-medium text-600 uppercase tracking-wide">phone Number</p>
+                    <p class="text-sm text-900 break-words">{{ customerRecivedObj.phonenum}}</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">

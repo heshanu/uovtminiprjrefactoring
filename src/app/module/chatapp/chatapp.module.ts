@@ -8,6 +8,7 @@ import { MaterialModule } from '../../shared/materialModule';
 import { ChatappComponent } from './chatapp.component';
 import { CalexpensesComponent } from '../calexpenses/calexpenses.component';
 import { CalexpensesModule } from '../calexpenses/calexpenses.module';
+import { SharedcompoentModule } from '../sharedcompoent/sharedcompoent.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CalexpensesModule } from '../calexpenses/calexpenses.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    CalexpensesModule
+    CalexpensesModule,
+    SharedcompoentModule
   ],
   exports:[
 
