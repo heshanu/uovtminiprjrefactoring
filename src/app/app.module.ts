@@ -186,15 +186,6 @@ import { ChatappModule } from './module/chatapp/chatapp.module';
         StoreDevtoolsModule.instrument({
           maxAge: 25,
         }),
-        AuthModule.forRoot({
-          domain: environment.auth.domain,
-          clientId:environment.auth.clientId,
-          authorizationParams: {
-            redirect_uri: window.location.origin
-          },
-          useRefreshTokens: true,
-          cacheLocation: 'localstorage'
-        }),
     CalexpensesModule,
     SharedcompoentModule,
     FormsModule,
