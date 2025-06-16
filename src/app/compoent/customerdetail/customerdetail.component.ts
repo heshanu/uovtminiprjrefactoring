@@ -5,7 +5,7 @@ import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-customerdetail',
     templateUrl: './customerdetail.component.html',
@@ -19,7 +19,7 @@ export class CustomerdetailComponent implements OnInit{
   private destroy$ = new Subject<void>();
 
   constructor(private fb: FormBuilder,private calenderService:CalenderService,
-    private customerDetailsService:CustomerdetailsService
+    private customerDetailsService:CustomerdetailsService,private router:Router
   ) {}
 
   photo: File | null = null;
@@ -32,7 +32,6 @@ export class CustomerdetailComponent implements OnInit{
   customerDetails!:CustomerdetailsInterface[]
 
   ngOnInit(): void {
-
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       age: ['', [Validators.required]],
@@ -44,7 +43,8 @@ export class CustomerdetailComponent implements OnInit{
       beverageList:['',Validators.required],
       beverageListOption:[],
       startDate:['',Validators.required],
-      endDate:['',Validators.required]
+      endDate: ['', Validators.required],
+      phonenum:['', Validators.required]
 
     });
 
@@ -90,7 +90,7 @@ export class CustomerdetailComponent implements OnInit{
     // Provide user feedback, e.g., highlight invalid fields
   }
 
-  this.registrationForm.reset();
+    this.registrationForm.reset();
 }
 
   onFileChange(event: any) {

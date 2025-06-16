@@ -15,6 +15,19 @@
         </div>
       </div>
 
+
+      <div>
+        <label for="phonenum" class="block text-sm font-medium text-700">Phonenum</label>
+        <input type="text" id="phonenum" formControlName="phonenum"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your phone number with country code +947777777" />
+        <div *ngIf="registrationForm.get('phonenum')?.invalid && registrationForm.get('phonenum')?.touched"
+          class="text-red-500 text-sm">
+          <div *ngIf="registrationForm.get('phonenum')?.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="registrationForm.get('phonenum')?.errors?.['min']">Age must be at least 18.</div>
+        </div>
+      </div>
+
       <!-- Age Field -->
       <div>
         <label for="age" class="block text-sm font-medium text-700">Age</label>

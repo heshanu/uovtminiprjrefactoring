@@ -31,7 +31,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
     message: ''
   };
 
-  customersList:CustomerdetailsInterface[]=[];
+  customersList$!:Observable<CustomerdetailsInterface[]>;
 
   constructor(private route:Router,private activeRouter:ActivatedRoute,
     private store: Store<AppState>,private spinnerService:SpinnerService,private customerDetailsService:CustomerdetailsService){
@@ -43,6 +43,7 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit(): void {
+    this.customersList$ = this.customerService.getAllCustomers();
 
     this.subscription=this.customerDetails$.subscribe((data) => {
       this.customerId = data?.customer._id; // Update the component's state with the new value
@@ -52,6 +53,8 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
     this.isLoading$=this.spinnerService.loading$;
     this.spinnerService.showLoading();
     this.errorState = { hasError: false, message: '' };
+
+    /*
     this.customerService.getAllCustomers().pipe(
       finalize(() => this.spinnerService.hideLoading())
     ).subscribe({
@@ -63,7 +66,9 @@ export class CustomersDashBoardComponent implements OnInit,OnDestroy{
         };
         console.error('Error fetching beverages:', err);
       }
-    });
+    });*/
+
+    this.spinnerService.hideLoading();
   }
 
   planNow(customer:CustomerdetailsInterface,_id:any) {
