@@ -86,7 +86,6 @@ import { SpinnerService } from './service/spinner.service';
 import { TravelconfirmModalComponent } from './shared/travelconfirm-modal/travelconfirm-modal.component';
 import { FoodconfirmComponent } from './shared/foodconfirm/foodconfirm.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { environment } from '../environments/environment';
 import { CalexpensesModule } from './module/calexpenses/calexpenses.module';
 import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.component';
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
@@ -185,15 +184,6 @@ import { ChatappModule } from './module/chatapp/chatapp.module';
         StoreModule.forRoot(appReducers),
         StoreDevtoolsModule.instrument({
           maxAge: 25,
-        }),
-        AuthModule.forRoot({
-          domain: environment.auth.domain,
-          clientId:environment.auth.clientId,
-          authorizationParams: {
-            redirect_uri: window.location.origin
-          },
-          useRefreshTokens: true,
-          cacheLocation: 'localstorage'
         }),
     CalexpensesModule,
     SharedcompoentModule,

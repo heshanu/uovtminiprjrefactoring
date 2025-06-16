@@ -1,8 +1,7 @@
+import { AuthServiceCall } from './../../service/auth.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../../service/theme.service';
-import { AuthServiceCall } from '../../service/auth.service';
-
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -11,7 +10,7 @@ import { AuthServiceCall } from '../../service/auth.service';
 })
 export class HeaderComponent implements OnInit{
 
-    constructor(private authService: AuthServiceCall) { }
+    constructor(private authService:AuthServiceCall) { }
 
     ngOnInit(): void {
        this.isShow=this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
