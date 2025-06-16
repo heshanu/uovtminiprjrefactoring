@@ -137,8 +137,17 @@ export class CalexpensesComponent implements OnInit {
        console.log('Customer updated successfully:', response);
        console.log('customer phone num'+this.customerPhonenumber);
 
-      if(this.customerPhonenumber!=null){
-      this.whatappService.sendTemplateMessage(this.customerPhonenumber,'Your total bill amount:'+this.customerTotalExpense)
+        if (this.customerPhonenumber != null) {
+          this.whatappService.sendTemplateMessage(
+            this.customerPhonenumber,
+            `Your total bill amount LKRS: ${this.customerTotalExpense}
+
+          Details:
+          - Travel Expense: ${this.travelList}
+          - Hotel Expense: ${this.hotelList}
+          - Food Expense: ${this.foodList}
+          - Beverage Expense: ${this.beverageList}`
+          )
       .subscribe({
           next: (response) => {
       this.sentMessages.push({
