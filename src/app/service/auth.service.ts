@@ -9,7 +9,7 @@ export class AuthServiceCall {
 
   private apiUrl = 'https://uovtminiprj-backend.vercel.app';
 
-  constructor(private http: HttpClient, public auth: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   register(username: string, password: string) {
     const headers = new HttpHeaders({
@@ -63,10 +63,6 @@ export class AuthServiceCall {
     const isValid = storedUser === username && storedPass === password;
 
     return of(isValid);
-  }
-
-  getTokenSilently() {
-    return this.auth.getAccessTokenSilently();
   }
 
 }
