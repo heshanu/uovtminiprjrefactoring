@@ -22,7 +22,7 @@ import { BeverageobjService } from '../../service/beverageobj.service';
 })
 export class BeveragetemplateComponent implements OnInit{
 
-  constructor(private router:Router, 
+  constructor(private router:Router,
     private store: Store<AppState>,private spinnerService:SpinnerService,
     private visiblelistService:VisiblelistService,
     private beverageObj:BeverageobjService
@@ -40,13 +40,13 @@ export class BeveragetemplateComponent implements OnInit{
 
 
   @Input() list:any[] = [];
-  
+
   beverageList:any[] = [];
 
   filteredBeverageList:any[]=[];
 
   expandedIndex = 0;
-  
+
   ngOnInit(): void {
 
     this.customerIdSubscription=this.customerId$
@@ -58,7 +58,7 @@ export class BeveragetemplateComponent implements OnInit{
 
   // Implement the navigateTo method if needed
   navigateTo(foodName:string) {
-    
+
     console.log("Beverage-template",foodName);
     if (this.customerId && foodName) {
       this.router.navigate(['customerDashboard', this.customerId, 'beveragelist', foodName])
@@ -71,7 +71,7 @@ export class BeveragetemplateComponent implements OnInit{
     } else {
       console.error('Navigation failed: this.id or foodName is undefined');
     }
-  
+
   }
 
   refresh(){}
@@ -84,35 +84,16 @@ export class BeveragetemplateComponent implements OnInit{
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
-    }); 
+    });
   }
-  
-  
-  openPackageDialog(item: any,$event: MouseEvent) {
-    $event.stopPropagation(); // Prevent card click event
-      
-      const dialogRef = this.dialog.open(BeverageconfirmComponent, {
-        width: '500px',
-        maxWidth: '90vw',
-        data: {
-          hotelName: item.name,
-          packages: item.ingredients
-        }
-      });
-  
-      dialogRef.afterClosed().subscribe(selectedPackage => {
-        if (selectedPackage) {
-          console.log('Selected package:', selectedPackage);
-          // Handle the selected package
-        }
-      });
-    }
-  
+
+
+
   filterResults(text: string) {
-    
+
     console.log(text);
     this.visiblelistService.updateData(text);
-    
+
       if (!text) {
         this.filteredBeverageList = this.beverageList;
         return;
@@ -120,10 +101,10 @@ export class BeveragetemplateComponent implements OnInit{
       this.filteredBeverageList = this.beverageList.filter((beverage:any) =>
         beverage.strDrink.toLowerCase().includes(text.toLowerCase()),
       );
-      console.log(this.filteredBeverageList);    
-    }  
+      console.log(this.filteredBeverageList);
+    }
 
   btnCaption = "Back";
   btnColor = "red";
 
-} 
+}
