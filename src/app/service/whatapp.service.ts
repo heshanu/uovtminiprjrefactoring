@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AppState } from '../app.reducer';
 import { select, Store } from '@ngrx/store';
 import { getFullExpense } from '../store/orders/orders.selectors';
-
+import { Client } from '@twilio/conversations';
 
 @Injectable({ providedIn: 'root' })
 export class WhatappService {
@@ -14,8 +14,11 @@ export class WhatappService {
   private authToken = environment.TWILIO_AUTH_TOKEN;
   private twilioNumber = environment.TWILIO_PHONE_NUMBER;
 
+  private client!: Client;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
 
   // Send WhatsApp template message
   sendTemplateMessage(
@@ -38,4 +41,5 @@ export class WhatappService {
     // Send request
     return this.http.post(apiUrl, formData.toString(), { headers });
   }
+
 }
