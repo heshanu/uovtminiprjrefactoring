@@ -90,6 +90,7 @@ export class CalexpensesComponent implements OnInit {
     this.customerTotalExpense$.subscribe((val) => {
       this.customerTotalExpense = val;
     })
+    this.store.dispatch(setTotalExpenses({expenses:this.customerTotalExpense}));
   }
 
   clearAllExpenses() {

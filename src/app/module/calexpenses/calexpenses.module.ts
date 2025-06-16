@@ -24,6 +24,9 @@ import { SharedcompoentModule } from '../sharedcompoent/sharedcompoent.module';
     CalexpensesRoutingModule,
     MaterialModule,
     SharedcompoentModule
+  ],
+  exports:[
+    CalexpensesComponent
   ]
 })
 export class CalexpensesModule { }

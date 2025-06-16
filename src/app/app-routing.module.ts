@@ -244,7 +244,11 @@ const routes: Routes = [
    {
     path:"calExpenses",
     loadChildren:()=>import("./module/calexpenses/calexpenses.module").then(m=>m.CalexpensesModule)
-   }
+      },
+      {
+        path: "chatapp",
+        loadChildren:()=>import("./module/chatapp/chatapp.module").then(m=>m.ChatappModule)
+      }
     ]
   }
 

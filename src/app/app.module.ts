@@ -92,6 +92,8 @@ import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.compo
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
 import { authGuard } from './shared/guard/auth.guard';
 import { RegisterModule } from './module/register/register.module';
+import { ChatappComponent } from './module/chatapp/chatapp.component';
+import { ChatappModule } from './module/chatapp/chatapp.module';
 
 @NgModule({
   declarations: [
@@ -165,7 +167,7 @@ import { RegisterModule } from './module/register/register.module';
     SearchresultComponent,
     TravelconfirmModalComponent,
     FoodconfirmComponent,
-    ThemeToggleComponent
+    ThemeToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -196,8 +198,8 @@ import { RegisterModule } from './module/register/register.module';
     CalexpensesModule,
     SharedcompoentModule,
     FormsModule,
-    RegisterModule
-       
+    RegisterModule,
+    ChatappModule
   ],
   exports:[
     SpinnerComponent
