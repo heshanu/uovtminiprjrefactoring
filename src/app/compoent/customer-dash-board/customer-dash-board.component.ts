@@ -25,9 +25,7 @@ export class CustomerDashBoardComponent implements OnInit,OnDestroy{
    constructor(private route:Router,
       private store: Store<AppState>){
       this.customerObj$ = this.store.pipe(select( getCustomerDetail ));
-
     }
-
 
   ngOnInit(): void {
     this.subscription=this.customerObj$.subscribe((data) => {

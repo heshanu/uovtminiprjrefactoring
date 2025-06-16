@@ -12,5 +12,6 @@ export interface CustomerdetailsInterface{
     startDate: string,
     endDate:string,
     status?:string,
-    totalExpense?:number   
+    totalExpense?:number ,
+    phonenum:string
 }
