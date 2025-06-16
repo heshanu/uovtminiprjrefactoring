@@ -40,7 +40,7 @@ export class HotellistComponent implements OnInit,OnDestroy{
 
   ngOnInit(): void {
     this.subscription=this.customerObj$.subscribe((data) => {
-      this.customerId = data._id; 
+      this.customerId = data._id;
     });
   }
 
@@ -49,8 +49,10 @@ export class HotellistComponent implements OnInit,OnDestroy{
     {"itemName":"Hotel accomadtion","description":"This may be place where your fav to accomadate","link":"hotelslist"},
     {"itemName":"Food cusine","description":"This may be thing ,your fav","link":"foodslist"},
     {"itemName":"Beverage","description":"This may be te fav drink","link":"beverage"},
-    {"itemName":"Find a host areas in SriLanka","description":"This may assists you to find famous places arround area","link":"hottravel"},
-    {"itemName":"Calculate Expenss of whole trip","description":"This may help you to calculate cost of your order","link":"calExpenses"},
+    { "itemName": "Find a host areas in SriLanka", "description": "This may assists you to find famous places arround area", "link": "hottravel" },
+    { "itemName": "Chat with customer", "description": "This may help you to internact with customers", "link": "chatapp" },
+    { "itemName": "Calculate Expenss of whole trip", "description": "This may help you to calculate cost of your order", "link": "calExpenses" },
+
   ]
 
   expandedIndex = 0;
@@ -64,5 +66,5 @@ export class HotellistComponent implements OnInit,OnDestroy{
         .catch((err: Error) => {
           console.error('Navigation error:', err);
         })
-  }   
+  }
 }
