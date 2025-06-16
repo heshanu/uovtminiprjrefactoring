@@ -64,7 +64,4 @@ export class AuthServiceCall {
 
     return of(isValid);
   }
-
-
-
 }
