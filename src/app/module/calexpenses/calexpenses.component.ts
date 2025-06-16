@@ -1,3 +1,4 @@
+import { BeverageItem } from './../../store/orders/orders.status';
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.reducer';
@@ -41,7 +42,12 @@ export class CalexpensesComponent implements OnInit {
   foodExpenditure$!:Observable<number>;
   beverageExpenditure$!:Observable<number>;
   travelExpenditure$!:Observable<number>;
-  hotelExpenditure$!:Observable<number>;
+  hotelExpenditure$!: Observable<number>;
+
+  foodExpenditure!:number;
+  beverageExpenditure!:number;
+  travelExpenditure!:number;
+  hotelExpenditure!:number;
 
   totalExpenditure$!:Observable<number>;
   totalExpenditure!:number;
@@ -103,6 +109,22 @@ export class CalexpensesComponent implements OnInit {
    this.customerPhonenumSub= this.customerPhonenumber$.subscribe((val)=>{
     this.customerPhonenumber=val.phonenum;
    })
+
+    this.foodExpenditure$.subscribe((val) => {
+      this.foodExpenditure = val;
+    })
+
+    this.travelExpenditure$.subscribe((val) => {
+      this.travelExpenditure = val;
+    })
+
+    this.beverageExpenditure$.subscribe((val) => {
+      this.beverageExpenditure = val;
+    })
+
+    this.hotelExpenditure$.subscribe((val) => {
+      this.hotelExpenditure = val;
+    })
     //this.store.dispatch(setTotalExpenses({expenses:this.customerTotalExpense}));
 
   }
@@ -140,13 +162,26 @@ export class CalexpensesComponent implements OnInit {
         if (this.customerPhonenumber != null) {
           this.whatappService.sendTemplateMessage(
             this.customerPhonenumber,
-            `Your total bill amount LKRS: ${this.customerTotalExpense}
+            `
+            Hello,
+            This is travel buddy service,
+
+            Your total bill amount LKRS: ${this.customerTotalExpense}
 
           Details:
-          - Travel Expense: ${this.travelList}
-          - Hotel Expense: ${this.hotelList}
-          - Food Expense: ${this.foodList}
-          - Beverage Expense: ${this.beverageList}`
+          - Travel Expense LKRS: ${this.travelExpenditure}
+          - Hotel Expense LKRS: ${this.hotelExpenditure}
+          - Food Expense LKRS: ${this.foodExpenditure}
+          - Beverage Expense LKRS: ${this.beverageExpenditure}
+
+        Your order details
+         - Mode of Travel: ${this.travelList.map(item => item.name).join(', ')}
+         - Hotel Expense: ${this.hotelList.map(item => item.hotelName).join(', ')}
+         - Food Expense: ${this.foodList.map(item => item.name).join(', ')}
+         - Beverage Expense: ${this.beverageList.map(item => item.strDrink).join(', ')}
+
+          Thank you for use our service,Have a nice day !!!!!!!!!!!
+          `
           )
       .subscribe({
           next: (response) => {
