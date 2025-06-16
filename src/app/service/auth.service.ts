@@ -34,7 +34,7 @@ export class AuthServiceCall {
 
     localStorage.setItem("username", username);
     localStorage.setItem("password", password);
-    
+
     return this.http.post(
       `${this.apiUrl}/login`,
       { username, password },
@@ -44,7 +44,7 @@ export class AuthServiceCall {
       }
     );
   }
-  
+
   getAllUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/all`);
   }
@@ -58,15 +58,15 @@ export class AuthServiceCall {
     // Temporary fix for current implementation
     const storedUser = localStorage.getItem('username');
     const storedPass = localStorage.getItem('password');
-    
+
     // Compare both username AND password (not OR)
     const isValid = storedUser === username && storedPass === password;
-    
+
     return of(isValid);
   }
 
   getTokenSilently() {
     return this.auth.getAccessTokenSilently();
   }
-  
+
 }
