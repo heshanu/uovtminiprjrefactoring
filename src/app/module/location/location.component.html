@@ -1,0 +1,95 @@
+<app-backbtn [textCaption]="'Back'" [btnColor]="'red'" />
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Input Form -->
+    <div class="lg:col-span-1">
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="material-icons mr-2 text-primary">directions</i>
+          Enter Locations
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">Start Location</label>
+            <div class="relative">
+              <i class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">place</i>
+              <input [(ngModel)]="startLocation" type="text"
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="E.g., Mumbai">
+            </div>
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">End Location</label>
+            <div class="relative">
+              <i class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">flag</i>
+              <input [(ngModel)]="endLocation" type="text"
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="E.g., New Delhi">
+            </div>
+          </div>
+          <div class="pt-4">
+            <button (click)="calculateRoute()"
+              class="w-full bg-gray-300 py-3 rounded-lg font-bold text-lg flex items-center justify-center">
+              <i class="material-icons mr-2">calculate</i>
+              Calculate Route
+            </button>
+            <button (click)="loadDemoRoute()"
+              class="w-full mt-3 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-medium flex items-center justify-center">
+              Load Route
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Results Section -->
+      <div class="mt-8 bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <i class="material-icons mr-2 text-primary">analytics</i>
+          Route Information
+        </h2>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-blue-50 p-4 rounded-xl">
+            <div class="text-blue-700 flex items-center">
+              <i class="material-icons mr-2">straighten</i>
+              <span class="font-medium">Distance</span>
+            </div>
+            <div class="mt-2">
+              <span class="text-3xl font-bold text-blue-800">{{ distance }}</span>
+              <span class="text-blue-700 font-medium">km</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium text-gray-700 mb-3">Route Details</h3>
+          <div class="space-y-3">
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+              <div class="marker-start mr-3">A</div>
+              <div>
+                <div class="font-medium text-gray-800">{{ startLocation || 'Start location' }}</div>
+                <div class="text-sm text-gray-500">Starting point</div>
+              </div>
+            </div>
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+              <div class="marker-end mr-3">B</div>
+              <div>
+                <div class="font-medium text-gray-800">{{ endLocation || 'End location' }}</div>
+                <div class="text-sm text-gray-500">Destination</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Map Section -->
+    <div class="lg:col-span-2">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-full">
+        <div class="p-5 border-b">
+          <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+            <i class="material-icons mr-2 text-primary">map</i>
+            Route Map
+          </h2>
+        </div>
+        <div id="map" class="map-container h-[600px] w-full"></div>
+      </div>
+    </div>
+  </div>
+</div>
