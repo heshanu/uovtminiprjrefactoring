@@ -248,7 +248,11 @@ const routes: Routes = [
       {
         path: "chatapp",
         loadChildren:()=>import("./module/chatapp/chatapp.module").then(m=>m.ChatappModule)
-      }
+      },
+      {
+        path: "locations",
+        loadChildren:()=>import("./module/location/location.module").then(m=>m.LocationModule)
+      },
     ]
   }
 

@@ -91,9 +91,8 @@ import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.compo
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
 import { authGuard } from './shared/guard/auth.guard';
 import { RegisterModule } from './module/register/register.module';
-import { ChatappComponent } from './module/chatapp/chatapp.component';
 import { ChatappModule } from './module/chatapp/chatapp.module';
-
+import { LocationModule } from './module/location/location.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -189,7 +188,8 @@ import { ChatappModule } from './module/chatapp/chatapp.module';
     SharedcompoentModule,
     FormsModule,
     RegisterModule,
-    ChatappModule
+    ChatappModule,
+    LocationModule
   ],
   exports:[
     SpinnerComponent
