@@ -27,13 +27,13 @@ export class MapComponent implements  AfterViewInit ,OnInit {
 
   startPlace!:string;
   destinationPlace!:string;
-  
+
 
   startPlacelat!:number;
   startplacelng!:number;
   endPlacelat!:number;
   endPlacelng!:number;
-  
+
   private map: any;
 
   ngAfterViewInit(): void {
@@ -82,20 +82,20 @@ L.Routing.control({
       alert('Please enter both start and destination locations');
       return;
     }
-  
+
     this.spinnerService.showLoading();
-  
+
     // Clear previous route if exists
     if (this.routingControl) {
       this.map.removeControl(this.routingControl);
     }
-  
-    const startPlaceRequest = this.geoService.getCoordinates(`${this.startPlace}, Sri Lanka`)
+
+    const startPlaceRequest = this.geoService.getCoordinates(`${this.startPlace},SriLanka`)
       .pipe(finalize(() => this.spinnerService.hideLoading()));
-  
-    const destinationPlaceRequest = this.geoService.getCoordinates(`${this.destinationPlace}, Sri Lanka`)
+
+    const destinationPlaceRequest = this.geoService.getCoordinates(`${this.destinationPlace},SriLanka`)
       .pipe(finalize(() => this.spinnerService.hideLoading()));
-  
+
     forkJoin([startPlaceRequest, destinationPlaceRequest]).subscribe(
       ([startData, destinationData]) => {
         // Process start location
@@ -108,7 +108,7 @@ L.Routing.control({
           this.spinnerService.hideLoading();
           return;
         }
-  
+
         // Process destination location
         if (destinationData.results && destinationData.results.length > 0) {
           this.endPlacelat = destinationData.results[0].geometry.lat;
@@ -119,23 +119,23 @@ L.Routing.control({
           this.spinnerService.hideLoading();
           return;
         }
-  
+
         // Define the waypoints
         const waypoints = [
           L.latLng(this.startPlacelat, this.startplacelng), // Starting point
           L.latLng(this.endPlacelat, this.endPlacelng) // Destination point
         ];
-  
+
         // Create a routing control and add it to the map
         this.routingControl = L.Routing.control({
           waypoints: waypoints,
           routeWhileDragging: true
         }).addTo(this.map);
-  
+
         // Add markers for the two destinations
         L.marker([this.startPlacelat, this.startplacelng]).addTo(this.map)
           .bindPopup('Start').openPopup();
-  
+
         L.marker([this.endPlacelat, this.endPlacelng]).addTo(this.map)
           .bindPopup('End').openPopup();
       },
@@ -146,8 +146,8 @@ L.Routing.control({
       }
     );
   }
-  
- 
+
+
 
 }
 
