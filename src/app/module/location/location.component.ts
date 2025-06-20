@@ -9,11 +9,9 @@ import { MapService } from '../../service/map.service';
   styleUrl: './location.component.css'
 })
 export class LocationComponent implements OnInit {
-  startLocation: string = '';
-  endLocation: string = '';
+  startLocation!: string;;
+  endLocation!: string;
   distance: string = '0.00';
-  time: string = '0';
-  currentMode: string = 'car';
   private map!: L.Map;
 
   constructor(private mapService: MapService) { }
@@ -26,10 +24,6 @@ export class LocationComponent implements OnInit {
     this.mapService.initMap('map');
   }
 
-  setActiveMode(mode: string): void {
-    this.currentMode = mode;
-  }
-
   calculateRoute(): void {
     if (!this.startLocation || !this.endLocation) {
       alert('Please enter both start and end locations');
@@ -37,6 +31,8 @@ export class LocationComponent implements OnInit {
     }
 
     this.geocode(this.startLocation, (startLat, startLon) => {
+      console.log(startLat,startLat,"hhi");
+
       this.geocode(this.endLocation, (endLat, endLon) => {
         const routingControl = this.mapService.plotRoute([startLat, startLon], [endLat, endLon]);
 
@@ -44,7 +40,6 @@ export class LocationComponent implements OnInit {
           const routes = e.routes;
           if (routes.length) {
             this.distance = (routes[0].summary.totalDistance / 1000).toFixed(2);
-            this.time = Math.round(routes[0].summary.totalTime / 60).toString();
           }
         });
       });
@@ -56,26 +51,28 @@ export class LocationComponent implements OnInit {
   }
 
   private geocode(address: string, callback: (lat: number, lon: number) => void): void {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${address},SriLanka`;
+    const proxyUrl = '';
+  const targetUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${address},SriLanka`;
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.length > 0) {
-          const lat = parseFloat(data[0].lat);
-          const lon = parseFloat(data[0].lon);
-          console.log(lat,lon);
-
-          callback(lat, lon);
-         // this.map.setView([parseFloat(this.startLocation),parseFloat(this.endLocation)]);
-        } else {
-          alert('Location not found: ' + address);
-        }
-      })
-      .catch(error => {
-        console.error('Geocoding error:', error);
-        alert('Error finding location: ' + address);
-      });
+  fetch(proxyUrl + targetUrl, {
+    headers: {
+      'Origin': 'https://uovtminiprj.netlify.app/' // Replace with your actual origin
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data && data.length > 0) {
+      const lat = parseFloat(data[0].lat);
+      const lon = parseFloat(data[0].lon);
+      callback(lat, lon);
+    } else {
+      alert('Location not found: ' + address);
+    }
+  })
+  .catch(error => {
+    console.error('Geocoding error:', error);
+    alert('Error finding location: ' + address);
+  });
   }
 
 }
