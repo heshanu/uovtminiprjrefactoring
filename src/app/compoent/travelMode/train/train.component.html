@@ -1,44 +1,24 @@
-<div *ngIf="isLoading$|async">
-    <p>Loading...</p>
+<div class="iframe-container w-full">
+  <iframe src="https://eservices.railway.gov.lk/schedule/searchTrain.action?lang=en" frameborder="0"
+    class="w-full h-64 md:h-96 lg:h-screen"></iframe>
+</div>
+
+<app-backbtn [textCaption]="btnCaption" [btnColor]="btnColor" class="my-4" />
+
+<div class="flex flex-col space-y-4 p-4 m-4">
+  <div class="text-xl-500 ">Calculate Train Expenses</div>
+  <input [(ngModel)]="ticketPrice" placeholder="Ticket price in LKR"
+    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+  <input [(ngModel)]="ticketAmount" placeholder="Number of tickets you wish to buy"
+    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+  <div class="flex items-center space-x-4">
+    <mat-icon (click)="clean()" aria-hidden="false" aria-label="Clear icon" fontIcon="delete"
+      class="cursor-pointer"></mat-icon>
+    <button (click)="calExpenses()"
+      class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200">
+      Calculate Train Expenses
+    </button>
   </div>
-{{date}}
-{{trainNumber}}
-<cdk-accordion class="example-accordion" class="m-16 p-4">
-    @for (item of trainRoutes; track item; let index = $index) {
-    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item">
-      <button
-        class="example-accordion-item-header font-weight: 900;"
-        (click)="accordionItem.toggle()"
-        tabindex="0"
-        [attr.id]="'accordion-header-' + index"
-        [attr.aria-expanded]="accordionItem.expanded"
-        [attr.aria-controls]="'accordion-body-' + index">
-        Station Name:{{ item.StationName }}-{{date}}
-        <span class="example-accordion-item-description">
-          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-        </span>
-      </button>
-      @if(accordionItem.expanded) {
-      <div
-        class="example-accordion-item-body p-4 m-4"
-        role="region"
-        [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body-' + index"
-        [attr.aria-labelledby]="'accordion-header-' + index"
-      >
-        Station Code : {{item.StationCode}} 
-        Schedule Departure :{{ScheduleDeparture}}
-        ActualDeparture : {{ ActualDeparture}}
-        Delayed Departure: {{DelayInDeparture}}
-        <!-- <img src="{{item.img}}"/> -->
-        <button  (click)="selectItem(item,'0', '0')" class="m-4 bg-blue-500 hover:bg-blue-700 text-white 
-        font-bold py-2 px-4 border border-blue-700 rounded">
-          Arrage Now
-        </button>
-      </div>
-      }
-    </cdk-accordion-item>
-    }
-  </cdk-accordion>
-  <app-backbtn [textCaption]="btnCaption" [btnColor]="btnColor"/>
-  
+</div>
