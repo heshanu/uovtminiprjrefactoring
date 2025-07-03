@@ -56,7 +56,7 @@ export class LocationComponent implements OnInit {
 
   fetch(proxyUrl + targetUrl, {
     headers: {
-      'Origin': 'https://uovtminiprj.netlify.app/' // Replace with your actual origin
+      'Origin': 'https://cors-anywhere.herokuapp.com' // Replace with your actual origin
     }
   })
   .then(response => response.json())
