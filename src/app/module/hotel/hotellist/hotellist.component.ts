@@ -50,7 +50,6 @@ export class HotellistComponent implements OnInit,OnDestroy{
     {"itemName":"Food cusine","description":"This may be thing ,your fav","link":"foodslist"},
     {"itemName":"Beverage","description":"This may be te fav drink","link":"beverage"},
     { "itemName": "Find a host areas in SriLanka", "description": "This may assists you to find famous places arround area", "link": "hottravel" },
-    { "itemName": "Chat with customer", "description": "This may help you to internact with customers", "link": "chatapp" },
     { "itemName": "Find locations with customer", "description": "This may help you to internact with customers", "link": "locations" },
     { "itemName": "Calculate Expenss of whole trip", "description": "This may help you to calculate cost of your order", "link": "calExpenses" },
 

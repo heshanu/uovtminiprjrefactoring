@@ -64,17 +64,7 @@ L.Routing.control({
 */
       // Add markers for the two destinations
     L.marker([6.1395, 80.1063]).addTo(this.map)
-    .bindPopup('Start').openPopup();
-/*
-    const pois = [
-      { name: 'Famous Place 1', lat: 7.2906, lng: 80.6337 },
-      { name: 'Famous Place 2', lat: 7.4849, lng: 80.3574 }
-    ];
-
-    pois.forEach(poi => {
-      L.marker([poi.lat, poi.lng]).addTo(this.map)
-        .bindPopup(poi.name).openPopup();
-    });*/
+      .bindPopup('Start').openPopup();
   }
 
   getCoordinates() {
@@ -136,8 +126,16 @@ L.Routing.control({
         L.marker([this.startPlacelat, this.startplacelng]).addTo(this.map)
           .bindPopup('Start').openPopup();
 
+
         L.marker([this.endPlacelat, this.endPlacelng]).addTo(this.map)
           .bindPopup('End').openPopup();
+
+        this.map.flyTo([this.endPlacelat, this.endPlacelng], 13, {
+            animate: true,
+            duration: 2
+          });
+
+
       },
       error => {
         console.error('Error fetching coordinates:', error);
@@ -146,8 +144,6 @@ L.Routing.control({
       }
     );
   }
-
-
 
 }
 
