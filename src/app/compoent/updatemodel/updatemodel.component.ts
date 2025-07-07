@@ -7,6 +7,7 @@ import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import Swal from 'sweetalert2';
 import { CustomerObjectService } from '../../service/customer-object.service';
+import { CustService } from '../../service/cust.service';
 @Component({
   selector: 'app-updatemodel',
   standalone: false,
@@ -23,7 +24,8 @@ export class UpdatemodelComponent implements OnInit {
     private fb: FormBuilder, private calenderService: CalenderService,
     public dialogRef: MatDialogRef<UpdatemodelComponent>, // This is CORRECT for dialog components
     @Inject(MAT_DIALOG_DATA) public data: any, private customerDetailsService: CustomerdetailsService,
-    private custObj: CustomerObjectService// Optional injected data
+    private custObj: CustomerObjectService,// Optional injected data
+    private customers: CustService
   ) { }
 
   photo: File | null = null;
@@ -48,10 +50,30 @@ export class UpdatemodelComponent implements OnInit {
     endDate: new FormControl<Date | null>(null),
   });
 
+  previousDetails!: CustomerdetailsInterface;
+
   ngOnInit(): void {
+    this.customers.getCustomerId().subscribe((val: any) => {
+      this.previousDetails._id = val?._id,
+        this.previousDetails.name = val.namem
+      this.previousDetails.age = val.age,
+        this.previousDetails.address = val.address;
+      this.previousDetails.accomadation = val.accomadation,
+        this.previousDetails.travelMode = val.travelMode,
+        this.previousDetails.foodList = val.foodList,
+        this.previousDetails.foodListOption = val.foodListOption,
+        this.previousDetails.beverageList = val.beverageList,
+        this.previousDetails.beverageListOption = val.beverageListOption,
+        this.previousDetails.startDate = val.startDate,
+        this.previousDetails.endDate = val.endDate,
+        this.previousDetails.status = val.status,
+        this.previousDetails.totalExpense = val.totalExpense,
+        this.previousDetails.phonenum = val.phonenum
+    })
+
     this.registrationForm = this.fb.group({
-      name: ['', [Validators.minLength(3)]],
-      age: ['', []],
+      name: [this.previousDetails.name, [Validators.minLength(3)]],
+      age: [this.previousDetails.age],
       address: ['', []],
       accomadation: ['',],
       travelMode: ['',],

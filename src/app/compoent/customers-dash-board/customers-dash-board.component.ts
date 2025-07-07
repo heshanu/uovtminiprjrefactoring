@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { UpdatemodelComponent } from '../updatemodel/updatemodel.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { CustomerObjectService } from '../../service/customer-object.service';
+import { CustService } from '../../service/cust.service';
 @Component({
   selector: 'app-customers-dash-board',
   templateUrl: './customers-dash-board.component.html',
@@ -27,7 +28,8 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   constructor(private route: Router, private activeRouter: ActivatedRoute,
     private store: Store<AppState>, private spinnerService: SpinnerService,
-    private customerDetailsService: CustomerdetailsService, private custID: CustomerObjectService) {
+    private customerDetailsService: CustomerdetailsService, private custID: CustomerObjectService,
+    private custs: CustService) {
     this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
@@ -47,6 +49,7 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    //this.custs.clearCustomer();
   }
 
   ngOnInit(): void {
@@ -149,6 +152,7 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   updateCustomers(id: any, enterAnimationDuration: number, exitAnimationDuration: number) {
     this.custID.setCustomerId(id);
+    this.custs.setCustomer(this.customersList);
     this.dialog.open(UpdatemodelComponent, {
       width: '1000px',
       enterAnimationDuration,
