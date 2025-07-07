@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -10,7 +10,9 @@ import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { SpinnerService } from '../../service/spinner.service';
 import { CustomerState } from '../../store/customers/customer.status';
 import Swal from 'sweetalert2';
-
+import { UpdatemodelComponent } from '../updatemodel/updatemodel.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { CustomerObjectService } from '../../service/customer-object.service';
 @Component({
   selector: 'app-customers-dash-board',
   templateUrl: './customers-dash-board.component.html',
@@ -21,6 +23,13 @@ import Swal from 'sweetalert2';
 export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customerService = inject(CustomerdetailsService);
+  readonly dialog = inject(MatDialog);
+
+  constructor(private route: Router, private activeRouter: ActivatedRoute,
+    private store: Store<AppState>, private spinnerService: SpinnerService,
+    private customerDetailsService: CustomerdetailsService, private custID: CustomerObjectService) {
+    this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
+  }
 
   customerDetails$!: Observable<CustomerState | undefined>;
   customerId!: string | undefined;
@@ -35,10 +44,6 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customersList: CustomerdetailsInterface[] = [];
 
-  constructor(private route: Router, private activeRouter: ActivatedRoute,
-    private store: Store<AppState>, private spinnerService: SpinnerService, private customerDetailsService: CustomerdetailsService) {
-    this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
-  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -102,6 +107,8 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
           error: null
         })
       );
+
+
     }
   }
 
@@ -138,5 +145,14 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+
+  updateCustomers(id: any, enterAnimationDuration: number, exitAnimationDuration: number) {
+    this.custID.setCustomerId(id);
+    this.dialog.open(UpdatemodelComponent, {
+      width: '1000px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    })
   }
 }

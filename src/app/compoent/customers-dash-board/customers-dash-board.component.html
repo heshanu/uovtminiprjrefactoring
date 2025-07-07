@@ -19,7 +19,6 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
       <div *ngFor="let customer of customersList" class="rounded-xl shadow-md hover:shadow-xl transition-all duration-300
             transform hover:-translate-y-1 border border-100 overflow-hidden">
-
         <!-- Card Header -->
         <div class="p-4 sm:p-6 border-b border-100">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
@@ -173,7 +172,7 @@
           </div>
 
           <!-- Action Buttons -->
-          <div class="pt-4 space-y-2 sm:space-y-0 sm:space-x-2 sm:flex">
+          <!-- <div class="pt-4 space-y-2 sm:space-y-0 sm:space-x-2 sm:flex">
             <button *ngIf="customer.status === 'ongoing'" (click)="planNow(customer, customer._id)"
               class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
               Plan Now
@@ -188,7 +187,46 @@
               class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
               Mark Delete
             </button>
-          </div>
+
+            <button (click)="{}" class="bg-blue-100 hover:bg-blue-200 rounded-full p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                <path d="m15 5 4 4" />
+              </svg>
+            </button>
+          </div> -->
+          <div class="pt-4 flex flex-wrap gap-2">
+            <!-- Plan Now Button -->
+            <button *ngIf="customer.status === 'ongoing'" (click)="planNow(customer, customer._id)"
+              class="flex-1 sm:flex-none min-w-[120px] bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+              Plan Now
+            </button>
+
+            <!-- Mark Complete Button -->
+            <button (click)="completed(customer)"
+              class="flex-1 sm:flex-none min-w-[120px] bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+              Mark Complete
+            </button>
+
+            <!-- Mark Delete Button -->
+            <button (click)="deleteCustomer(customer._id)"
+              class="flex-1 sm:flex-none min-w-[120px] bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+              Mark Delete
+            </button>
+
+            <!-- Edit Button with responsive icon -->
+            <button (click)="updateCustomers(customer._id,0,0)"
+              class="flex-1 sm:flex-none w-full sm:w-auto bg-blue-100 hover:bg-blue-200 text-blue-600 font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2">
+              <div class="flex items-center justify-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                  <path d="m15 5 4 4" />
+                </svg>
+                <span class="sm:hidden">Edit</span>
+              </div>
+            </button>    </div>
         </div>
       </div>
     </div>

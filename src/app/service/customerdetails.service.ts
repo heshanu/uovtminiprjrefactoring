@@ -41,5 +41,8 @@ export class CustomerdetailsService {
     return this.http.delete(`${this.apiUrl}/customer?id=${id}`);
   }
 
+  updateCus(id: any, data: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/customer?id=${id}`, data);
+  }
 
 }
