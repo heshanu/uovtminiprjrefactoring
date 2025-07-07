@@ -39,9 +39,7 @@ export class CustomerdetailComponent implements OnInit{
       accomadation:['',Validators.required],
       travelMode:['',Validators.required],
       foodList:['',Validators.required],
-      foodListOption:[],
       beverageList:['',Validators.required],
-      beverageListOption:[],
       startDate:['',Validators.required],
       endDate: ['', Validators.required],
       phonenum:['', Validators.required]
