@@ -12,7 +12,7 @@ export class CustomerdetailsService {
   // private apiUrl='http://localhost:3000'
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   registerCustomer(customer: CustomerdetailsInterface): Observable<CustomerdetailsInterface> {
     return this.http.post<CustomerdetailsInterface>(`${this.apiUrl}/createCustomer`, customer, { headers: this.headers });
@@ -26,7 +26,7 @@ export class CustomerdetailsService {
     return this.http.get<any>(`${this.apiUrl}/getCustomerById/${id}`);
   }
 
-   updateCustomer(customerId:any, totalExpense?: any, status?: string): Observable<any> {
+  updateCustomer(customerId: any, totalExpense?: any, status?: string): Observable<any> {
     const updateData: any = {};
     if (totalExpense !== undefined) {
       updateData.totalExpense = totalExpense;
@@ -36,5 +36,10 @@ export class CustomerdetailsService {
     }
     return this.http.patch(`${this.apiUrl}/updateCustomer/${customerId}`, updateData);
   }
+
+  deleteCustomer(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/customer?id=${id}`);
+  }
+
 
 }
