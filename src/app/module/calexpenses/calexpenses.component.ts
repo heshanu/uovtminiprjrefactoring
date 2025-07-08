@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.reducer';
 import { select, Store } from '@ngrx/store';
-import {selectOrderHotelsListDetails,selectOrderBeverageListDetails,selectOrderTravelsListDetails,selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue, getFullExpense} from "../../store/orders/orders.selectors"
+import { selectOrderHotelsListDetails, selectOrderBeverageListDetails, selectOrderTravelsListDetails, selectOrderFoodsListDetails, getFoodExpenseValue, getHotelExpenseValue, getBeverageExpenseValue, getTravelExpenseValue, getFullExpense } from "../../store/orders/orders.selectors"
 import { HotelsListInterface, } from '../../model/hotel_interface';
 import { FoodItem } from '../../store/orders/orders.status';
 import { FoodsInterface } from '../../model/foodrecipe.model';
-import { clearHotelexpense, setTotalExpenses} from '../../store/orders/orders.actions';
-import { getCustomerDetail, getCustomerExpenseById, getCustomerID} from '../../store/customers/customer.selectors';
+import { clearHotelexpense, setTotalExpenses } from '../../store/orders/orders.actions';
+import { getCustomerDetail, getCustomerExpenseById, getCustomerID } from '../../store/customers/customer.selectors';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { calculateCustomerExpenses } from '../../store/customers/customer-id.actions';
 import { WhatappService } from '../../service/whatapp.service';
@@ -23,65 +23,65 @@ import { Location } from '@angular/common';
 })
 export class CalexpensesComponent implements OnInit {
 
-  hotelList$!: Observable<any|undefined[]>;
-  hotelList!:HotelsListInterface[];
-  hotelListSubs!:Subscription;
+  hotelList$!: Observable<any | undefined[]>;
+  hotelList!: HotelsListInterface[];
+  hotelListSubs!: Subscription;
 
-  foodList$!: Observable<any|undefined[]>;
-  foodList!:FoodsInterface[];
-  foodListSubs!:Subscription;
+  foodList$!: Observable<any | undefined[]>;
+  foodList!: FoodsInterface[];
+  foodListSubs!: Subscription;
 
-  beverageList$!: Observable<any|undefined[]>;
-  beverageList!:any[];
-  beverageListSubs!:Subscription;
+  beverageList$!: Observable<any | undefined[]>;
+  beverageList!: any[];
+  beverageListSubs!: Subscription;
 
-  travelList$!: Observable<any|undefined[]>;
-  travelList!:any[];
-  travelListSubs!:Subscription;
+  travelList$!: Observable<any | undefined[]>;
+  travelList!: any[];
+  travelListSubs!: Subscription;
 
-  foodExpenditure$!:Observable<number>;
-  beverageExpenditure$!:Observable<number>;
-  travelExpenditure$!:Observable<number>;
+  foodExpenditure$!: Observable<number>;
+  beverageExpenditure$!: Observable<number>;
+  travelExpenditure$!: Observable<number>;
   hotelExpenditure$!: Observable<number>;
 
-  foodExpenditure!:number;
-  beverageExpenditure!:number;
-  travelExpenditure!:number;
-  hotelExpenditure!:number;
+  foodExpenditure!: number;
+  beverageExpenditure!: number;
+  travelExpenditure!: number;
+  hotelExpenditure!: number;
 
-  totalExpenditure$!:Observable<number>;
-  totalExpenditure!:number;
+  totalExpenditure$!: Observable<number>;
+  totalExpenditure!: number;
 
-  customerIDSubsription!:Subscription;
-  customerID$!:Observable<any>;
-  customerID!:string;
+  customerIDSubsription!: Subscription;
+  customerID$!: Observable<any>;
+  customerID!: string;
 
   customerObj$!: Observable<any>;
-  customerRecivedObj!:any;
+  customerRecivedObj!: any;
 
   customerTotalExpense$!: Observable<number>;
   customerTotalExpense!: any;
 
-  customerPhonenumber$!:Observable<any>;
-  customerPhonenumber!:any;
-  customerPhonenumSub!:Subscription;
+  customerPhonenumber$!: Observable<any>;
+  customerPhonenumber!: any;
+  customerPhonenumSub!: Subscription;
 
-  constructor(private store: Store<AppState>,private customerdetailsService:CustomerdetailsService,private whatappService:WhatappService,private custObj:CustomerObjectService,private location: Location) {
+  constructor(private store: Store<AppState>, private customerdetailsService: CustomerdetailsService, private whatappService: WhatappService, private custObj: CustomerObjectService, private location: Location) {
     // Select the hotel list from the store
     this.hotelList$ = this.store.select(selectOrderHotelsListDetails);
-    this.foodList$=this.store.select(selectOrderFoodsListDetails);
-    this.beverageList$=this.store.select(selectOrderBeverageListDetails);
-    this.travelList$=this.store.select(selectOrderTravelsListDetails);
+    this.foodList$ = this.store.select(selectOrderFoodsListDetails);
+    this.beverageList$ = this.store.select(selectOrderBeverageListDetails);
+    this.travelList$ = this.store.select(selectOrderTravelsListDetails);
 
-    this.foodExpenditure$=this.store.select(getFoodExpenseValue);
-    this.hotelExpenditure$=this.store.select(getHotelExpenseValue);
-    this.beverageExpenditure$=this.store.select(getBeverageExpenseValue);
-    this.travelExpenditure$=this.store.select(getTravelExpenseValue);
+    this.foodExpenditure$ = this.store.select(getFoodExpenseValue);
+    this.hotelExpenditure$ = this.store.select(getHotelExpenseValue);
+    this.beverageExpenditure$ = this.store.select(getBeverageExpenseValue);
+    this.travelExpenditure$ = this.store.select(getTravelExpenseValue);
 
     this.customerObj$ = this.store.pipe(select(getCustomerDetail));
 
     this.customerTotalExpense$ = this.store.pipe(select(getFullExpense));
-    this.customerPhonenumber$=this.store.pipe(select(getCustomerDetail));
+    this.customerPhonenumber$ = this.store.pipe(select(getCustomerDetail));
   }
 
   ngOnInit() {
@@ -106,9 +106,9 @@ export class CalexpensesComponent implements OnInit {
       this.customerTotalExpense = val;
     })
 
-   this.customerPhonenumSub= this.customerPhonenumber$.subscribe((val)=>{
-    this.customerPhonenumber=val.phonenum;
-   })
+    this.customerPhonenumSub = this.customerPhonenumber$.subscribe((val) => {
+      this.customerPhonenumber = val.phonenum;
+    })
 
     this.foodExpenditure$.subscribe((val) => {
       this.foodExpenditure = val;
@@ -146,23 +146,23 @@ export class CalexpensesComponent implements OnInit {
 
 
 
-  btnCaption= "Back";
+  btnCaption = "Back";
   btnColor = "red";
-    sentMessages: any[] = [];
+  sentMessages: any[] = [];
 
   closePlan() {
-    this.store.dispatch(setTotalExpenses({expenses:this.customerTotalExpense}));
+    this.store.dispatch(setTotalExpenses({ expenses: this.customerTotalExpense }));
     console.log(this.customerTotalExpense);
-    this.customerdetailsService.updateCustomer(this.customerID,this.customerTotalExpense,"COMPLETED")
-    .subscribe(
-     response => {
-       console.log('Customer updated successfully:', response);
-       console.log('customer phone num'+this.customerPhonenumber);
+    this.customerdetailsService.updateCustomer(this.customerID, this.customerTotalExpense, "COMPLETED")
+      .subscribe(
+        response => {
+          console.log('Customer updated successfully:', response);
+          console.log('customer phone num' + this.customerPhonenumber);
 
-        if (this.customerPhonenumber != null) {
-          this.whatappService.sendTemplateMessage(
-            this.customerPhonenumber,
-            `
+          if (this.customerPhonenumber != null) {
+            this.whatappService.sendTemplateMessage(
+              this.customerPhonenumber,
+              `
             Hello,
             This is travel buddy service,
 
@@ -182,41 +182,41 @@ export class CalexpensesComponent implements OnInit {
 
           Thank you for use our service,Have a nice day !!!!!!!!!!!
           `
-          )
-      .subscribe({
-          next: (response) => {
-      this.sentMessages.push({
-        to: this.customerPhonenumber,
-        message: this.customerTotalExpense,
-        timestamp: new Date(),
-      //  sid:environment.TWILIO_ACCOUNT_SID
-      });
-          console.log('Twilio response:', response);
+            )
+              .subscribe({
+                next: (response) => {
+                  this.sentMessages.push({
+                    to: this.customerPhonenumber,
+                    message: this.customerTotalExpense,
+                    timestamp: new Date(),
+                    //  sid:environment.TWILIO_ACCOUNT_SID
+                  });
+                  console.log('Twilio response:', response);
 
+                },
+                error: (err) => {
+                  //   this.status = `Error: ${err.error?.message || err.message}`;
+                  //  this.status = `Error: ${this.recipient.error}`;
+                  // this.statusColor = 'text-danger';
+                  console.error('Twilio error:', err);
+                }
+              });
+            Swal.fire({
+              title: 'Action Successfully executed',
+              text: 'Customer plan is completed',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+            this.location.back();
+
+          } else {
+            alert("unable to send whatapp message")
+          }
         },
-        error: (err) => {
-       //   this.status = `Error: ${err.error?.message || err.message}`;
-        //  this.status = `Error: ${this.recipient.error}`;
-     // this.statusColor = 'text-danger';
-          console.error('Twilio error:', err);
+        error => {
+          console.error('Error updating customer:', error);
         }
-      });
-      Swal.fire({
-        title: 'Action Successfully executed',
-        text: 'Customer plan is completed',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
-      this.location.back();
-
-   }else{
-    alert("unable to send whatapp message")
-   }
-     },
-     error => {
-       console.error('Error updating customer:', error);
-     }
-   );
+      );
 
   }
 

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -10,6 +10,10 @@ import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { SpinnerService } from '../../service/spinner.service';
 import { CustomerState } from '../../store/customers/customer.status';
 import Swal from 'sweetalert2';
+import { UpdatemodelComponent } from '../updatemodel/updatemodel.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { CustomerObjectService } from '../../service/customer-object.service';
+import { CustService } from '../../service/cust.service';
 
 @Component({
   selector: 'app-customers-dash-board',
@@ -21,27 +25,24 @@ import Swal from 'sweetalert2';
 export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customerService = inject(CustomerdetailsService);
-
-  customerDetails$!: Observable<CustomerState | undefined>;
-  customerId!: string | undefined;
-  private subscription!: Subscription;
-
-  isLoading$!: Observable<boolean>;
-
-  errorState = {
-    hasError: false,
-    message: ''
-  };
-
-  customersList: CustomerdetailsInterface[] = [];
+  readonly dialog = inject(MatDialog);
 
   constructor(private route: Router, private activeRouter: ActivatedRoute,
-    private store: Store<AppState>, private spinnerService: SpinnerService, private customerDetailsService: CustomerdetailsService) {
+    private store: Store<AppState>, private spinnerService: SpinnerService,
+    private customerDetailsService: CustomerdetailsService, private custID: CustomerObjectService,
+    private custs: CustService) {
     this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
+
+  customersList: CustomerdetailsInterface[] = [];
+
+  customerList$!: Observable<CustomerdetailsInterface[]>;
+
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    //this.custs.clearCustomer();
   }
 
   ngOnInit(): void {
@@ -139,4 +140,20 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
     });
 
   }
+
+  updateCustomers(id: any, customer: any, enterAnimationDuration: number, exitAnimationDuration: number) {
+    this.custID.setCustomerId(id);
+
+    this.custs.setCustomer(customer);
+
+    console.log(this.custs);
+
+    this.dialog.open(UpdatemodelComponent, {
+      width: '1000px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    })
+
+  }
+
 }
