@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -7,6 +7,8 @@ import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import Swal from 'sweetalert2';
 import { CustomerObjectService } from '../../service/customer-object.service';
+import { CustService } from '../../service/cust.service';
+import { CustomersDashBoardComponent } from '../customers-dash-board/customers-dash-board.component';
 @Component({
   selector: 'app-updatemodel',
   standalone: false,
@@ -14,7 +16,6 @@ import { CustomerObjectService } from '../../service/customer-object.service';
   styleUrl: './updatemodel.component.css'
 })
 export class UpdatemodelComponent implements OnInit {
-
   registrationForm!: FormGroup;
 
   private destroy$ = new Subject<void>();
@@ -23,7 +24,8 @@ export class UpdatemodelComponent implements OnInit {
     private fb: FormBuilder, private calenderService: CalenderService,
     public dialogRef: MatDialogRef<UpdatemodelComponent>, // This is CORRECT for dialog components
     @Inject(MAT_DIALOG_DATA) public data: any, private customerDetailsService: CustomerdetailsService,
-    private custObj: CustomerObjectService// Optional injected data
+    private custObj: CustomerObjectService,// Optional injected data
+    private customers: CustService
   ) { }
 
   photo: File | null = null;
@@ -48,18 +50,24 @@ export class UpdatemodelComponent implements OnInit {
     endDate: new FormControl<Date | null>(null),
   });
 
+  previousDetails!: CustomerdetailsInterface;
+
   ngOnInit(): void {
+    this.customers.getCustomerId().subscribe((val: any) => {
+      this.previousDetails = val;
+    })
+
     this.registrationForm = this.fb.group({
-      name: ['', [Validators.minLength(3)]],
-      age: ['', []],
-      address: ['', []],
-      accomadation: ['',],
-      travelMode: ['',],
-      foodList: ['',],
-      beverageList: ['',],
-      startDate: ['',],
-      endDate: ['',],
-      phonenum: ['',]
+      name: [this.previousDetails.name, Validators.minLength(3)],
+      age: [this.previousDetails.age],
+      address: [this.previousDetails.address],
+      accomadation: [this.previousDetails.accomadation],
+      travelMode: [this.previousDetails.travelMode],
+      foodList: [this.previousDetails.foodList],
+      beverageList: [this.previousDetails.beverageList],
+      startDate: [this.previousDetails.startDate],
+      endDate: [this.previousDetails.endDate],
+      phonenum: [this.previousDetails.phonenum]
 
     });
 
@@ -113,9 +121,9 @@ export class UpdatemodelComponent implements OnInit {
 
       // Mark all fields as touched to show validation errors
       this.registrationForm.markAllAsTouched();
+      this.registrationForm.reset();
     }
   }
-
 
   ngOnDestroy() {
     this.destroy$.next();
