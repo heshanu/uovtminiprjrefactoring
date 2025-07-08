@@ -26,6 +26,17 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customerService = inject(CustomerdetailsService);
   readonly dialog = inject(MatDialog);
+  subscription!: Subscription;
+
+  customerDetails$!: Observable<CustomerState | undefined>;
+
+  customerId: any;
+  isLoading$!: Observable<boolean>;
+
+  errorState = {
+    hasError: false,
+    message: ''
+  };
 
   constructor(private route: Router, private activeRouter: ActivatedRoute,
     private store: Store<AppState>, private spinnerService: SpinnerService,
