@@ -2,7 +2,8 @@
 import { State, StoreModule, createReducer, on } from '@ngrx/store';
 import { initialOrderState,OrderItem, OrderState } from './orders.status';
 import{addBeverage, addBeverageExpenses, addFood, addFoodExpenses, addHotel, addHotelExpenses, addOrder, addTravelExpenses, clearHotelexpense, loadOrders,
-  loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,setTotalExpenses} from "./orders.actions"
+  loadOrdersFailure, loadOrdersSuccess,removeBeverageExpenseById,removeFoodExpenseById,removeHotelExpenseById,removeTravelExpenseById,setCurrentOrderStatus,setTotalExpenses,
+  updateTravelExpenses} from "./orders.actions"
 export const initialState: OrderState[]=[];
 
 export const orderReducer = createReducer(
@@ -166,4 +167,8 @@ export const orderReducer = createReducer(
     ...state,
     totalExpense:state.totalBeverageExpenses+state.totalFoodExpenses+state.totalHotelExpenses+state.totalTravelExpenses
   })),
+  on(updateTravelExpenses, (state, { expense }) => ({
+    ...state,
+    totalTravelExpenses:state.totalTravelExpenses-expense
+  }))
 )

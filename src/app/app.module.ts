@@ -91,8 +91,8 @@ import { ThemeToggleComponent } from './compoent/theme-toggle/theme-toggle.compo
 import { SharedcompoentModule } from './module/sharedcompoent/sharedcompoent.module';
 import { authGuard } from './shared/guard/auth.guard';
 import { RegisterModule } from './module/register/register.module';
-import { ChatappModule } from './module/chatapp/chatapp.module';
 import { LocationModule } from './module/location/location.module';
+import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -166,32 +166,33 @@ import { LocationModule } from './module/location/location.module';
     TravelconfirmModalComponent,
     FoodconfirmComponent,
     ThemeToggleComponent,
+    UpdatemodelComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HomeModule,
-        LoginModule,
-        BeverageModule,
-        FoodModule,
-        MaterialModule,
-        CdkAccordionModule,
-        StoreModule.forRoot(appReducers),
-        StoreDevtoolsModule.instrument({
-          maxAge: 25,
-        }),
+    FormsModule,
+    ReactiveFormsModule,
+    HomeModule,
+    LoginModule,
+    BeverageModule,
+    FoodModule,
+    MaterialModule,
+    CdkAccordionModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
     CalexpensesModule,
     SharedcompoentModule,
     FormsModule,
     RegisterModule,
-    ChatappModule,
-    LocationModule
+    LocationModule,
+    MaterialModule
   ],
-  exports:[
+  exports: [
     SpinnerComponent
   ],
   providers: [SpinnerService],

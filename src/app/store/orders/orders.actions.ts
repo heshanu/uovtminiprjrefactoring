@@ -51,6 +51,11 @@ export const removeTravelExpenseById=createAction(
   props<{id:string}>()
 );
 
+export const updateTravelExpenses = createAction(
+  "Updated with current travelExpenses",
+  props<{expense:number}>()
+)
+
 export const addFoodExpenses=createAction(
   "[Order] Added Food Expenses",
   props<{expense:number}>()

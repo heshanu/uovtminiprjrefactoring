@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
 import { CustomerdetailsInterface } from '../../model/customerDetailsInterface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -9,6 +9,12 @@ import { AppState } from '../../app.reducer';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { SpinnerService } from '../../service/spinner.service';
 import { CustomerState } from '../../store/customers/customer.status';
+import Swal from 'sweetalert2';
+import { UpdatemodelComponent } from '../updatemodel/updatemodel.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { CustomerObjectService } from '../../service/customer-object.service';
+import { CustService } from '../../service/cust.service';
+
 @Component({
   selector: 'app-customers-dash-board',
   templateUrl: './customers-dash-board.component.html',
@@ -19,11 +25,12 @@ import { CustomerState } from '../../store/customers/customer.status';
 export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customerService = inject(CustomerdetailsService);
+  readonly dialog = inject(MatDialog);
+  subscription!: Subscription;
 
   customerDetails$!: Observable<CustomerState | undefined>;
-  customerId!: string | undefined;
-  private subscription!: Subscription;
 
+  customerId: any;
   isLoading$!: Observable<boolean>;
 
   errorState = {
@@ -31,15 +38,22 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
     message: ''
   };
 
-  customersList: CustomerdetailsInterface[] = [];
-
   constructor(private route: Router, private activeRouter: ActivatedRoute,
-    private store: Store<AppState>, private spinnerService: SpinnerService, private customerDetailsService: CustomerdetailsService) {
+    private store: Store<AppState>, private spinnerService: SpinnerService,
+    private customerDetailsService: CustomerdetailsService, private custID: CustomerObjectService,
+    private custs: CustService) {
     this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
+
+  customersList: CustomerdetailsInterface[] = [];
+
+  customerList$!: Observable<CustomerdetailsInterface[]>;
+
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    //this.custs.clearCustomer();
   }
 
   ngOnInit(): void {
@@ -52,6 +66,7 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.spinnerService.loading$;
     this.spinnerService.showLoading();
     this.errorState = { hasError: false, message: '' };
+
     this.customerService.getAllCustomers().pipe(
       finalize(() => this.spinnerService.hideLoading())
     ).subscribe({
@@ -105,4 +120,51 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
   completed(customer: CustomerdetailsInterface) {
     this.route.navigate(['']);
   }
+
+  deleteCustomer(id: string) {
+    this.customerDetailsService.deleteCustomer(id).subscribe(
+      response => {
+        console.log('Customer deleted successfully', response);
+      },
+      error => {
+        console.error('Error deleting customer', error);
+      }
+    );
+    Swal.fire({
+      title: 'Action Successfully executed',
+      text: 'Customer deletion was successful',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+
+    this.customerService.getAllCustomers().pipe(
+      finalize(() => this.spinnerService.hideLoading())
+    ).subscribe({
+      next: (data) => (this.customersList = data),
+      error: (err) => {
+        this.errorState = {
+          hasError: true,
+          message: err.message || 'An error occurred while fetching beverages.'
+        };
+        console.error('Error fetching beverages:', err);
+      }
+    });
+
+  }
+
+  updateCustomers(id: any, customer: any, enterAnimationDuration: number, exitAnimationDuration: number) {
+    this.custID.setCustomerId(id);
+
+    this.custs.setCustomer(customer);
+
+    console.log(this.custs);
+
+    this.dialog.open(UpdatemodelComponent, {
+      width: '1000px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    })
+
+  }
+
 }

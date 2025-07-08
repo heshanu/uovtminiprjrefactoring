@@ -7,6 +7,9 @@ import { DialogTrainComponent } from '../../../shared/dialog-train/dialog-train.
 import { DialogTrainconfirmComponent } from '../../../shared/dialog-trainconfirm/dialog-trainconfirm.component';
 import { SpinnerService } from '../../../service/spinner.service';
 import { Observable } from 'rxjs';
+import { AppState } from '../../../app.reducer';
+import { Store } from '@ngrx/store';
+import { addTravelExpenses, updateTravelExpenses } from '../../../store/orders/orders.actions';
 
 @Component({
     selector: 'app-train',
@@ -18,19 +21,9 @@ export class TrainComponent implements OnInit{
 
   readonly dialog = inject(MatDialog);
 
-  isLoading$!:Observable<boolean>;
-
-  date!: any;
-
-  trainNumber!:any;
-
-  ScheduleDeparture!:any;
-
-  ActualDeparture:any;
-
-  DelayInDeparture:any;
-
-  trainRoutes!:TrainRoutesInterface[];
+  ticketPrice!: number;
+  ticketAmount!: number
+  trainExpense!: number;
 
   selectItem(item:any,enterAnimationDuration: string, exitAnimationDuration: string) {
      //console.log("booked ",item);
@@ -38,98 +31,20 @@ export class TrainComponent implements OnInit{
         width: '250px',
         enterAnimationDuration,
         exitAnimationDuration,
-      }); 
+      });
     }
 
-  constructor(private dataService: TrainService,private router:Router,
-    private spinnerService:SpinnerService
+  constructor(private router:Router,
+    private spinnerService: SpinnerService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-
-    this.isLoading$=this.spinnerService.loading$;
-    this.spinnerService.showLoading();
-    this.getDate();
-    this.getTrainNumber();
-    this.getTrainRoute();
-    this.getTrainActualDeparture();
-    this.getTrainDelayInDeparture();
-    this.getTrainScheduleDeparture();
-    this.spinnerService.hideLoading();
-  }
-
-  getDate(){
-    this.dataService.getData().subscribe(
-      (response:any) => {
-        this.date = response.StartDate
-      },
-      (error:any) => {
-        console.error('Error fetching data', error);
-      }
-    );
-  }
-
-  getTrainNumber(){
-    this.dataService.getData().subscribe(
-      (response:any) => {
-        this.trainNumber = response.TrainNumber
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
-  }
-
-  getTrainRoute(){
-    this.dataService.getData().subscribe(
-      (response:any) => {
-        this.trainRoutes = response.TrainRoute
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
-  }
-
-  getTrainScheduleDeparture(){
-    this.dataService.getData().subscribe(
-      (response:any) => {
-        this.ScheduleDeparture = response.TrainRoute.ScheduleDeparture  
-        console.log(this.ScheduleDeparture);
-        
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
-  }
-
-  getTrainActualDeparture(){
-    this.dataService.getData().subscribe(
-      (response:any) => {
-        this.ActualDeparture = response.TrainRoute.ActualDeparture 
-      },
-      (error) => {
-        console.error('Error fetching data', error);
-      }
-    );
-  }
-
-  getTrainDelayInDeparture(){
-    this.dataService.getData()
-    .subscribe(
-      (response:any) => {
-        this.DelayInDeparture = response.TrainRoute.DelayInDeparture
-      },
-      (error:any) => {
-        console.error('Error fetching data', error);
-      }
-    );
   }
 
   openPackageDialog(item: any,$event: MouseEvent) {
     $event.stopPropagation(); // Prevent card click event
-      
+
       const dialogRef = this.dialog.open(DialogTrainconfirmComponent, {
         width: '500px',
         maxWidth: '90vw',
@@ -138,7 +53,7 @@ export class TrainComponent implements OnInit{
           packages: item.ingredients
         }
       });
-  
+
       dialogRef.afterClosed().subscribe(selectedPackage => {
         if (selectedPackage) {
           console.log('Selected package:', selectedPackage);
@@ -147,6 +62,18 @@ export class TrainComponent implements OnInit{
       });
     }
 
+  clean():void{
+    this.ticketAmount = 0;
+    this.ticketPrice = 0;
+    this.store.dispatch(updateTravelExpenses({ expense: this.trainExpense }));
+  }
+
   btnCaption = "Back";
   btnColor = "red";
+
+  calExpenses(): void{
+    this.trainExpense = this.ticketAmount * this.ticketPrice;
+    this.store.dispatch(addTravelExpenses({expense: this.trainExpense }));
+  }
+
 }
