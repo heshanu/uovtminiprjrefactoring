@@ -14,6 +14,7 @@ import { UpdatemodelComponent } from '../updatemodel/updatemodel.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { CustomerObjectService } from '../../service/customer-object.service';
 import { CustService } from '../../service/cust.service';
+
 @Component({
   selector: 'app-customers-dash-board',
   templateUrl: './customers-dash-board.component.html',
@@ -33,16 +34,6 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
     this.customerDetails$ = this.store.pipe(select(getCustomerDetail));
   }
 
-  customerDetails$!: Observable<CustomerState | undefined>;
-  customerId!: string | undefined;
-  private subscription!: Subscription;
-
-  isLoading$!: Observable<boolean>;
-
-  errorState = {
-    hasError: false,
-    message: ''
-  };
 
   customersList: CustomerdetailsInterface[] = [];
 
@@ -55,6 +46,7 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.subscription = this.customerDetails$.subscribe((data) => {
       this.customerId = data?.customer._id; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
@@ -111,8 +103,6 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
           error: null
         })
       );
-
-
     }
   }
 
@@ -165,6 +155,5 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
     })
 
   }
-
 
 }

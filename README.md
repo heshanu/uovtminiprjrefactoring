@@ -14,6 +14,8 @@ Mid viva presentation link-https://docs.google.com/presentation/d/1M_Whi8kb2mymb
 
 backend -endpoints postman-https://documenter.getpostman.com/view/7287191/2sB2qcBfq2
 
+site monitoring-https://stats.uptimerobot.com/0LzHvxuMGz
+
 ## 🚀 Features
 
 - User authentication with login interface
