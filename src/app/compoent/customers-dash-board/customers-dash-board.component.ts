@@ -46,6 +46,8 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   customersList: CustomerdetailsInterface[] = [];
 
+  customerList$!: Observable<CustomerdetailsInterface[]>;
+
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -53,7 +55,6 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.subscription = this.customerDetails$.subscribe((data) => {
       this.customerId = data?.customer._id; // Update the component's state with the new value
       console.log('Customer ID:', this.customerId); // Optional: Log the value
@@ -150,13 +151,20 @@ export class CustomersDashBoardComponent implements OnInit, OnDestroy {
 
   }
 
-  updateCustomers(id: any, enterAnimationDuration: number, exitAnimationDuration: number) {
+  updateCustomers(id: any, customer: any, enterAnimationDuration: number, exitAnimationDuration: number) {
     this.custID.setCustomerId(id);
-    this.custs.setCustomer(this.customersList);
+
+    this.custs.setCustomer(customer);
+
+    console.log(this.custs);
+
     this.dialog.open(UpdatemodelComponent, {
       width: '1000px',
       enterAnimationDuration,
       exitAnimationDuration,
     })
+
   }
+
+
 }

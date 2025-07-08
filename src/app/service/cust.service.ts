@@ -11,7 +11,7 @@ export class CustService {
 
   private customer$ = new BehaviorSubject<CustomerdetailsInterface | null>(null);
 
-  setCustomer(data: any) {
+  setCustomer(data: any): void {
     this.customer$.next({
       _id: data._id,
       name: data.name,

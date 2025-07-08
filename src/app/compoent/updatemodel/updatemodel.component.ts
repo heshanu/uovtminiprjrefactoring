@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
@@ -8,6 +8,7 @@ import { CustomerdetailsService } from '../../service/customerdetails.service';
 import Swal from 'sweetalert2';
 import { CustomerObjectService } from '../../service/customer-object.service';
 import { CustService } from '../../service/cust.service';
+import { CustomersDashBoardComponent } from '../customers-dash-board/customers-dash-board.component';
 @Component({
   selector: 'app-updatemodel',
   standalone: false,
@@ -15,7 +16,6 @@ import { CustService } from '../../service/cust.service';
   styleUrl: './updatemodel.component.css'
 })
 export class UpdatemodelComponent implements OnInit {
-
   registrationForm!: FormGroup;
 
   private destroy$ = new Subject<void>();
@@ -54,34 +54,20 @@ export class UpdatemodelComponent implements OnInit {
 
   ngOnInit(): void {
     this.customers.getCustomerId().subscribe((val: any) => {
-      this.previousDetails._id = val?._id,
-        this.previousDetails.name = val.namem
-      this.previousDetails.age = val.age,
-        this.previousDetails.address = val.address;
-      this.previousDetails.accomadation = val.accomadation,
-        this.previousDetails.travelMode = val.travelMode,
-        this.previousDetails.foodList = val.foodList,
-        this.previousDetails.foodListOption = val.foodListOption,
-        this.previousDetails.beverageList = val.beverageList,
-        this.previousDetails.beverageListOption = val.beverageListOption,
-        this.previousDetails.startDate = val.startDate,
-        this.previousDetails.endDate = val.endDate,
-        this.previousDetails.status = val.status,
-        this.previousDetails.totalExpense = val.totalExpense,
-        this.previousDetails.phonenum = val.phonenum
+      this.previousDetails = val;
     })
 
     this.registrationForm = this.fb.group({
-      name: [this.previousDetails.name, [Validators.minLength(3)]],
+      name: [this.previousDetails.name, Validators.minLength(3)],
       age: [this.previousDetails.age],
-      address: ['', []],
-      accomadation: ['',],
-      travelMode: ['',],
-      foodList: ['',],
-      beverageList: ['',],
-      startDate: ['',],
-      endDate: ['',],
-      phonenum: ['',]
+      address: [this.previousDetails.address],
+      accomadation: [this.previousDetails.accomadation],
+      travelMode: [this.previousDetails.travelMode],
+      foodList: [this.previousDetails.foodList],
+      beverageList: [this.previousDetails.beverageList],
+      startDate: [this.previousDetails.startDate],
+      endDate: [this.previousDetails.endDate],
+      phonenum: [this.previousDetails.phonenum]
 
     });
 
@@ -135,9 +121,9 @@ export class UpdatemodelComponent implements OnInit {
 
       // Mark all fields as touched to show validation errors
       this.registrationForm.markAllAsTouched();
+      this.registrationForm.reset();
     }
   }
-
 
   ngOnDestroy() {
     this.destroy$.next();

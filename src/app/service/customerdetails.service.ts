@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, interval, Observable, of, startWith, switchMap } from 'rxjs';
 import { CustomerdetailsInterface } from '../model/customerDetailsInterface';
 
 @Injectable({
@@ -43,6 +43,17 @@ export class CustomerdetailsService {
 
   updateCus(id: any, data: any): Observable<any> {
     return this.http.patch(`${this.apiUrl}/customer?id=${id}`, data);
+  }
+
+  getLiveData(): Observable<any> {
+    return interval(100).pipe(
+      startWith(0),
+      switchMap(() => this.getAllCustomers()),
+      catchError(error => {
+        console.error('Polling error:', error);
+        return of(null);
+      })
+    );
   }
 
 }
