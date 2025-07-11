@@ -13,9 +13,9 @@ import { SpinnerService } from '../../../../service/spinner.service';
 export class SouthernComponent implements OnInit ,OnDestroy{
 
   spinner$!:Observable<boolean>;
-  
+
   constructor(private foodService:FoodserviceService,
-    public spinnerService:SpinnerService){}  
+    public spinnerService:SpinnerService){}
 
 
   ngOnInit(): void {
@@ -25,14 +25,14 @@ export class SouthernComponent implements OnInit ,OnDestroy{
 
   getSouthernFoods(){
     this.spinnerService.showLoading();
-    this.southernFoodListSubscription=this.foodService.getSouthernFoods()
-    .subscribe((food:any)=>{
-      this.southernFoodList=food.recipes;
-      this.spinnerService.hideLoading();
-      //console.log(this.southernFoodList);   
-    })
+    // this.southernFoodListSubscription=this.foodService.getSouthernFoods()
+    // .subscribe((food:any)=>{
+    //   this.southernFoodList=food.recipes;
+    //   this.spinnerService.hideLoading();
+    // })
+    this.southernFoodList = this.foodService.getSouthernFoods();
     this.spinnerService.hideLoading();
-   
+
   }
 
   southernFoodListSubscription!:Subscription;

@@ -14,28 +14,24 @@ export class ChineeseComponent implements OnInit ,OnDestroy{
     ngOnInit(): void {
       this.getChineeseFood();
     }
-  
-   chineeseFoodListSubscription!:Subscription;  
-  
+
+   chineeseFoodListSubscription!:Subscription;
+
    chineeseFoodList:any[]=[];
-  
+
     constructor(private foodService:FoodserviceService){}
-  
+
     getChineeseFood(){
-  
-      this. chineeseFoodListSubscription=this.foodService
-      .getChineeseFoods().subscribe((food:any)=>{
-        this.chineeseFoodList=food.recipes;
-        //console.log(this.southernFoodList);   
-      })
+
+      this.chineeseFoodList = this.foodService.getChineeseFoods();
     }
-  
-  
+
+
     ngOnDestroy(): void {
       if(this.  chineeseFoodListSubscription){
         this. chineeseFoodListSubscription.unsubscribe();
       }
     }
-  
+
 
 }
