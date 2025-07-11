@@ -26,7 +26,7 @@ export class CardTemplateFoodsComponent {
     this.list=this.recivedList;
   }
 
-  @Input() recivedList:any[]=[];
+  @Input() recivedList:FoodsInterface[]=[];
 
   readonly dialog = inject(MatDialog)
 
@@ -39,9 +39,9 @@ export class CardTemplateFoodsComponent {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
-    }); 
+    });
   }
-  
+
 refresh() {
   this.ngOnInit();
 }
@@ -52,13 +52,13 @@ bookNow(item: any,enterAnimationDuration: string, exitAnimationDuration: string)
     width: '250px',
     enterAnimationDuration,
     exitAnimationDuration,
-  }); 
+  });
 }
 
 
 openPackageDialog(item: FoodsInterface,$event: MouseEvent) {
   $event.stopPropagation(); // Prevent card click event
-    
+
     const dialogRef = this.dialog.open(DialogCompoentComponent, {
       width: '500px',
       maxWidth: '90vw',
@@ -76,7 +76,7 @@ openPackageDialog(item: FoodsInterface,$event: MouseEvent) {
     });
   }
 
-  
+
   btnCaption="Back";
   btnColor = "red";
 }

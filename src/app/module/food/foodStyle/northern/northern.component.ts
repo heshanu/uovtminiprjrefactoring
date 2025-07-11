@@ -15,7 +15,7 @@ export class NorthernComponent implements OnInit ,OnDestroy{
     this.getSouthernFoods();
   }
 
- northernFoodListSubscription!:Subscription;  
+ northernFoodListSubscription!:Subscription;
 
   northernFoodList:FoodsInterface[]=[];
 
@@ -23,10 +23,11 @@ export class NorthernComponent implements OnInit ,OnDestroy{
 
   getSouthernFoods(){
 
-    this.northernFoodListSubscription=this.foodService.getNorthernFoods().subscribe((food:any)=>{
-      this. northernFoodList=food.recipes;
-      //console.log(this.southernFoodList);   
-    })
+    this.northernFoodList = this.foodService.getNorthernFoods();
+    // this.northernFoodListSubscription=this.foodService.getNorthernFoods().subscribe((food:any)=>{
+    //   this. northernFoodList=food.recipes;
+    //   console.log(this.southernFoodList);
+    // })
   }
 
 
