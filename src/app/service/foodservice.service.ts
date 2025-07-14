@@ -56,6 +56,7 @@ export class FoodserviceService{
   ];
 
   chineeseFoodList: FoodsInterface[] = [
+
     { foodId: "chineesefood1", name: "Breadfood Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/08/img_9828.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
     { foodId: "chineesefood2", name: "Chickpeas Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/rasakamakadala2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
     { foodId: "chineesefood3", name: "Pork Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/pork-curry-recipe2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
