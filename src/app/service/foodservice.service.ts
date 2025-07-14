@@ -56,12 +56,12 @@ export class FoodserviceService{
   ];
 
   chineeseFoodList: FoodsInterface[] = [
-    { foodId: "northfood1", name: "Breadfood Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/08/img_9828.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
-    { foodId: "northfood2", name: "Chickpeas Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/rasakamakadala2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
-    { foodId: "northfood3", name: "Pork Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/pork-curry-recipe2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
-    { foodId: "northfood4", name: "Garlic Rice", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/05/img_6585-edited.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
-    { foodId: "northfood5", name: "Hot Fish Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/05/img_7832-edited.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
-    { foodId: "northfood6", name: "Pork Stew", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/03/img_60252.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 }
+    { foodId: "chineesefood1", name: "Breadfood Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/08/img_9828.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
+    { foodId: "chineesefood2", name: "Chickpeas Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/rasakamakadala2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
+    { foodId: "chineesefood3", name: "Pork Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/06/pork-curry-recipe2.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
+    { foodId: "chineesefood4", name: "Garlic Rice", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/05/img_6585-edited.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
+    { foodId: "chineesefood5", name: "Hot Fish Curry", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/05/img_7832-edited.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 },
+    { foodId: "chineesefood6", name: "Pork Stew", image: 'https://rasakama.wordpress.com/wp-content/uploads/2015/03/img_60252.jpg?w=450&h=450&crop=1', ingredients: ["Fish", "Sambol"], price: 450 }
   ];
 
   traditionalList: FoodsInterface[] = [
