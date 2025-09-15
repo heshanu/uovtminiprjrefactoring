@@ -1,12 +1,12 @@
-<div class="form-container w-full max-w-2xl  rounded-xl p-6">
+<div class="form-container w-full max-w-2xl  rounded-xl p-6 border-8">
   <!-- Fixed header -->
   <div class="mb-6 text-center sticky top-0  py-4 z-10 border-b">
-    <h2 class="text-2xl sm:text-3xl font-bold text-800">Update Your Account</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold text-800">Update Customer Account</h2>
     <p class="text-600 mt-1">Complete your profile information</p>
   </div>
 
   <!-- Scrollable form content -->
-  <div class="form-scroll-container">
+  <div class="form-scroll-container border-8">
     <div class="mb-8 min-h-screen flex items-center justify-center bg-100">
       <div class="p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-2xl font-bold mb-6 text-center">Create Your Account</h2>
@@ -92,7 +92,8 @@
             </select>
             <div *ngIf="registrationForm.get('travelMode')?.invalid && registrationForm.get('travelMode')?.touched"
               class="text-red-500 text-sm mt-1">
-              <div *ngIf="registrationForm.get('travelMode')?.errors?.['required']">Travel mode selection is required.</div>
+              <div *ngIf="registrationForm.get('travelMode')?.errors?.['required']">Travel mode selection is required.
+              </div>
             </div>
           </div>
 
@@ -105,7 +106,8 @@
             <div *ngIf="registrationForm.get('foodList')?.invalid && registrationForm.get('foodList')?.touched"
               class="text-red-500 text-sm">
               <div *ngIf="registrationForm.get('foodList')?.errors?.['required']">Food list is required.</div>
-              <div *ngIf="registrationForm.get('foodList')?.errors?.['minlength']">Food list must be at least 3 characters.
+              <div *ngIf="registrationForm.get('foodList')?.errors?.['minlength']">Food list must be at least 3
+                characters.
               </div>
             </div>
           </div>
@@ -151,24 +153,25 @@
                 </div>
               </div> -->
 
-              <div>
-                <label for="dateRange" class="block text-sm font-medium text-700">Book your date</label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate formControlName="startDate" placeholder="Start date">
-                  <input matEndDate formControlName="endDate" placeholder="End date">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="picker" class="m-8"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-                <mat-error *ngIf="range.controls.startDate.hasError('matStartDateInvalid')">
-                  Invalid start date
-                </mat-error>
-                <mat-error *ngIf="range.controls.endDate.hasError('matEndDateInvalid')">
-                  Invalid end date
-                </mat-error>
-              </div>
+          <div>
+            <label for="dateRange" class="block text-sm font-medium text-700">Book your date</label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="startDate" placeholder="Start date">
+              <input matEndDate formControlName="endDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker" class="m-8"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="range.controls.startDate.hasError('matStartDateInvalid')">
+              Invalid start date
+            </mat-error>
+            <mat-error *ngIf="range.controls.endDate.hasError('matEndDateInvalid')">
+              Invalid end date
+            </mat-error>
+          </div>
 
-          <button type="submit" [hidden]="!registrationForm.valid" class="px-4 py-2 bg-blue-500 rounded-lg">Submit</button>
+          <button type="submit" [hidden]="!registrationForm.valid"
+            class="px-4 py-2 bg-blue-500 rounded-lg">Submit</button>
         </form>
       </div>
-      </div>
+    </div>
   </div>

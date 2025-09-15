@@ -10,11 +10,11 @@ export class HomepageComponent {
 
 imageData!: any[];
 image!: string;
-constructor(private imageService:PhotoServiceService){}  
+constructor(private imageService:PhotoServiceService){}
 
 inputValue:string = '';
 searchImageByName(imageName: any) {
-   
+
   if (imageName) {
     this.imageService.findImageByName(imageName).subscribe(
       (data) => {
@@ -35,10 +35,10 @@ resetList(){
 
 
 cardsList:any[]=[
-      {name:'galle',link:'rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'galle',link:'rect4.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
       {name:'Jaffna',link:'rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
       {name:'colombo',link:'rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
-      {name:'galle',link:'rect3.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
+      {name:'galle',link:'rect4.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
       {name:'Jaffna',link:'rect4.png',description:'2 Days,2 Nights',price:'$140',country:'Sri Lanka'},
       {name:'colombo',link:'rect5.png',description:'3 Days,2 Nights',price:'$200',country:'Sri Lanka'},
     ];

@@ -10,7 +10,13 @@ import { ThemeService } from '../../service/theme.service';
 })
 export class HeaderComponent implements OnInit{
 
-    constructor(private authService:AuthServiceCall) { }
+  constructor(private authService: AuthServiceCall) { }
+      // Mobile menu toggle state
+  isMenuOpen: boolean = false;
+
+  // Control visibility of navigation links (if needed)
+  //isShow: boolean = true;
+
 
     ngOnInit(): void {
        this.isShow=this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
