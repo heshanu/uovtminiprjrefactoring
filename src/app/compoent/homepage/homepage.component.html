@@ -1,18 +1,5 @@
 <div>
 
-  <!-- <section class="hero">
-    <div class="overlay">
-      <h1>GuideBuddy</h1>
-      <div class="search-container">
-        <input type="text" class="text-black" [(ngModel)]="image" placeholder="Search here" aria-label="Search input">
-        <button class="bg-red-500 rounded-lg text-white p-4  hover:bg-red-600 m-4 " (click)="searchImageByName(image)">
-          Search Now
-        </button>
-      </div>
-      <h2>Your Imagination is Your Only Limit</h2>
-      <p>One place for all your travels and campaign experiences.</p>
-    </div>
-  </section> -->
   <section
     class="hero relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400">
     <!-- Floating shapes -->
@@ -33,20 +20,13 @@
       <div
         class="search-container flex flex-col sm:flex-row items-center gap-4 w-full max-w-xl backdrop-blur-lg bg-white/30 rounded-3xl p-4 shadow-lg animate-slideInUp">
         <input type="text" [(ngModel)]="image" placeholder="Search your destination..." aria-label="Search input"
-          class="flex-1 px-4 py-3 rounded-2xl border border-30 text-black placeholder-gray-700 focus:outline-none focus:ring-4 focus:ring-pink-400 transition-all duration-300" />
+          class="flex-1 px-4 py-3 rounded-2xl border border-30 text-black placeholder-gray-700 focus:outline-none focus:ring-4 focus:ring-black-400 transition-all duration-300" />
         <button (click)="searchImageByName(image)"
-          class="bg-gradient-to-r from-red-500 to-pink-500 text- px-6 p-8  hover:scale-105 hover:from-pink-500 hover:to-red-500 transition-transform duration-300 shadow-xl font-semibold">
+          class="bg-gradient-to-r from-black to-red-500 text-white px-6 py-3 rounded-lg shadow-xl font-semibold
+                           hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2">
           Search Now
         </button>
       </div>
-
-      <!-- Subtitle and description -->
-      <h2 class="text-90 mt-8 text-xl sm:text-2xl font-medium animate-fadeIn delay-200">
-        Your Imagination is Your Only Limit
-      </h2>
-      <p class="text-80 mt-2 max-w-xl animate-fadeIn delay-400">
-        One place for all your travels and campaign experiences.
-      </p>
     </div>
   </section>
 
