@@ -18,9 +18,9 @@
     <!-- Customer Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
       <div *ngFor="let customer of customersList" class="rounded-xl shadow-md hover:shadow-xl transition-all duration-300
-              transform hover:-translate-y-1 border border-100 overflow-hidden">
+              transform hover:-translate-y-1 border border--900 overflow-hidden">
         <!-- Card Header -->
-        <div class="p-4 sm:p-6 border-b border-100">
+        <div class="p-4 sm:p-6 border-900">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
             <h3 class="text-lg sm:text-xl font-semibold text-900 flex items-center gap-2">
               <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -177,17 +177,17 @@
                 class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                 Plan Now
               </button>
-  
+
               <button (click)="completed(customer)"
                 class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                 Mark Complete
               </button>
-  
+
               <button (click)="deleteCustomer(customer._id)"
                 class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                 Mark Delete
               </button>
-  
+
               <button (click)="{}" class="bg-blue-100 hover:bg-blue-200 rounded-full p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
