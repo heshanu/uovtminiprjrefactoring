@@ -1,40 +1,10 @@
-<!-- <header class="flex items-center  gap-4 border-2 border-solid sticky transition-all
-duration-300 bg-[var(background-color)] shadow rounded z-50">
-  <nav>
-    <div class="text-lg m-8">GuideBuddy</div>
-    <ul *ngIf="isShow">
-      <li><a routerLink="customersDashboard">
-          <div class="text-lg">Customers Dashboard</div>
-        </a></li>
-      <li><a routerLink="customerform" class="text-lg">
-          <div class="text-lg">Customer Registeration</div>
-        </a></li>
-    </ul>
-  </nav>
-  <ul class="flex space-x-4" *ngIf="isShow">
-    <li>
-      <a routerLink="login" (click)="logOut()"
-        class="register bg-blue-300 m-4 p-2 rounded hover:bg-blue-400 transition duration-300">
-        @if (isLoginLabel()) {
-        LogOut
-        }@else {
-        LogIn
-        }
-      </a>
-    </li>
-    <li>
-      <app-theme-toggle />
-    </li>
-  </ul>
-</header> -->
-
 <header
   class="flex items-center justify-between gap-4 sticky top-0 z-50 px-6 py-4 bg-white/80 backdrop-blur-md shadow-md rounded-b-xl transition-all duration-300">
 
   <!-- Logo / Brand -->
   <div
     class="text-2xl font-extrabold text-gray-900 tracking-wide hover:scale-105 transition-transform duration-300 cursor-pointer">
-    GuideBuddy
+    <a href="">GuideBuddy</a>
   </div>
 
   <!-- Navigation Links -->
@@ -53,7 +23,7 @@ duration-300 bg-[var(background-color)] shadow rounded z-50">
   <div class="flex items-center space-x-4">
     <!-- Login / Logout Button -->
     <a routerLink="login" (click)="logOut()"
-      class="bg-gray-200 text-gray-900 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-300 transition-all duration-300 font-semibold hover:scale-105">
+      class=" text-900 px-4 py-2 rounded-lg shadow-sm hover:bg-500 transition-all duration-300 font-semibold hover:scale-105">
       @if (isLoginLabel()) { LogOut } @else { LogIn }
     </a>
 
