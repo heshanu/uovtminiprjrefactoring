@@ -8,8 +8,8 @@ import { AuthServiceCall } from '../../service/auth.service';
     standalone: false
 })
 export class HomeComponent implements OnInit {
-  
-  constructor(private authService: AuthServiceCall) { 
+
+  constructor(private authService: AuthServiceCall) {
 
   }
   show!: boolean;
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     "rect3.png"
   ];
 
-  // getAuth(): void { 
+  // getAuth(): void {
   //  this.show= this.authService.isAuthenticated$(localStorage.getItem("username"),localStorage.getItem("password"));
   // }
 
