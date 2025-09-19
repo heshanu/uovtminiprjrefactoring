@@ -2,6 +2,7 @@ import { AuthServiceCall } from './../../service/auth.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../../service/theme.service';
+import Swal from 'sweetalert2';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -31,7 +32,8 @@ export class HeaderComponent implements OnInit{
   isLoginLabel():boolean {
     if (localStorage.getItem("username") || localStorage.getItem("password")) {
       return true;
-    } return false;
+    }
+    return false;
   }
 
 }
