@@ -93,6 +93,7 @@ import { authGuard } from './shared/guard/auth.guard';
 import { RegisterModule } from './module/register/register.module';
 import { LocationModule } from './module/location/location.module';
 import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.component';
+import { ChatregitrationComponent } from './compoent/chatregitration/chatregitration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -167,14 +168,15 @@ import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.compone
     FoodconfirmComponent,
     ThemeToggleComponent,
     UpdatemodelComponent,
+    ChatregitrationComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     HomeModule,
     LoginModule,
     BeverageModule,
@@ -187,7 +189,6 @@ import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.compone
     }),
     CalexpensesModule,
     SharedcompoentModule,
-    FormsModule,
     RegisterModule,
     LocationModule,
     MaterialModule

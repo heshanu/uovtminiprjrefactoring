@@ -30,6 +30,8 @@ export class CustomerdetailComponent implements OnInit {
   endDates!: any;
   startDates!: any;
 
+  getHelpFromBot: boolean = false;
+
   customerDetails!: CustomerdetailsInterface[]
 
   ngOnInit(): void {
@@ -115,5 +117,9 @@ export class CustomerdetailComponent implements OnInit {
     this.destroy$.complete();
   }
 
+  toggleChat(){
+    this.getHelpFromBot = !this.getHelpFromBot;
+    this.router.navigate(['/registerchatbot']);
+  }
 
 }

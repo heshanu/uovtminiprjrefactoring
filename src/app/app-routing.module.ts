@@ -42,6 +42,7 @@ import { NuwaravanComponent } from './compoent/travelMode/van/nuwaravan/nuwarava
 import { VanComponent } from './compoent/travelMode/van/van.component';
 import { TravelModeComponent } from './module/hotel/travel-mode/travel-mode.component';
 import { authGuard } from './shared/guard/auth.guard';
+import { ChatregitrationComponent } from './compoent/chatregitration/chatregitration.component';
 
 //lazy loading to home module
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'login',loadChildren:()=>import("./module/login/login.module").then(m=>m.LoginModule)},
   {path: 'register',loadChildren:()=>import("./module/register/register.module").then(m=>m.RegisterModule)},
   {path: 'home',component:HomeComponent},
+  {path:'registerchatbot',component:ChatregitrationComponent},
   {path:'customerform',component:CustomerdetailComponent,canActivate:[authGuard]},
   {path:'customersDashboard',component:CustomersDashBoardComponent,canActivate:[authGuard]},
   {
