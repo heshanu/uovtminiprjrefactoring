@@ -33,3 +33,8 @@
 
 </cdk-accordion>
 <app-backbtn [textCaption]="btnCaption" [btnColor]="btnColor"/>
+
+<img  src="robot-bot-icon.png" alt="Chatbot" class="fixed bottom-4 right-4 w-16 h-16 cursor-pointer"
+  (click)="toggleChat()" />
+
+<div class="m-4" *ngIf="!getHelpFromBot"><app-chatbot /></div>

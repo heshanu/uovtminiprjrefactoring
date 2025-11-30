@@ -6,21 +6,25 @@ import { BackbtnComponent } from './backbtn/backbtn.component';
 import { MaterialModule } from '../../shared/materialModule';
 import { CardforplacesComponent } from './cardforplaces/cardforplaces.component';
 import { SharedspinnerComponent } from './sharedspinner/sharedspinner.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     BackbtnComponent,
     CardforplacesComponent,
-    SharedspinnerComponent
+    SharedspinnerComponent,
+    ChatbotComponent
   ],
   imports: [
     CommonModule,
     SharedcompoentRoutingModule,
-    MaterialModule
+    MaterialModule,FormsModule,ReactiveFormsModule
   ],
   exports: [
     BackbtnComponent,
     CardforplacesComponent,
-    SharedspinnerComponent
+    SharedspinnerComponent,
+    ChatbotComponent 
   ]
 })
 export class SharedcompoentModule { }

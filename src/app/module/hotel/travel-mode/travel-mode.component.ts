@@ -17,6 +17,7 @@ export class TravelModeComponent implements OnInit, OnDestroy{
   
   btnCaption = "Back";
   btnColor = "red";
+  getHelpFromBot=true;
 
      customerObj$!: Observable<CustomerdetailsInterface|any>;
       private subscription!: Subscription;
@@ -62,8 +63,13 @@ ngOnInit(): void {
           });
           console.log("ggg123");
         }
+
+    toggleChat(){
+    this.getHelpFromBot = !this.getHelpFromBot;
+    //this.router.navigate(['/registerchatbot']);
+  }
+
       }
     
 
      // Check if a mode is currently active
-  
