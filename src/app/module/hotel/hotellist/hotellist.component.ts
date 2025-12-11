@@ -52,6 +52,7 @@ export class HotellistComponent implements OnInit,OnDestroy{
     { "itemName": "Find a host areas in SriLanka", "description": "This may assists you to find famous places arround area", "link": "hottravel" },
     { "itemName": "Find locations with customer", "description": "This may help you to internact with customers", "link": "locations" },
     { "itemName": "Calculate Expenss of whole trip", "description": "This may help you to calculate cost of your order", "link": "calExpenses" },
+    { "itemName": "Generate trip plan", "description": "This may help you to calculate cost of your order", "link": "tripplan" },
 
   ]
 

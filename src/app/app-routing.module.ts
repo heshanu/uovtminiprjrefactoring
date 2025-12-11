@@ -231,6 +231,10 @@ const routes: Routes = [
            path:"foodslist/chineese",
            loadChildren:()=>import('./module/food/food.module').then(m=>m.FoodModule)
       },
+       {
+        path:"tripplan",
+        loadChildren:()=>import("./module/tripplan/tripplan.module").then(m=>m.TripplanModule)
+      },
       {
         path:"foodslist/japanees",
         loadChildren:()=>import('./module/food/food.module').then(m=>m.FoodModule)
@@ -251,6 +255,7 @@ const routes: Routes = [
         path: "locations",
         loadChildren:()=>import("./module/location/location.module").then(m=>m.LocationModule)
       },
+     
     ]
   }
 

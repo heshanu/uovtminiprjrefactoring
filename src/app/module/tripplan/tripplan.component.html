@@ -1,0 +1,27 @@
+<form [formGroup]="travelForm" (ngSubmit)="submit()" class="travel-form">
+
+  <h2>Travel Details</h2>
+
+  <label>Locations</label>
+  <textarea type="text" formControlName="location" 
+  placeholder="Enter pickup location" rows="3">
+</textarea>
+
+  <div class="row">
+    <div>
+      <label>Start Date</label>
+      <input type="date" formControlName="startDate" />
+    </div>
+
+    <div>
+      <label>End Date</label>
+      <input type="date" formControlName="endDate" />
+    </div>
+  </div>
+
+  <label>No. of Travelers</label>
+  <input type="number" formControlName="travelers" min="1" />
+
+  <button type="submit">Submit Travel Info</button>
+</form>
+<div class="pt-8 pb-4"><app-backbtn [textCaption]="btnCaption" [btnColor]="btnColor" /></div>
