@@ -17,7 +17,8 @@
     "ENTER_USERNAME": "ඔබගේ පරිශීලක නාමය ඇතුළත් කරන්න",
     "ENTER_PASSWORD": "ඔබගේ මුරපදය ඇතුළත් කරන්න",
     "DONT_HAVE_ACCOUNT": "ගිණුමක් නැද්ද? Sign Up",
-    "SIGN_IN": "පිවිසෙන්න"
+    "SIGN_IN": "පිවිසෙන්න",
+    "SIGN_UP": "ලියාපදිංචි වන්න"
   },
 
   "VALIDATION": {

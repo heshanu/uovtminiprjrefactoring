@@ -5,6 +5,7 @@ import { AuthServiceCall } from '../../service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../service/language.service';
 
 @Component({
     selector: 'app-login',
@@ -18,15 +19,19 @@ export class LoginComponent implements OnInit{
   show!: boolean;
 
   errorMessage!: string;
+  currentLang = '';
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,private router: Router,
     private http: HttpClient,private authService:AuthServiceCall,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private languageService: LanguageService
   ){
-    translate.setDefaultLang('en');
-    translate.addLangs(['en', 'si']);
-    translate.use('en');
+   this.languageService.currentLanguage$
+      .subscribe(lang => {
+        this.currentLang = lang;
+        console.log('Language changed:', lang);
+      });
   }
 
   ngOnInit(): void {
@@ -46,6 +51,7 @@ export class LoginComponent implements OnInit{
 
   changeLang(lang: string) {
     this.translate.use(lang);
+    this.languageService.setLanguage(lang);
   }
   
   /*
