@@ -93,6 +93,10 @@ import { authGuard } from './shared/guard/auth.guard';
 import { RegisterModule } from './module/register/register.module';
 import { LocationModule } from './module/location/location.module';
 import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -190,10 +194,17 @@ import { UpdatemodelComponent } from './compoent/updatemodel/updatemodel.compone
     FormsModule,
     RegisterModule,
     LocationModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: provideTranslateHttpLoader({
+        prefix: './i18n/',
+        suffix: '.json'
+      })
+    })
   ],
   exports: [
-    SpinnerComponent
+    SpinnerComponent,
   ],
   providers: [SpinnerService],
   bootstrap: [AppComponent]

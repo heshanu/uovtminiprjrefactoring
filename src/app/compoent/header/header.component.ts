@@ -11,9 +11,17 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private authService: AuthServiceCall) { }
+  constructor(private authService: AuthServiceCall,
+  private languageService: LanguageService) {
+   this.languageService.currentLanguage$
+      .subscribe(lang => {
+        this.currentLang = lang;
+        console.log('Language changed:', lang);
+      });
+   }
       // Mobile menu toggle state
   isMenuOpen: boolean = false;
+   currentLang = '';
 
   // Control visibility of navigation links (if needed)
   //isShow: boolean = true;
@@ -34,6 +42,11 @@ export class HeaderComponent implements OnInit{
       return true;
     }
     return false;
+  }
+
+  changeLang(lang: string) {
+    //this.translate.use(lang);
+    this.languageService.setLanguage(lang);
   }
 
 }

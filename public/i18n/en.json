@@ -1,0 +1,71 @@
+{
+  "TEST": "This is a test translation", 
+  "APP": {
+    "TITLE": "Angular Application",
+    "WELCOME": "Welcome to the application!"
+  },
+
+  "AUTH": {
+    "LOGIN_TITLE": "Login to your account",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot Password?",
+    "ENTER_USERNAME": "Enter your username",
+    "ENTER_PASSWORD": "Enter your password",
+    "DONT_HAVE_ACCOUNT": "Don't have an account? Sign Up",
+    "SIGN_IN": "Sign In",
+    "SIGN_UP": "Sign Up",
+    "REGISTER_TITLE": "Create a new account",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "PASSWORD_MISMATCH": "Passwords do not match"
+  },
+
+  "VALIDATION": {
+    "USERNAME_REQUIRED": "Username is required",
+    "PASSWORD_REQUIRED": "Password is required",
+    "PASSWORD_MIN_LENGTH": "Password must be at least 3 characters long",
+    "INVALID_USERNAME": "Invalid username",
+    "INVALID_PASSWORD": "Invalid password",
+    "INVALID_CREDENTIALS": "Invalid username or password",
+    "CONFIRM_PASSWORD_REQUIRED": "Confirm Password is required",
+    "PASSWORD_MISMATCH": "Passwords do not match",
+    "ALREADY_HAVE_ACCOUNT": "Already have an account?"
+
+
+  },
+
+  "LANGUAGE": {
+    "SELECT": "Select Language",
+    "ENGLISH": "English",
+    "SINHALA": "Sinhala",
+    "TAMIL": "Tamil"
+  },
+
+  "BUTTONS": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "UPDATE": "Update",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "SUBMIT": "Submit",
+    "RESET": "Reset"
+  },
+
+  "MESSAGES": {
+    "SUCCESS": "Operation completed successfully",
+    "ERROR": "Something went wrong",
+    "LOADING": "Loading...",
+    "NO_DATA": "No data available"
+  },
+
+  "MENU": {
+    "HOME": "Home",
+    "DASHBOARD": "Dashboard",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "USERS": "Users"
+  }
+}

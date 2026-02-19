@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceCall } from '../../service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-
+import { LanguageService } from '../../service/language.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,13 +16,21 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
   show!: boolean;
-
+  currentLang = '';
   errorMessage!: string;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
-    private http: HttpClient, private authService: AuthServiceCall
-  ) { }
+    private http: HttpClient, private authService: AuthServiceCall,
+    private languageService: LanguageService,
+    private translate: TranslateService,
+  ) { 
+      this.languageService.currentLanguage$
+      .subscribe(lang => {
+        this.currentLang = lang;
+        console.log('Language changed:', lang);
+      });
+  }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
