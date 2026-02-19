@@ -47,5 +47,10 @@ export class HeaderComponent implements OnInit{
     return false;
   }
 
+  changeLang(lang: string) {
+    //this.translate.use(lang);
+    this.languageService.setLanguage(lang);
+  }
+
 }
 
