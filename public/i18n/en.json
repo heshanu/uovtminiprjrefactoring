@@ -17,7 +17,10 @@
     "ENTER_PASSWORD": "Enter your password",
     "DONT_HAVE_ACCOUNT": "Don't have an account? Sign Up",
     "SIGN_IN": "Sign In",
-    "SIGN_UP": "Sign Up"
+    "SIGN_UP": "Sign Up",
+    "REGISTER_TITLE": "Create a new account",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "PASSWORD_MISMATCH": "Passwords do not match"
   },
 
   "VALIDATION": {
@@ -26,7 +29,12 @@
     "PASSWORD_MIN_LENGTH": "Password must be at least 3 characters long",
     "INVALID_USERNAME": "Invalid username",
     "INVALID_PASSWORD": "Invalid password",
-    "INVALID_CREDENTIALS": "Invalid username or password"
+    "INVALID_CREDENTIALS": "Invalid username or password",
+    "CONFIRM_PASSWORD_REQUIRED": "Confirm Password is required",
+    "PASSWORD_MISMATCH": "Passwords do not match",
+    "ALREADY_HAVE_ACCOUNT": "Already have an account?"
+
+
   },
 
   "LANGUAGE": {
