@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceCall } from '../../service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-login',
@@ -20,8 +21,13 @@ export class LoginComponent implements OnInit{
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,private router: Router,
-    private http: HttpClient,private authService:AuthServiceCall
-  ){}
+    private http: HttpClient,private authService:AuthServiceCall,
+    private translate: TranslateService
+  ){
+    translate.setDefaultLang('en');
+    translate.addLangs(['en', 'si']);
+    translate.use('en');
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -38,6 +44,10 @@ export class LoginComponent implements OnInit{
     return this.loginForm.get('password');
   }
 
+  changeLang(lang: string) {
+    this.translate.use(lang);
+  }
+  
   /*
   onSubmit(): void {
 

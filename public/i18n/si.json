@@ -1,0 +1,63 @@
+
+{
+  "TEST": "This is a test translation sinhala",
+  "APP": {
+    "TITLE": "Angular යෙදුම",
+    "WELCOME": "යෙදුමට සාදරයෙන් පිළිගනිමු!"
+  },
+
+  "AUTH": {
+    "LOGIN_TITLE": "ඔබගේ ගිණුමට පිවිසෙන්න",
+    "USERNAME": "පරිශීලක නාමය",
+    "PASSWORD": "මුරපදය",
+    "LOGIN": "පිවිසෙන්න",
+    "LOGOUT": "පිටවෙන්න",
+    "REMEMBER_ME": "මතක තබාගන්න",
+    "FORGOT_PASSWORD": "මුරපදය අමතකද?",
+    "ENTER_USERNAME": "ඔබගේ පරිශීලක නාමය ඇතුළත් කරන්න",
+    "ENTER_PASSWORD": "ඔබගේ මුරපදය ඇතුළත් කරන්න",
+    "DONT_HAVE_ACCOUNT": "ගිණුමක් නැද්ද? Sign Up",
+    "SIGN_IN": "පිවිසෙන්න"
+  },
+
+  "VALIDATION": {
+    "USERNAME_REQUIRED": "පරිශීලක නාමය අවශ්‍ය වේ",
+    "PASSWORD_REQUIRED": "මුරපදය අවශ්‍ය වේ",
+    "PASSWORD_MIN_LENGTH": "මුරපදය අවම වශයෙන් අක්ෂර 3ක් විය යුතුය",
+    "INVALID_USERNAME": "වලංගු නොවන පරිශීලක නාමය",
+    "INVALID_PASSWORD": "වලංගු නොවන මුරපදය",
+    "INVALID_CREDENTIALS": "වලංගු නොවන පරිශීලක නාමය හෝ මුරපදය"
+  },
+
+  "LANGUAGE": {
+    "SELECT": "භාෂාව තෝරන්න",
+    "ENGLISH": "ඉංග්‍රීසි",
+    "SINHALA": "සිංහල",
+    "TAMIL": "දෙමළ"
+  },
+
+  "BUTTONS": {
+    "SAVE": "සුරකින්න",
+    "CANCEL": "අවලංගු කරන්න",
+    "UPDATE": "යාවත්කාලීන කරන්න",
+    "DELETE": "මකන්න",
+    "EDIT": "සංස්කරණය කරන්න",
+    "SUBMIT": "යවන්න",
+    "RESET": "නැවත සකසන්න"
+  },
+
+  "MESSAGES": {
+    "SUCCESS": "ක්‍රියාව සාර්ථකව সম্পন্ন විය",
+    "ERROR": "දෝෂයක් ඇතිවිය",
+    "LOADING": "පූරණය වෙමින් පවතී...",
+    "NO_DATA": "දත්ත නොමැත"
+  },
+
+  "MENU": {
+    "HOME": "මුල් පිටුව",
+    "DASHBOARD": "පාලක පුවරුව",
+    "PROFILE": "පැතිකඩ",
+    "SETTINGS": "සැකසුම්",
+    "USERS": "පරිශීලකයන්"
+  }
+}
