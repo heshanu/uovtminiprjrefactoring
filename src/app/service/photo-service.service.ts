@@ -9,26 +9,26 @@ import { environment } from '../../environments/environment';
 export class PhotoServiceService{
 
   private apiUrl = 'https://api.pexels.com/v1/search';
-  private apiKey = environment.photoServiceAPI;
+//  private apiKey = environment.photoServiceAPI;
 
   constructor(private http: HttpClient) { }
   
-  getImages(): Observable<any> {
-    const headers = new HttpHeaders({
-      Authorization: this.apiKey
-    });
+  // getImages(): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     Authorization: this.apiKey
+  //   });
 
-    return this.http.get(this.apiUrl, { headers });
-  }
+  //   return this.http.get(this.apiUrl, { headers });
+  // }
 
-  findImageByName(query: string, perPage: number = 5): Observable<any> {
-    const headers = new HttpHeaders({
-      Authorization: this.apiKey
-    });
+  // findImageByName(query: string, perPage: number = 5): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     Authorization: this.apiKey
+  //   });
 
-    return this.http.get(this.apiUrl, {
-      headers,
-      params: { query, per_page: perPage.toString() }
-    });
-  }
+  //   return this.http.get(this.apiUrl, {
+  //     headers,
+  //     params: { query, per_page: perPage.toString() }
+  //   });
+  // }
 }

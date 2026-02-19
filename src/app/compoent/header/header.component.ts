@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../../service/theme.service';
 import Swal from 'sweetalert2';
+import { LanguageService } from '../../service/language.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',

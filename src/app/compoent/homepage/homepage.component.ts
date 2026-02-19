@@ -13,21 +13,21 @@ image!: string;
 constructor(private imageService:PhotoServiceService){}
 
 inputValue:string = '';
-searchImageByName(imageName: any) {
+// searchImageByName(imageName: any) {
 
-  if (imageName) {
-    this.imageService.findImageByName(imageName).subscribe(
-      (data) => {
-        this.imageData = data.photos;
-      },
-      error => {
-        console.error('Error fetching image', error);
-      })
-    // Implement your search logic here
-  } else {
-    console.log('Image name is empty');
-  }
-}
+//   if (imageName) {
+//     this.imageService.findImageByName(imageName).subscribe(
+//       (data) => {
+//         this.imageData = data.photos;
+//       },
+//       error => {
+//         console.error('Error fetching image', error);
+//       })
+//     // Implement your search logic here
+//   } else {
+//     console.log('Image name is empty');
+//   }
+// }
 
 resetList(){
   this.imageData=[];

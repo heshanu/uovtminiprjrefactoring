@@ -11,7 +11,6 @@ import { clearHotelexpense, setTotalExpenses } from '../../store/orders/orders.a
 import { getCustomerDetail, getCustomerExpenseById, getCustomerID } from '../../store/customers/customer.selectors';
 import { CustomerdetailsService } from '../../service/customerdetails.service';
 import { calculateCustomerExpenses } from '../../store/customers/customer-id.actions';
-import { WhatappService } from '../../service/whatapp.service';
 import { CustomerObjectService } from '../../service/customer-object.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
@@ -66,7 +65,8 @@ export class CalexpensesComponent implements OnInit {
   customerPhonenumber!: any;
   customerPhonenumSub!: Subscription;
 
-  constructor(private store: Store<AppState>, private customerdetailsService: CustomerdetailsService, private whatappService: WhatappService, private custObj: CustomerObjectService, private location: Location) {
+  constructor(private store: Store<AppState>, private customerdetailsService: CustomerdetailsService, 
+    private custObj: CustomerObjectService, private location: Location) {
     // Select the hotel list from the store
     this.hotelList$ = this.store.select(selectOrderHotelsListDetails);
     this.foodList$ = this.store.select(selectOrderFoodsListDetails);
@@ -160,47 +160,6 @@ export class CalexpensesComponent implements OnInit {
           console.log('customer phone num' + this.customerPhonenumber);
 
           if (this.customerPhonenumber != null) {
-            this.whatappService.sendTemplateMessage(
-              this.customerPhonenumber,
-              `
-            Hello,
-            This is travel buddy service,
-
-            Your total bill amount LKRS: ${this.customerTotalExpense}
-
-          Details:
-          - Travel Expense LKRS: ${this.travelExpenditure}
-          - Hotel Expense LKRS: ${this.hotelExpenditure}
-          - Food Expense LKRS: ${this.foodExpenditure}
-          - Beverage Expense LKRS: ${this.beverageExpenditure}
-
-        Your order details
-         - Mode of Travel: ${this.travelList.map(item => item.name).join(', ')}
-         - Hotel Expense: ${this.hotelList.map(item => item.hotelName).join(', ')}
-         - Food Expense: ${this.foodList.map(item => item.name).join(', ')}
-         - Beverage Expense: ${this.beverageList.map(item => item.strDrink).join(', ')}
-
-          Thank you for use our service,Have a nice day !!!!!!!!!!!
-          `
-            )
-              .subscribe({
-                next: (response) => {
-                  this.sentMessages.push({
-                    to: this.customerPhonenumber,
-                    message: this.customerTotalExpense,
-                    timestamp: new Date(),
-                    //  sid:environment.TWILIO_ACCOUNT_SID
-                  });
-                  console.log('Twilio response:', response);
-
-                },
-                error: (err) => {
-                  //   this.status = `Error: ${err.error?.message || err.message}`;
-                  //  this.status = `Error: ${this.recipient.error}`;
-                  // this.statusColor = 'text-danger';
-                  console.error('Twilio error:', err);
-                }
-              });
             Swal.fire({
               title: 'Action Successfully executed',
               text: 'Customer plan is completed',
